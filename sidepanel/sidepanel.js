@@ -29,13 +29,13 @@
     aiStatusHideTimer: null,
     aiStatusTickTimer: null,
     aiStatusStartedAt: null,
-    autoSuggestAi: true,
+    autoSuggestAi: false,
     useLearnedSellerStyleForContent: true,
     activeCustomerProfile: null,
     draftCustomerProfile: null,
     isAnalyzingCustomerProfile: false,
     customerOnboardingStatus: 'new',
-    activeUIMode: 'agent',
+    activeUIMode: 'form',
     chatStep: 0,
     chatMessages: [],
     aiPresets: [],
@@ -2275,7 +2275,7 @@
     setupEventListeners();
     updateGenerateButton();
     switchTab('generate');
-    switchUIMode('agent');
+    switchUIMode('form');
   }
 
   // ====== API KEY MANAGEMENT ======
@@ -2491,7 +2491,7 @@
     dom.additionalInput.value = settings.additionalPrompt || '';
     state.autoAddMockups = !!settings.autoAddMockups;
     dom.autoAddToggle.checked = state.autoAddMockups;
-    state.autoSuggestAi = settings.autoSuggestAi !== false;
+    state.autoSuggestAi = settings.autoSuggestAi === true;
     if (dom.autoSuggestAiToggle) {
       dom.autoSuggestAiToggle.checked = state.autoSuggestAi;
     }

@@ -33,7 +33,7 @@ class StorageService {
       count: 3,
       additionalPrompt: '',
       autoAddMockups: false,
-      autoSuggestAi: true,
+      autoSuggestAi: false,
       useLearnedSellerStyleForContent: true,
       lastSupergroup: 'GENERAL',
       ...settings
