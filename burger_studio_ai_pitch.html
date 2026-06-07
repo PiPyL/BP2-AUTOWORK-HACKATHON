@@ -347,7 +347,7 @@
            SLIDE-SPECIFIC CUSTOM DESIGNS (NO SLOP)
            =========================================== */
         
-        /* SLIDE 1: Title Cover */
+        /* SLIDE 1: Title Cover & Neon Flow Chart */
         .title-slide {
             justify-content: center;
         }
@@ -380,6 +380,142 @@
             0% { transform: scale(0.9); opacity: 0.6; }
             50% { transform: scale(1.2); opacity: 1; }
             100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        /* Neon Flow Chart styling */
+        .formula-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 25px);
+            width: 100%;
+            max-width: 1100px;
+            margin-top: clamp(20px, 4vh, 45px);
+        }
+
+        .flow-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: clamp(12px, 2.5vh, 22px);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .flow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .flow-card.accent-card {
+            background: rgba(255, 69, 0, 0.04);
+            border-color: rgba(255, 69, 0, 0.25);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.06);
+        }
+
+        .flow-card.blue-card {
+            background: rgba(0, 229, 255, 0.04);
+            border-color: rgba(0, 229, 255, 0.25);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.06);
+        }
+
+        .flow-card.green-card {
+            background: rgba(0, 255, 102, 0.04);
+            border-color: rgba(0, 255, 102, 0.25);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.06);
+        }
+
+        .flow-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .flow-card.accent-card:hover {
+            background: rgba(255, 69, 0, 0.08);
+            border-color: rgba(255, 69, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.15);
+        }
+
+        .flow-card.blue-card:hover {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: rgba(0, 229, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+
+        .flow-card.green-card:hover {
+            background: rgba(0, 255, 102, 0.08);
+            border-color: rgba(0, 255, 102, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 255, 102, 0.15);
+        }
+
+        .flow-card-label {
+            font-size: clamp(0.7rem, 1.2vh, 0.85rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: clamp(4px, 1vh, 8px);
+            color: var(--text-secondary);
+        }
+
+        .flow-card.accent-card .flow-card-label { color: var(--accent); }
+        .flow-card.blue-card .flow-card-label { color: var(--accent-blue); }
+        .flow-card.green-card .flow-card-label { color: #00FF66; }
+
+        .flow-card-val {
+            font-size: clamp(0.85rem, 1.6vh, 1.15rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .flow-operator {
+            font-family: var(--font-body);
+            font-size: clamp(1.4rem, 3vh, 2.2rem);
+            font-weight: 700;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .flow-operator.accent {
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+        }
+
+        .flow-operator.blue {
+            color: var(--accent-blue);
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+        }
+
+        /* Responsive Layout for Flow Chart */
+        @media (max-width: 768px) {
+            .formula-flow {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .flow-operator {
+                transform: rotate(90deg);
+                margin: 5px 0;
+            }
         }
 
         /* SLIDE 2: Problem Comparison */
@@ -907,29 +1043,53 @@
        SLIDE 1: COVER
        =========================================== -->
     <section class="slide" id="slide-1">
-        <span class="slide-number">01 / 07</span>
+        <span class="slide-number">01 / 06</span>
         <div class="slide-content">
-            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
                 <div class="brand-badge reveal">
                     <span class="brand-dot"></span>
-                    BurgerPrints sponsor track
+                    BurgerPrints Sponsor Track &bull; Browser Extension AI
                 </div>
-                <h1 class="reveal" style="margin-bottom: 20px;" contenteditable="false" data-key="s1-title">
+                <h1 class="reveal" style="margin-bottom: 12px;" contenteditable="false" data-key="s1-title">
                     BurgerStudio <span>AI</span>
                 </h1>
-                <p class="subtitle reveal" style="max-width: 800px; margin-bottom: 40px;" contenteditable="false" data-key="s1-subtitle">
-                    Từ design phẳng đến câu chuyện mà khách hàng muốn sống trong đó — AI agent của bạn làm <strong style="color: var(--accent);">Photographer</strong>, <strong style="color: var(--accent);">Stylist</strong>, <strong style="color: var(--accent);">Art Director</strong>. Dành riêng cho BurgerPrints Sellers.
+                <p class="subtitle reveal" style="max-width: 900px; margin-bottom: clamp(15px, 3vh, 30px); font-size: clamp(0.95rem, 1.6vw, 1.25rem);" contenteditable="false" data-key="s1-subtitle">
+                    Đơn giản hóa việc ứng dụng AI vào quy trình làm việc hàng ngày của Seller nhằm tối ưu hóa hiệu năng: Tăng năng suất tối đa &amp; Tiết kiệm thời gian tối ưu.
                 </p>
-                <div class="reveal" style="display: flex; gap: 15px;">
-                    <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-size: var(--body-size); font-weight: 500;">
-                        📸 AI Photographer
-                    </span>
-                    <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-size: var(--body-size); font-weight: 500;">
-                        ✨ AI Art Director
-                    </span>
-                    <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-size: var(--body-size); font-weight: 500;">
-                        🧠 Gemini 3.5 Inside
-                    </span>
+                <!-- Neon Flow Chart (A + B => C + D) -->
+                <div class="formula-flow reveal">
+                    <!-- Node A -->
+                    <div class="flow-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-a-label">Công việc gốc</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-a-val">Design phẳng &amp; Sản phẩm thô</div>
+                    </div>
+                    
+                    <!-- Operator + -->
+                    <div class="flow-operator accent">&plus;</div>
+                    
+                    <!-- Node B -->
+                    <div class="flow-card accent-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-b-label">Giải pháp</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-b-val">Browser Extension AI</div>
+                    </div>
+                    
+                    <!-- Operator => -->
+                    <div class="flow-operator blue">&rArr;</div>
+                    
+                    <!-- Node C -->
+                    <div class="flow-card blue-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-c-label">Năng suất</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-c-val">Mockup Lifestyle đa dạng</div>
+                    </div>
+                    
+                    <!-- Operator + -->
+                    <div class="flow-operator blue">&plus;</div>
+                    
+                    <!-- Node D -->
+                    <div class="flow-card green-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-d-label">Hiệu quả</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-d-val">Tiết kiệm 90% thời gian đăng bán</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -939,7 +1099,7 @@
        SLIDE 2: THE PROBLEM
        =========================================== -->
     <section class="slide" id="slide-2">
-        <span class="slide-number">02 / 07</span>
+        <span class="slide-number">02 / 06</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s2-title">BÀI TOÁN: <span>SELLER BURGERPRINTS MẤT QUÁ NHIỀU THỜI GIAN TẠO MOCKUP</span></h2>
@@ -1026,7 +1186,7 @@
        SLIDE 3: THE SOLUTION & BREATHROUGH
        =========================================== -->
     <section class="slide" id="slide-3">
-        <span class="slide-number">03 / 07</span>
+        <span class="slide-number">03 / 06</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s3-title">ĐỘT PHÁ CÔNG NGHỆ: <span>BURGERSTUDIO AI EXTENSION</span></h2>
@@ -1040,7 +1200,7 @@
                                 <div class="window-dot"></div>
                                 <div class="window-dot"></div>
                             </div>
-                            <div class="window-title">BurgerPrints Chrome Extension</div>
+                            <div class="window-title">BurgerPrints Browser Extension</div>
                             <div></div>
                         </div>
                         <div class="window-body">
@@ -1049,7 +1209,7 @@
                                     <div class="shirt-graphic">DESIGN</div>
                                 </div>
                                 <div style="position: absolute; bottom: 8px; background: rgba(0, 229, 255, 0.1); border: 1px solid var(--accent-blue); padding: 2px 6px; border-radius: 4px; font-size: 8px; color: var(--accent-blue); font-weight: bold; text-align: center;">
-                                    AI Audit ✓ (4 Tiêu Chí)
+                                    AI Audit ✓ (Strict)
                                 </div>
                             </div>
                             <div class="pane-right">
@@ -1076,7 +1236,7 @@
                             </li>
                             <li class="feature-item">
                                 <span class="feature-icon">🛡️</span>
-                                <span contenteditable="false" data-key="s3-p2"><strong>3-Step AI Pipeline (Analyze → Generate → Audit):</strong> Gemini 3.5 Flash phân tích design gốc, Gemini 3.1 Flash Image tạo ảnh lifestyle từ reference images, sau đó Gemini AI Audit tự động kiểm duyệt 4 tiêu chí: design preservation, brand safety, face check, quality.</span>
+                                <span contenteditable="false" data-key="s3-p2"><strong>4-Step AI Pipeline (Analyze → Gen Content & Mockup → Audit → Auto-Fill):</strong> Gemini 3.5 Flash phân tích design gốc, các Frontier Image Models (Nano Banana, Seedance, GPT Image 2...) sinh mockup & content chất lượng cao, sau đó Gemini AI Audit tự động kiểm duyệt các tiêu chí (design preservation, brand safety, face check, quality) và tự động điền toàn bộ thông tin.</span>
                             </li>
                             <li class="feature-item">
                                 <span class="feature-icon">⚡</span>
@@ -1093,21 +1253,21 @@
        SLIDE 4: WHAT WE BUILT (HIGHLIGHT ACCOMPLISHMENTS)
        =========================================== -->
     <section class="slide" id="slide-4-built">
-        <span class="slide-number">04 / 07</span>
+        <span class="slide-number">04 / 06</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s4b-title">NHỮNG GÌ <span>ĐÃ XÂY DỰNG</span></h2>
                 
                 <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px;">
                     <div style="background: rgba(255, 69, 0, 0.04); border: 1px solid rgba(255, 69, 0, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
-                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">3</div>
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">3+</div>
                         <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">AI Models Tích Hợp</div>
-                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Gemini 3.5 Flash (Phân tích) • Gemini 3.1 Flash Image (Tạo ảnh) • Gemini 3.5 Flash (Audit)</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Gemini 3.5 Flash (Phân tích &amp; Audit) • Hỗ trợ nhiều Frontier Image Models (Nano Banana, Seedance, GPT Image 2...)</div>
                     </div>
                     <div style="background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
-                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">3-Step</div>
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">4-Step</div>
                         <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">AI Pipeline Hoàn Chỉnh</div>
-                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Analyze Design → Generate Mockup → AI Audit (Design, Brand, Face, Quality)</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Analyze Design → Gen Content &amp; Mockup → AI Audit → 1-Click Auto Fill (Mockup, Title, Description, SEO tags)</div>
                     </div>
                     <div style="background: rgba(255, 69, 0, 0.04); border: 1px solid rgba(255, 69, 0, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
                         <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">20+</div>
@@ -1115,9 +1275,9 @@
                         <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">22 scenes • 11 styles • 8 camera angles • 8 lighting • 9 seasons • 8 demographics</div>
                     </div>
                     <div style="background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
-                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">9</div>
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">6</div>
                         <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">Ngôn Ngữ Nội Dung</div>
-                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">VI • EN • JA • ZH • KO • DE • FR • ES • IT — AI tự viết Title, Description, SEO Tags</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">VI • EN • DE • FR • ES • ZH — AI tự viết Title, Description, SEO Tags</div>
                     </div>
                     <div style="background: rgba(255, 69, 0, 0.04); border: 1px solid rgba(255, 69, 0, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
                         <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">1-Click</div>
@@ -1125,7 +1285,7 @@
                         <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">AI phân tích URL cửa hàng để tự học phong cách seller, gợi ý preset tối ưu cho từng thương hiệu</div>
                     </div>
                     <div style="background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
-                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">4</div>
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.0rem); color: var(--accent-blue); line-height: 1;">Strict</div>
                         <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">Tiêu Chí AI Audit</div>
                         <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Design Preservation • Brand Safety • Face Check • Quality — Tự động loại ảnh không đạt</div>
                     </div>
@@ -1133,7 +1293,7 @@
 
                 <div class="reveal" style="margin-top: clamp(1rem, 3vh, 2rem); display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <span style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: var(--small-size); font-weight: 500; color: var(--text-secondary);">
-                        🏗️ Chrome Extension MV3 (Manifest V3)
+                        🏗️ Browser Extension MV3 (Manifest V3)
                     </span>
                     <span style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: var(--small-size); font-weight: 500; color: var(--text-secondary);">
                         ⚡ Offscreen Runner — Không đơ trình duyệt
@@ -1146,49 +1306,12 @@
         </div>
     </section>
 
-    <!-- ===========================================
-       SLIDE 4: DEMO & HAPPY PATH
-       =========================================== -->
-    <section class="slide" id="slide-4">
-        <span class="slide-number">05 / 07</span>
-        <div class="slide-content">
-            <div class="container">
-                <h2 class="reveal" contenteditable="false" data-key="s4-title">HIỆU NĂNG THỰC CHIẾN: <span>HAPPY PATH SIÊU TỐC</span></h2>
-                
-                <div class="timeline-container reveal">
-                    <div class="timeline-step active">
-                        <div class="step-num">01</div>
-                        <div class="step-title" contenteditable="false" data-key="s4-s1-title">1-Click Trigger & Analyze</div>
-                        <div class="step-desc" contenteditable="false" data-key="s4-s1-desc">Sellers chỉ cần click 1 lần duy nhất. Extension tự động đọc màu áo, loại sản phẩm và phân tích bối cảnh phù hợp bằng Gemini 3.5 Flash chỉ trong chưa đầy 1 giây.</div>
-                    </div>
-
-                    <div class="timeline-step active">
-                        <div class="step-num">02</div>
-                        <div class="step-title" contenteditable="false" data-key="s4-s2-title">Offscreen Background Gen</div>
-                        <div class="step-desc" contenteditable="false" data-key="s4-s2-desc">Sử dụng Offscreen Document để sinh tuần tự 4-6 ảnh mockup lifestyle chất lượng cao với Gemini 3.1 Flash Image. Xử lý nền hoàn toàn — không gây nghẽn trình duyệt.</div>
-                    </div>
-
-                    <div class="timeline-step active">
-                        <div class="step-num">03</div>
-                        <div class="step-title" contenteditable="false" data-key="s4-s3-title">AI Auto-Fill Content & SEO</div>
-                        <div class="step-desc" contenteditable="false" data-key="s4-s3-desc">AI tự động viết tiêu đề chuẩn SEO, mô tả sản phẩm (HTML) và điền trực tiếp vào các ô thông tin trên form tạo sản phẩm của BurgerPrints mà không cần gõ tay.</div>
-                    </div>
-
-                    <div class="timeline-step active">
-                        <div class="step-num">04</div>
-                        <div class="step-title" contenteditable="false" data-key="s4-s4-title">Auto Inject Mockup List</div>
-                        <div class="step-desc" contenteditable="false" data-key="s4-s4-desc">Hệ thống tự động tải lên và gán các ảnh mockup lifestyle đã tạo thẳng vào danh sách ảnh sản phẩm (mockups list). Listings sẵn sàng đăng bán 100%.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ===========================================
        SLIDE 5: FUTURE VISION
        =========================================== -->
     <section class="slide" id="slide-5">
-        <span class="slide-number">06 / 07</span>
+        <span class="slide-number">05 / 06</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s5-title">LỘ TRÌNH RA MẮT & <span>KẾ HOẠCH PHÁT TRIỂN</span></h2>
@@ -1245,7 +1368,7 @@
         }
     </style>
     <section class="slide" id="slide-6">
-        <span class="slide-number">07 / 07</span>
+        <span class="slide-number">06 / 06</span>
         <div class="slide-content">
             <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
                 
@@ -1272,7 +1395,7 @@
                 <div class="reveal" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 100%; margin-bottom: var(--element-gap);">
                     <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 16px 24px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 280px; flex: 1; max-width: 380px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" onmouseover="this.style.borderColor='rgba(0, 229, 255, 0.3)'; this.style.background='rgba(0, 229, 255, 0.02)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.background='rgba(255,255,255,0.02)';">
                         <span style="font-size: 1.8rem;">🚀</span>
-                        <strong style="color: #ffffff; font-size: var(--body-size);" contenteditable="false" data-key="s6-cta1-title">Trải Nghiệm Chrome Extension</strong>
+                        <strong style="color: #ffffff; font-size: var(--body-size);" contenteditable="false" data-key="s6-cta1-title">Trải Nghiệm Browser Extension</strong>
                         <span style="color: var(--text-secondary); font-size: var(--small-size); text-align: center; line-height: 1.4;" contenteditable="false" data-key="s6-cta1-desc">Tải trực tiếp file ZIP đóng gói từ Github Releases, cài đặt thủ công vào Chrome chỉ trong 1 phút.</span>
                     </div>
                     <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 16px 24px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 280px; flex: 1; max-width: 380px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" onmouseover="this.style.borderColor='rgba(255, 69, 0, 0.3)'; this.style.background='rgba(255, 69, 0, 0.02)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.background='rgba(255,255,255,0.02)';">
