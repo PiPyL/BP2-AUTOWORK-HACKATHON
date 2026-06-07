@@ -1,0 +1,1072 @@
+{
+  "ext_name": {
+    "message": "BurgerStudio AI",
+    "description": "The name of the extension"
+  },
+  "ext_desc": {
+    "message": "使用 Gemini AI 为 BurgerStudio 产品快速生成专业的场景生活样机图片。",
+    "description": "The description of the extension"
+  },
+  "ext_title": {
+    "message": "AI 样机",
+    "description": "Title on Header"
+  },
+  "theme_toggle_title": {
+    "message": "切换深色/浅色模式",
+    "description": "Tooltip for theme toggle button"
+  },
+  "settings_toggle_title": {
+    "message": "设置",
+    "description": "Tooltip for Settings button"
+  },
+  "tab_generate": {
+    "message": "生成图片",
+    "description": "Generate tab button text"
+  },
+  "tab_history": {
+    "message": "历史记录",
+    "description": "History tab button text"
+  },
+  "sec_product_title": {
+    "message": "📷 产品",
+    "description": "Product section title"
+  },
+  "btn_refresh_product_title": {
+    "message": "刷新产品数据",
+    "description": "Tooltip for refresh product button"
+  },
+  "product_placeholder_text": {
+    "message": "打开 BurgerStudio 产品页面以开始",
+    "description": "Placeholder when no product is detected"
+  },
+  "sec_settings_title": {
+    "message": "⚙️ 样机设置",
+    "description": "Title of mockup settings section"
+  },
+  "btn_ai_suggest": {
+    "message": "AI 建议设置",
+    "description": "Button text for AI setting suggestions"
+  },
+  "btn_ai_suggest_loading": {
+    "message": "正在分析...",
+    "description": "Button state when analyzing"
+  },
+  "ai_status_auto": {
+    "message": "AI 正在分析 $1",
+    "description": "Automatic product analysis status"
+  },
+  "ai_status_refreshing": {
+    "message": "AI 正在刷新 $1 的建议",
+    "description": "Suggestion refresh status"
+  },
+  "ai_status_analyzing": {
+    "message": "AI 正在分析 $1",
+    "description": "Default analysis status"
+  },
+  "ai_status_done": {
+    "message": "已应用最合适建议",
+    "description": "Suggestion completion status"
+  },
+  "ai_status_cached": {
+    "message": "已应用保存的的建议",
+    "description": "Cached suggestion status"
+  },
+  "ai_status_wait": {
+    "message": "正在为当前产品选择最佳设置...",
+    "description": "AI loading subtitle"
+  },
+  "ai_status_preparing_images": {
+    "message": "Preparing reference images ($1/$2)...",
+    "description": "AI image preparation progress"
+  },
+  "ai_status_calling_gemini": {
+    "message": "Images ready. Asking Gemini for product-fit settings...",
+    "description": "Gemini request progress"
+  },
+  "ai_status_parsing": {
+    "message": "Reading Gemini's structured recommendations...",
+    "description": "AI response parsing progress"
+  },
+  "ai_status_applying": {
+    "message": "Applying presets and option lists...",
+    "description": "AI suggestion application progress"
+  },
+  "ai_status_elapsed": {
+    "message": "$1s elapsed",
+    "description": "Elapsed time for AI suggestion"
+  },
+  "ai_status_failed": {
+    "message": "AI suggestion could not finish",
+    "description": "AI suggestion failure status"
+  },
+  "ai_status_ready": {
+    "message": "已自动选择第一个预设。",
+    "description": "AI completion subtitle"
+  },
+  "ai_status_step_product": {
+    "message": "产品",
+    "description": "Product analysis step"
+  },
+  "ai_status_step_scene": {
+    "message": "场景",
+    "description": "Scene selection step"
+  },
+  "ai_status_step_camera": {
+    "message": "镜头",
+    "description": "Camera selection step"
+  },
+  "ai_status_step_light": {
+    "message": "光照",
+    "description": "Lighting selection step"
+  },
+  "label_model": {
+    "message": "🧑 模特",
+    "description": "Model label"
+  },
+  "label_nationality": {
+    "message": "🌍 国籍",
+    "description": "Nationality sub-label"
+  },
+  "label_gender": {
+    "message": "性别",
+    "description": "Gender label"
+  },
+  "label_age": {
+    "message": "年龄",
+    "description": "Age label"
+  },
+  "label_group": {
+    "message": "组合",
+    "description": "Group label"
+  },
+  "label_no_person": {
+    "message": "无模特 (仅产品)",
+    "description": "No person toggle label"
+  },
+  "label_scene": {
+    "message": "📍 场景 / 背景",
+    "description": "Scene label"
+  },
+  "label_display": {
+    "message": "👕 产品展示方式",
+    "description": "Display mode label"
+  },
+  "label_style": {
+    "message": "🎨 摄影风格",
+    "description": "Photography style label"
+  },
+  "label_camera": {
+    "message": "📷 拍摄视角",
+    "description": "Camera angle label"
+  },
+  "label_lighting": {
+    "message": "💡 光照",
+    "description": "Lighting label"
+  },
+  "label_season": {
+    "message": "🎄 季节 / 节日",
+    "description": "Season/occasion label"
+  },
+  "label_optional": {
+    "message": "(可选)",
+    "description": "Optional indicator"
+  },
+  "label_num_images": {
+    "message": "📸 生成图片数量: ",
+    "description": "Number of images slider label"
+  },
+  "label_additional_desc": {
+    "message": "📝 补充描述",
+    "description": "Additional description label"
+  },
+  "placeholder_additional": {
+    "message": "例如：穿着情侣装的夫妇，冒热气的咖啡杯，圣诞节清晨的氛围...",
+    "description": "Placeholder for additional prompt text"
+  },
+  "btn_generate": {
+    "message": "AI 生成样机",
+    "description": "Generate button text"
+  },
+  "btn_generate_no_key": {
+    "message": "🔑 请先设置 API Key",
+    "description": "Generate button text when no key is set"
+  },
+  "btn_generate_no_product": {
+    "message": "📷 未检测到产品",
+    "description": "Generate button text when no product is detected"
+  },
+  "btn_generate_no_reference": {
+    "message": "📷 请选择至少 1 张参考图",
+    "description": "Generate button text when no reference image is selected"
+  },
+  "sec_generating": {
+    "message": "⏳ 正在生成...",
+    "description": "Generating progress title"
+  },
+  "progress_preparing": {
+    "message": "正在准备...",
+    "description": "Preparing progress text"
+  },
+  "progress_analyzing": {
+    "message": "正在分析产品样机...",
+    "description": "Analyzing product mockup progress text"
+  },
+  "progress_generating_img": {
+    "message": "正在生成图片 $1/$2...",
+    "description": "Generating image progress text"
+  },
+  "progress_auditing_img": {
+    "message": "正在审核图片 $1/$2...",
+    "description": "Auditing image progress text"
+  },
+  "progress_done": {
+    "message": "完成！已生成 $1 张图片。",
+    "description": "Generation complete text"
+  },
+  "sec_results": {
+    "message": "📸 结果",
+    "description": "Results section title"
+  },
+  "label_auto_add": {
+    "message": "自动添加到样机列表",
+    "description": "Auto add switch label"
+  },
+  "status_auto_mode": {
+    "message": "自动模式",
+    "description": "Status text for auto mode"
+  },
+  "status_manual_mode": {
+    "message": "手动模式",
+    "description": "Status text for manual mode"
+  },
+  "status_adding": {
+    "message": "正在添加...",
+    "description": "Status text when adding images"
+  },
+  "status_adding_count": {
+    "message": "正在添加 $1...",
+    "description": "Status text when adding count"
+  },
+  "status_add_success": {
+    "message": "已成功添加 $1 张",
+    "description": "Status text when added successfully"
+  },
+  "status_add_submitted": {
+    "message": "已提交 $1 张",
+    "description": "Status text when submitted successfully"
+  },
+  "status_add_failed": {
+    "message": "添加失败",
+    "description": "Status text when addition failed"
+  },
+  "btn_add_selected": {
+    "message": "➕ 添加选中图片",
+    "description": "Add selected mockups button text"
+  },
+  "btn_download_selected": {
+    "message": "📥 下载选中图片",
+    "description": "Download selected button text"
+  },
+  "btn_download_all": {
+    "message": "📦 下载所有图片",
+    "description": "Download all button text"
+  },
+  "sec_history_title": {
+    "message": "📜 历史生成会话",
+    "description": "History section title"
+  },
+  "history_empty": {
+    "message": "尚无生成历史记录",
+    "description": "Empty history list message"
+  },
+  "history_imgs_suffix": {
+    "message": "张图片",
+    "description": "Suffix for image count in history"
+  },
+  "sec_settings_title_system": {
+    "message": "⚙️ 系统设置",
+    "description": "System settings section title"
+  },
+  "settings_api_title": {
+    "message": "🔑 Gemini API Key",
+    "description": "Gemini API key section title"
+  },
+  "placeholder_api_key": {
+    "message": "在此处粘贴您的 API Key...",
+    "description": "API Key input placeholder"
+  },
+  "btn_save_key": {
+    "message": "保存",
+    "description": "Save API key button text"
+  },
+  "btn_save_key_testing": {
+    "message": "正在测试...",
+    "description": "Save API key button state when testing"
+  },
+  "settings_api_link": {
+    "message": "从 Google AI Studio 获取 API Key →",
+    "description": "Get API key link text"
+  },
+  "settings_storage_title": {
+    "message": "📊 存储空间",
+    "description": "Storage section title"
+  },
+  "settings_storage_calculating": {
+    "message": "正在计算...",
+    "description": "Storage calculations progress text"
+  },
+  "settings_storage_error": {
+    "message": "无法计算存储空间",
+    "description": "Storage calculation error text"
+  },
+  "btn_clear_history": {
+    "message": "清除所有历史记录",
+    "description": "Clear history button text"
+  },
+  "settings_language_title": {
+    "message": "🌐 界面语言",
+    "description": "UI language section title"
+  },
+  "lang_vi": {
+    "message": "越南语 (Tiếng Việt)",
+    "description": "Language name for Vietnamese"
+  },
+  "lang_en": {
+    "message": "英语 (English)",
+    "description": "Language name for English"
+  },
+  "lang_zh": {
+    "message": "中文 (简体)",
+    "description": "Language name for Chinese"
+  },
+  "lang_de": {
+    "message": "德语 (Deutsch)",
+    "description": "Language name for German"
+  },
+  "lang_fr": {
+    "message": "法语 (Français)",
+    "description": "Language name for French"
+  },
+  "lang_es": {
+    "message": "西班牙语 (Español)",
+    "description": "Language name for Spanish"
+  },
+  "lang_it": {
+    "message": "意大利语 (Italiano)",
+    "description": "Language name for Italian"
+  },
+  "settings_ai_content_language_title": {
+    "message": "✍️ AI 内容语言",
+    "description": "AI content language section title"
+  },
+  "settings_ai_content_language_desc": {
+    "message": "AI 在建议、答复和创建产品内容时将使用此语言。",
+    "description": "AI content language setting description"
+  },
+  "preset_default_name": {
+    "message": "AI 推荐设置",
+    "description": "Default name for Preset AI"
+  },
+  "preset_fallback_name_1": {
+    "message": "温馨室内空间",
+    "description": "Name for fallback preset 1"
+  },
+  "preset_fallback_desc_1": {
+    "message": "温馨的室内环境，搭配柔和的自然光，带来亲切舒适的感觉。",
+    "description": "Description for fallback preset 1"
+  },
+  "preset_fallback_name_2": {
+    "message": "现代活力街头",
+    "description": "Name for fallback preset 2"
+  },
+  "preset_fallback_desc_2": {
+    "message": "充满活力的户外或街头环境，采用清晰、现代的拍摄角度。",
+    "description": "Description for fallback preset 2"
+  },
+  "preset_fallback_name_3": {
+    "message": "产品聚焦特写",
+    "description": "Name for fallback preset 3"
+  },
+  "preset_fallback_desc_3": {
+    "message": "极简工作室环境中的特写产品对焦，背景虚化平滑。",
+    "description": "Description for fallback preset 3"
+  },
+  "toast_applied_preset": {
+    "message": "已应用：$1",
+    "description": "Toast message for applied preset"
+  },
+  "toast_enter_valid_key": {
+    "message": "请输入有效的 API Key",
+    "description": "Toast message for empty key"
+  },
+  "toast_key_saved": {
+    "message": "API Key 保存并验证成功！",
+    "description": "Toast message for saved key"
+  },
+  "toast_key_failed": {
+    "message": "API Key 验证失败",
+    "description": "Toast message for invalid key"
+  },
+  "toast_history_cleared": {
+    "message": "历史记录已清空",
+    "description": "Toast message for cleared history"
+  },
+  "toast_downloading_count": {
+    "message": "正在下载 $1 张图片...",
+    "description": "Toast message for downloading images"
+  },
+  "toast_no_images_found": {
+    "message": "未找到此会话的图片",
+    "description": "Toast message for empty session images"
+  },
+  "toast_loaded_history": {
+    "message": "已从历史记录加载 $1 张图片",
+    "description": "Toast message for loaded history session"
+  },
+  "toast_select_first": {
+    "message": "请先选择至少一张生成的图片",
+    "description": "Toast message when downloading without selection"
+  },
+  "toast_no_pass_images": {
+    "message": "没有符合审核条件的图片可添加",
+    "description": "Toast message when no audit passed images found"
+  },
+  "toast_added_mockup": {
+    "message": "已将 $1 张图片添加到样机列表",
+    "description": "Toast message for successfully added mockups"
+  },
+  "toast_submitted_mockup": {
+    "message": "已将 $1 张图片提交到样机上传",
+    "description": "Toast message for successfully submitted mockups"
+  },
+  "toast_add_failed": {
+    "message": "添加到样机失败：$1",
+    "description": "Toast message when mockup addition fails"
+  },
+  "toast_ai_suggest_success": {
+    "message": "AI 识别到产品：$1",
+    "description": "Toast message when AI detects product successfully"
+  },
+  "toast_ai_suggest_failed": {
+    "message": "AI 建议失败：$1",
+    "description": "Toast message when AI suggestions fail"
+  },
+  "toast_generation_success": {
+    "message": "已成功生成 $1 张样机图！",
+    "description": "Toast message when mockups generate successfully"
+  },
+  "toast_generation_failed": {
+    "message": "生成失败：$1",
+    "description": "Toast message when mockups generation fails"
+  },
+  "confirm_clear_history": {
+    "message": "您确定要清除所有历史记录吗？",
+    "description": "Confirmation dialog for clearing history"
+  },
+  "sg_wearable": {
+    "message": "👕 服饰",
+    "description": "Apparel category name"
+  },
+  "sg_kids": {
+    "message": "👶 儿童",
+    "description": "Kids category name"
+  },
+  "sg_drinkware": {
+    "message": "☕ 杯具/水具",
+    "description": "Drinkware category name"
+  },
+  "sg_home_living": {
+    "message": "🏠 家居生活",
+    "description": "Home & Living category name"
+  },
+  "sg_accessories": {
+    "message": "🎁 饰品配饰",
+    "description": "Accessories category name"
+  },
+  "sg_general": {
+    "message": "📦 普通产品",
+    "description": "General product category name"
+  },
+  "gender_any": {
+    "message": "任意",
+    "description": "Gender: Any option"
+  },
+  "gender_male": {
+    "message": "男",
+    "description": "Gender: Male option"
+  },
+  "gender_female": {
+    "message": "女",
+    "description": "Gender: Female option"
+  },
+  "age_young_adult": {
+    "message": "青年人",
+    "description": "Age: Young Adult option"
+  },
+  "age_baby": {
+    "message": "婴儿 (0-2岁)",
+    "description": "Age: Baby option"
+  },
+  "age_toddler": {
+    "message": "幼儿 (2-5岁)",
+    "description": "Age: Toddler option"
+  },
+  "age_child": {
+    "message": "儿童 (5-12岁)",
+    "description": "Age: Child option"
+  },
+  "age_teen": {
+    "message": "青少年",
+    "description": "Age: Teen option"
+  },
+  "age_adult": {
+    "message": "中年人 (30-50岁)",
+    "description": "Age: Adult option"
+  },
+  "age_senior": {
+    "message": "老年人 (50岁以上)",
+    "description": "Age: Senior option"
+  },
+  "group_solo": {
+    "message": "单人",
+    "description": "Group: Solo option"
+  },
+  "group_couple": {
+    "message": "双人/情侣",
+    "description": "Group: Couple option"
+  },
+  "group_family": {
+    "message": "家庭",
+    "description": "Group: Family option"
+  },
+  "group_friends": {
+    "message": "朋友们",
+    "description": "Group: Friends option"
+  },
+  "nat_us": {
+    "message": "🇺🇸 美国",
+    "description": "US nationality option"
+  },
+  "nat_jp": {
+    "message": "🇯🇵 日本",
+    "description": "Japanese nationality option"
+  },
+  "nat_kr": {
+    "message": "🇰🇷 韩国",
+    "description": "Korean nationality option"
+  },
+  "nat_cn": {
+    "message": "🇨🇳 中国",
+    "description": "Chinese nationality option"
+  },
+  "nat_vn": {
+    "message": "🇻🇳 越南",
+    "description": "Vietnamese nationality option"
+  },
+  "nat_eu": {
+    "message": "🇪🇺 欧洲",
+    "description": "European nationality option"
+  },
+  "nat_br": {
+    "message": "🇧🇷 巴西",
+    "description": "Brazilian nationality option"
+  },
+  "nat_in": {
+    "message": "🇮🇳 印度",
+    "description": "Indian nationality option"
+  },
+  "scene_outdoor": {
+    "message": "🌳 户外",
+    "description": "Outdoor scene"
+  },
+  "scene_indoor": {
+    "message": "🏠 室内",
+    "description": "Indoor scene"
+  },
+  "scene_studio": {
+    "message": "📸 影棚",
+    "description": "Studio scene"
+  },
+  "scene_street": {
+    "message": "🏙️ 街头",
+    "description": "Street scene"
+  },
+  "scene_cafe": {
+    "message": "☕ 咖啡馆",
+    "description": "Café scene"
+  },
+  "scene_beach": {
+    "message": "🏖️ 沙滩",
+    "description": "Beach scene"
+  },
+  "scene_park": {
+    "message": "🌿 公园",
+    "description": "Park scene"
+  },
+  "scene_gym": {
+    "message": "🏋️ 健身房",
+    "description": "Gym scene"
+  },
+  "scene_kitchen": {
+    "message": "🍳 厨房",
+    "description": "Kitchen scene"
+  },
+  "scene_office": {
+    "message": "💻 办公室",
+    "description": "Office scene"
+  },
+  "scene_living_room": {
+    "message": "🛋️ 客厅",
+    "description": "Living Room scene"
+  },
+  "scene_bedroom": {
+    "message": "🛏️ 卧室",
+    "description": "Bedroom scene"
+  },
+  "scene_bathroom": {
+    "message": "🛁 浴室",
+    "description": "Bathroom scene"
+  },
+  "scene_dining_room": {
+    "message": "🍽️ 餐厅",
+    "description": "Dining Room scene"
+  },
+  "scene_front_door": {
+    "message": "🚪 正门口",
+    "description": "Front Door scene"
+  },
+  "scene_car": {
+    "message": "🚗 汽车内饰",
+    "description": "Car scene"
+  },
+  "scene_christmas_tree": {
+    "message": "🎄 圣诞树旁",
+    "description": "Christmas scene"
+  },
+  "scene_pool": {
+    "message": "🏊 泳池旁",
+    "description": "Pool scene"
+  },
+  "scene_playground": {
+    "message": "🎡 游乐场",
+    "description": "Playground scene"
+  },
+  "scene_balcony": {
+    "message": "🌅 阳台",
+    "description": "Balcony scene"
+  },
+  "disp_wearing": {
+    "message": "👤 穿着中",
+    "description": "Display: Wearing"
+  },
+  "disp_holding": {
+    "message": "🤲 手持中",
+    "description": "Display: Holding"
+  },
+  "disp_placed_on": {
+    "message": "📦 摆放在表面",
+    "description": "Display: Placed on surface"
+  },
+  "disp_hanging": {
+    "message": "🖼️ 悬挂在墙上",
+    "description": "Display: Hanging"
+  },
+  "disp_spread": {
+    "message": "🛋️ 平铺/铺设",
+    "description": "Display: Spread"
+  },
+  "disp_wrapped": {
+    "message": "🧣 缠绕在身上",
+    "description": "Display: Wrapped"
+  },
+  "disp_worn_on_head": {
+    "message": "🧢 佩戴在头部",
+    "description": "Display: Headwear"
+  },
+  "disp_worn_on_feet": {
+    "message": "👟 穿着在脚上",
+    "description": "Display: Footwear"
+  },
+  "disp_flat_lay": {
+    "message": "📐 艺术平铺俯拍",
+    "description": "Display: Flat lay"
+  },
+  "disp_next_to": {
+    "message": "↔️ 摆放在旁边",
+    "description": "Display: Next to"
+  },
+  "style_lifestyle": {
+    "message": "🌿 生活写实",
+    "description": "Style: Lifestyle"
+  },
+  "style_editorial": {
+    "message": "📰 杂志时尚",
+    "description": "Style: Editorial"
+  },
+  "style_minimal": {
+    "message": "✨ 极简纯净",
+    "description": "Style: Minimal"
+  },
+  "style_cozy": {
+    "message": "🔥 温馨舒适",
+    "description": "Style: Cozy"
+  },
+  "style_street": {
+    "message": "🛹 街头潮流",
+    "description": "Style: Street"
+  },
+  "style_tropical": {
+    "message": "🌴 热带度假",
+    "description": "Style: Tropical"
+  },
+  "style_sport": {
+    "message": "⚡ 运动活力",
+    "description": "Style: Sport"
+  },
+  "style_festive": {
+    "message": "🎉 节日喜庆",
+    "description": "Style: Festive"
+  },
+  "style_interior_design": {
+    "message": "🏛️ 室内装饰",
+    "description": "Style: Interior"
+  },
+  "style_product_hero": {
+    "message": "🎯 产品主视觉",
+    "description": "Style: Hero"
+  },
+  "style_flat_lay": {
+    "message": "📐 艺术平铺",
+    "description": "Style: Flat lay"
+  },
+  "cam_full_body": {
+    "message": "全身镜头",
+    "description": "Camera: Full body"
+  },
+  "cam_medium_shot": {
+    "message": "中景镜头",
+    "description": "Camera: Medium shot"
+  },
+  "cam_close_up": {
+    "message": "特写镜头",
+    "description": "Camera: Close-up"
+  },
+  "cam_three_quarter": {
+    "message": "3/4侧面视角",
+    "description": "Camera: 3/4 angle"
+  },
+  "cam_eye_level": {
+    "message": "平视镜头",
+    "description": "Camera: Eye level"
+  },
+  "cam_top_down": {
+    "message": "俯视镜头",
+    "description": "Camera: Top down"
+  },
+  "cam_wide_shot": {
+    "message": "全景广角",
+    "description": "Camera: Wide shot"
+  },
+  "light_natural": {
+    "message": "☀️ 自然光",
+    "description": "Lighting: Natural"
+  },
+  "light_golden_hour": {
+    "message": "🌅 黄金时刻暖光",
+    "description": "Lighting: Golden hour"
+  },
+  "light_morning_soft": {
+    "message": "🌤️ 晨间柔光",
+    "description": "Lighting: Soft morning"
+  },
+  "light_studio": {
+    "message": "💡 影棚光",
+    "description": "Lighting: Studio"
+  },
+  "light_warm_ambient": {
+    "message": "🕯️ 温暖环境光",
+    "description": "Lighting: Warm ambient"
+  },
+  "light_neon": {
+    "message": "🌈 霓虹彩光",
+    "description": "Lighting: Neon"
+  },
+  "light_christmas": {
+    "message": "🎄 圣诞彩灯光晕",
+    "description": "Lighting: Christmas"
+  },
+  "light_bright_daylight": {
+    "message": "☀️ 明亮日光",
+    "description": "Lighting: Bright daylight"
+  },
+  "season_spring": {
+    "message": "🌸 春季",
+    "description": "Spring season"
+  },
+  "season_summer": {
+    "message": "☀️ 夏季",
+    "description": "Summer season"
+  },
+  "season_autumn": {
+    "message": "🍂 秋季",
+    "description": "Autumn season"
+  },
+  "season_winter": {
+    "message": "❄️ 冬季",
+    "description": "Winter season"
+  },
+  "season_christmas": {
+    "message": "🎄 圣诞节",
+    "description": "Christmas occasion"
+  },
+  "season_valentine": {
+    "message": "💝 情人节",
+    "description": "Valentine occasion"
+  },
+  "season_halloween": {
+    "message": "🎃 万圣节",
+    "description": "Halloween occasion"
+  },
+  "season_graduation": {
+    "message": "🎓 毕业季",
+    "description": "Graduation occasion"
+  },
+  "content_ai_btn": {
+    "message": "自定义样机",
+    "description": "AI Mockup button text in content script"
+  },
+  "content_opening": {
+    "message": "正在打开...",
+    "description": "Button state in content script when opening panel"
+  },
+  "content_badge_new": {
+    "message": "最新",
+    "description": "New badge in content script"
+  },
+  "chat_agent_thinking": {
+    "message": "AI 助手正在输入...",
+    "description": "Typing indicator text"
+  },
+  "mode_selector_title": {
+    "message": "界面模式",
+    "description": "Interface mode label"
+  },
+  "mode_agent": {
+    "message": "🤖 AI 助手模式",
+    "description": "AI Agent mode button text"
+  },
+  "mode_form": {
+    "message": "⚙️ 专家设置模式",
+    "description": "Expert Form mode button text"
+  },
+  "settings_ai_suggest_title": {
+    "message": "✨ 自动 AI 建议",
+    "description": "AI auto suggest section title"
+  },
+  "label_auto_suggest_ai": {
+    "message": "打开面板时自动检测并生成 AI 预设建议",
+    "description": "Auto suggest label text"
+  },
+  "settings_provider_title": {
+    "message": "🤖 AI 服务商",
+    "description": "AI Provider section title"
+  },
+  "provider_active": {
+    "message": "已启用",
+    "description": "Active state for provider"
+  },
+  "provider_updating": {
+    "message": "正在更新",
+    "description": "Updating state for provider"
+  },
+  "profile_settings_title": {
+    "message": "✍️ 卖家产品文案风格画像",
+    "description": "Seller profile settings title"
+  },
+  "profile_settings_description": {
+    "message": "从该卖家已创建的产品中进行学习，使 AI 生成的产品内容完全契合其独特的写作风格。",
+    "description": "Seller profile settings description"
+  },
+  "profile_status_active": {
+    "message": "已启用",
+    "description": "Active status for profile"
+  },
+  "profile_status_disabled": {
+    "message": "已禁用",
+    "description": "Disabled status for profile"
+  },
+  "profile_default_name": {
+    "message": "BurgerStudio 默认风格",
+    "description": "Default profile name"
+  },
+  "profile_summary_meta": {
+    "message": "标题公式 · 描述结构 · SEO 关键词偏好",
+    "description": "Metadata summary for profile card"
+  },
+  "profile_toggle_use_for_content": {
+    "message": "AI 创建产品文案时应用所学到的风格画像",
+    "description": "Toggle to apply profile copy style"
+  },
+  "profile_btn_setup": {
+    "message": "设置画像",
+    "description": "Setup profile button text"
+  },
+  "profile_btn_edit": {
+    "message": "编辑",
+    "description": "Edit profile button text"
+  },
+  "profile_btn_disable": {
+    "message": "禁用",
+    "description": "Disable profile button text"
+  },
+  "profile_btn_enable": {
+    "message": "启用",
+    "description": "Enable profile button text"
+  },
+  "onboarding_brand": {
+    "message": "文案风格定位",
+    "description": "Onboarding brand header label"
+  },
+  "onboarding_skip": {
+    "message": "暂不设置",
+    "description": "Onboarding skip text"
+  },
+  "onboarding_welcome_eyebrow": {
+    "message": "保持品牌文案高度一致",
+    "description": "Eyebrow on welcome onboarding screen"
+  },
+  "onboarding_welcome_title": {
+    "message": "训练 AI 掌握该卖家的专属写作风格",
+    "description": "Welcome onboarding title"
+  },
+  "onboarding_welcome_description": {
+    "message": "基于卖家已发布的历史产品一键提取特征，生成专属写作画像，并在 AI 撰写产品标题、描述和 SEO 字段时自动套用。",
+    "description": "Welcome onboarding description"
+  },
+  "onboarding_benefit_visuals": {
+    "message": "学习其标题公式与关键字分布习惯"
+  },
+  "onboarding_benefit_scenes": {
+    "message": "匹配其独特的描述段落结构与语调"
+  },
+  "onboarding_benefit_reuse": {
+    "message": "在未来的产品文案生成中一键套用画像"
+  },
+  "onboarding_get_started": {
+    "message": "创建写作风格画像",
+    "description": "Get started onboarding button text"
+  },
+  "onboarding_step_source": {
+    "message": "步骤 1 / 3",
+    "description": "Step 1 tracker"
+  },
+  "onboarding_source_title": {
+    "message": "AI 应该学习卖家的哪些历史产品？",
+    "description": "Source screen onboarding title"
+  },
+  "onboarding_source_description": {
+    "message": "粘贴该卖家之前已发布的产品公开链接（最多3个）。您可以在保存前对提取到的文案特征进行微调。",
+    "description": "Source screen onboarding description"
+  },
+  "onboarding_profile_name_label": {
+    "message": "风格画像名称",
+    "description": "Label for profile name input"
+  },
+  "onboarding_profile_name_placeholder": {
+    "message": "例如：美国爆款店风格, T恤店风格",
+    "description": "Placeholder for profile name input"
+  },
+  "onboarding_urls_label": {
+    "message": "卖家已发布的产品链接",
+    "description": "Label for product urls input list"
+  },
+  "onboarding_urls_hint": {
+    "message": "建议选择包含优秀标题、丰富描述和完整 SEO 内容的成熟产品。",
+    "description": "Hint for input urls"
+  },
+  "onboarding_brief_label": {
+    "message": "卖家专属写作规则 (可选)",
+    "description": "Label for seller manual brief text"
+  },
+  "onboarding_brief_placeholder": {
+    "message": "例如：必须包含的特定词汇、避免使用的敏感词汇、标题首字母大写规则、主打语调或 SEO 关键字备忘",
+    "description": "Placeholder for seller manual brief text"
+  },
+  "onboarding_back": {
+    "message": "返回",
+    "description": "Back button"
+  },
+  "onboarding_analyze": {
+    "message": "开始分析写作风格",
+    "description": "Analyze style button"
+  },
+  "onboarding_step_analyzing": {
+    "message": "步骤 2 / 3",
+    "description": "Step 2 tracker"
+  },
+  "onboarding_analyzing_title": {
+    "message": "正在解析卖家的文案风格特征",
+    "description": "Analyzing screen title"
+  },
+  "onboarding_analyzing_description": {
+    "message": "AI 正在阅读历史产品信息，提取标题规范、详情结构、SEO 关键词分布及敏感词策略...",
+    "description": "Analyzing screen description"
+  },
+  "onboarding_analysis_color": {
+    "message": "标题公式模式"
+  },
+  "onboarding_analysis_composition": {
+    "message": "详情段落结构"
+  },
+  "onboarding_analysis_mood": {
+    "message": "SEO 与词汇准则"
+  },
+  "onboarding_cancel": {
+    "message": "取消",
+    "description": "Cancel button"
+  },
+  "onboarding_step_review": {
+    "message": "步骤 3 / 3",
+    "description": "Step 3 tracker"
+  },
+  "onboarding_review_title": {
+    "message": "审核并微调卖家的风格特征",
+    "description": "Review screen title"
+  },
+  "onboarding_review_description": {
+    "message": "请确认或修改提取到的文案画像特征，通过后将被用于以后的 AI 文案生成。",
+    "description": "Review screen description"
+  },
+  "onboarding_review_audience": {
+    "message": "主要买家受众画像",
+    "description": "Audience review field label"
+  },
+  "onboarding_review_copy": {
+    "message": "提炼出的文案风格",
+    "description": "Copy style review field label"
+  },
+  "onboarding_review_visual": {
+    "message": "SEO 与特定词汇准则",
+    "description": "Visual/SEO review field label"
+  },
+  "onboarding_review_rules": {
+    "message": "需要避免使用的敏感词 (英文逗号隔开)",
+    "description": "Banned words review field label"
+  },
+  "onboarding_save_profile": {
+    "message": "保存风格画像",
+    "description": "Save profile button"
+  },
+  "chat_btn_start_over": {
+    "message": "重新开始对话",
+    "description": "Chat agent restart button"
+  },
+  "chat_input_placeholder": {
+    "message": "输入具体的产品样机需求...",
+    "description": "Chat input placeholder"
+  },
+  "chat_btn_send_title": {
+    "message": "发送消息",
+    "description": "Tooltip for chat send button"
+  }
+}

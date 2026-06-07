@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="ext_name">BurgerStudio AI</title>
+  <meta name="description" content="AI Mockup Generator by BurgerStudio - Tạo ảnh mockup sản phẩm thời trang và đồ gia dụng chuyên nghiệp nhanh chóng bằng trí tuệ nhân tạo." data-i18n-content="ext_desc">
+  
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="AI Mockup Generator - BurgerStudio">
+  <meta property="og:description" content="Tạo ảnh mockup sản phẩm thời trang và đồ gia dụng chuyên nghiệp bằng trí tuệ nhân tạo.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="icons/icon128.png">
+
+  <link rel="stylesheet" href="sidepanel.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="sp-header">
+    <div class="sp-header__logo">
+      <span class="sp-header__icon">🍔</span>
+      <div class="sp-header__title-group">
+        <h1 class="sp-header__title" data-i18n="ext_title">AI Mockup</h1>
+        <span class="sp-header__subtitle">by BurgerStudio</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button id="btn-theme-toggle" class="sp-header__settings-btn" title="Chuyển chế độ Sáng/Tối" data-i18n-title="theme_toggle_title">
+        <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <button id="btn-settings-toggle" class="sp-header__settings-btn" title="Settings" data-i18n-title="settings_toggle_title">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 13a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M17.7 12.2l-1.3-.8a6.3 6.3 0 000-2.8l1.3-.8a.3.3 0 00.1-.4l-1.3-2.2a.3.3 0 00-.4-.1l-1.3.8a6 6 0 00-2.4-1.4V3.3a.3.3 0 00-.3-.3H9.9a.3.3 0 00-.3.3v1.5a6 6 0 00-2.4 1.4l-1.3-.8a.3.3 0 00-.4.1L4.2 7.7a.3.3 0 00.1.4l1.3.8a6.3 6.3 0 000 2.8l-1.3.8a.3.3 0 00-.1.4l1.3 2.2a.3.3 0 00.4.1l1.3-.8a6 6 0 002.4 1.4v1.5a.3.3 0 00.3.3h2.2a.3.3 0 00.3-.3v-1.5a6 6 0 002.4-1.4l1.3.8a.3.3 0 00.4-.1l1.3-2.2a.3.3 0 00-.1-.4z" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <!-- Tab Bar -->
+  <div class="sp-tabs">
+    <button class="sp-tab-btn active" data-tab="generate">
+      <span class="sp-tab-btn__icon">💻</span>
+      <span class="sp-tab-btn__text" data-i18n="tab_generate">Tạo Ảnh</span>
+    </button>
+    <button class="sp-tab-btn" data-tab="history">
+      <span class="sp-tab-btn__icon">📜</span>
+      <span class="sp-tab-btn__text" data-i18n="tab_history">Lịch Sử</span>
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="sp-main">
+    <!-- TAB 1: GENERATE -->
+    <div id="tab-generate" class="sp-tab-content active">
+      <!-- UI Mode Selector -->
+      <div class="sp-mode-selector">
+        <span class="sp-mode-selector__title" data-i18n="mode_selector_title">Chế độ giao diện</span>
+        <div class="sp-mode-toggle">
+          <button id="btn-mode-agent" class="sp-mode-btn active" type="button" data-i18n="mode_agent">🤖 Chế độ AI</button>
+          <button id="btn-mode-form" class="sp-mode-btn" type="button" data-i18n="mode_form">⚙️ Chế độ Chuyên gia</button>
+        </div>
+      </div>
+
+      <!-- Product Preview -->
+      <section id="product-section" class="sp-section">
+        <div class="sp-section__header">
+          <h2 class="sp-section__title" data-i18n="sec_product_title">📷 Product</h2>
+          <button id="btn-refresh-product" class="sp-btn sp-btn--ghost sp-btn--sm" title="Refresh product data" data-i18n-title="btn_refresh_product_title">↻</button>
+        </div>
+        <div id="product-preview" class="sp-product-preview">
+          <div class="sp-product-preview__placeholder">
+            <p data-i18n="product_placeholder_text">Open a BurgerPrints product page to get started</p>
+            <span class="sp-product-preview__icon">🛍️</span>
+          </div>
+        </div>
+        <div id="ai-suggest-product-status" class="sp-ai-status sp-product-ai-status" hidden aria-live="polite"></div>
+      </section>
+
+      <!-- Chat Agent Container -->
+      <div id="chat-container" class="sp-chat-container">
+        <div id="chat-history" class="sp-chat-history">
+          <!-- Chat messages will be dynamically injected here -->
+        </div>
+        <div id="chat-typing" class="sp-chat-typing" hidden>
+          <div class="sp-chat-typing__indicator">
+            <span class="sp-chat-typing__dot"></span>
+            <span class="sp-chat-typing__dot"></span>
+            <span class="sp-chat-typing__dot"></span>
+          </div>
+          <span class="sp-chat-typing__text" data-i18n="chat_agent_thinking">AI đang gõ...</span>
+        </div>
+        <div id="chat-quick-replies" class="sp-chat-quick-replies">
+          <!-- Quick Reply options will be dynamically injected here -->
+        </div>
+        <div class="sp-chat-input-wrapper">
+          <textarea id="chat-input" class="sp-chat-input" rows="1" placeholder="Nhập yêu cầu thiết kế mockup..." data-i18n-placeholder="chat_input_placeholder"></textarea>
+          <button id="btn-chat-send" class="sp-chat-send-btn" type="button" title="Gửi tin nhắn" data-i18n-title="chat_btn_send_title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Generation Settings -->
+      <section id="gen-settings" class="sp-section">
+        <div class="sp-section__header">
+          <h2 class="sp-section__title" data-i18n="sec_settings_title">⚙️ Mockup Settings</h2>
+          <span id="category-badge" class="sp-category-badge" hidden>👕 Apparel</span>
+        </div>
+
+        <!-- AI Suggest -->
+        <div class="sp-field">
+          <button id="btn-ai-suggest" class="sp-btn sp-btn--ai-suggest" disabled>
+            <span class="sp-btn__icon">✨</span>
+            <span class="sp-btn__text" data-i18n="btn_ai_suggest">AI Suggest Presets</span>
+          </button>
+          <div id="ai-suggest-status" class="sp-ai-status" hidden aria-live="polite"></div>
+          <div id="ai-presets-container" class="sp-preset-cards" hidden></div>
+        </div>
+
+        <!-- Model Demographics -->
+        <div id="field-model-demo" class="sp-field-group" data-field="model">
+          <label class="sp-label" data-i18n="label_model">🧑 Model</label>
+
+          <!-- Nationality -->
+          <div class="sp-field sp-field--sub">
+            <label class="sp-label sp-label--sm" data-i18n="label_nationality">🌍 Nationality</label>
+            <div id="country-chips" class="sp-chips">
+              <button class="sp-chip sp-chip--active" data-value="US" data-i18n="nat_us">🇺🇸 US</button>
+              <button class="sp-chip" data-value="EU" data-i18n="nat_eu">🇪🇺 Europe</button>
+              <button class="sp-chip" data-value="CN" data-i18n="nat_cn">🇨🇳 China</button>
+              <button class="sp-chip" data-value="VN" data-i18n="nat_vn">🇻🇳 Vietnam</button>
+              <button class="sp-chip" data-value="JP" data-i18n="nat_jp">🇯🇵 Japan</button>
+              <button class="sp-chip" data-value="KR" data-i18n="nat_kr">🇰🇷 Korea</button>
+              <button class="sp-chip" data-value="BR" data-i18n="nat_br">🇧🇷 Brazil</button>
+              <button class="sp-chip" data-value="IN" data-i18n="nat_in">🇮🇳 India</button>
+            </div>
+          </div>
+
+          <!-- Gender + Age + Group inline -->
+          <div class="sp-field sp-field--sub sp-field--row">
+            <div class="sp-field--col">
+              <label class="sp-label sp-label--sm" data-i18n="label_gender">Gender</label>
+              <select id="select-gender" class="sp-select sp-select--sm">
+                <option value="any" data-i18n="gender_any">Any</option>
+                <option value="male" data-i18n="gender_male">Male</option>
+                <option value="female" data-i18n="gender_female">Female</option>
+              </select>
+            </div>
+            <div class="sp-field--col">
+              <label class="sp-label sp-label--sm" data-i18n="label_age">Age</label>
+              <select id="select-age" class="sp-select sp-select--sm">
+                <option value="young_adult" data-i18n="age_young_adult">Young Adult</option>
+                <option value="baby" data-i18n="age_baby">Baby (0-2)</option>
+                <option value="toddler" data-i18n="age_toddler">Toddler (2-5)</option>
+                <option value="child" data-i18n="age_child">Child (5-12)</option>
+                <option value="teen" data-i18n="age_teen">Teen</option>
+                <option value="adult" data-i18n="age_adult">Adult (30-50)</option>
+                <option value="senior" data-i18n="age_senior">Senior (50+)</option>
+              </select>
+            </div>
+            <div class="sp-field--col">
+              <label class="sp-label sp-label--sm" data-i18n="label_group">Group</label>
+              <select id="select-group" class="sp-select sp-select--sm">
+                <option value="solo" data-i18n="group_solo">Solo</option>
+                <option value="couple" data-i18n="group_couple">Couple</option>
+                <option value="family" data-i18n="group_family">Family</option>
+                <option value="friends" data-i18n="group_friends">Friends</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- No Person toggle -->
+          <div class="sp-field sp-field--sub">
+            <label class="sp-switch sp-switch--compact">
+              <input type="checkbox" id="toggle-no-person">
+              <span class="sp-switch__track"><span class="sp-switch__thumb"></span></span>
+              <span class="sp-switch__label" data-i18n="label_no_person">No Person (product only)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Scene / Background -->
+        <div id="field-scene" class="sp-field" data-field="scene">
+          <label class="sp-label" data-i18n="label_scene">📍 Scene / Background</label>
+          <div id="scene-chips" class="sp-chips">
+            <button class="sp-chip sp-chip--active" data-value="outdoor" data-i18n="scene_outdoor">🌳 Outdoor</button>
+            <button class="sp-chip" data-value="indoor" data-i18n="scene_indoor">🏠 Indoor</button>
+            <button class="sp-chip" data-value="studio" data-i18n="scene_studio">📸 Studio</button>
+            <button class="sp-chip" data-value="street" data-i18n="scene_street">🏙️ Street</button>
+            <button class="sp-chip" data-value="cafe" data-i18n="scene_cafe">☕ Café</button>
+            <button class="sp-chip" data-value="beach" data-i18n="scene_beach">🏖️ Beach</button>
+            <button class="sp-chip" data-value="park" data-i18n="scene_park">🌿 Park</button>
+            <button class="sp-chip" data-value="gym" data-i18n="scene_gym">🏋️ Gym</button>
+            <button class="sp-chip" data-value="kitchen" data-i18n="scene_kitchen">🍳 Kitchen</button>
+            <button class="sp-chip" data-value="office" data-i18n="scene_office">💻 Office</button>
+            <button class="sp-chip" data-value="living_room" data-i18n="scene_living_room">🛋️ Living Room</button>
+            <button class="sp-chip" data-value="bedroom" data-i18n="scene_bedroom">🛏️ Bedroom</button>
+            <button class="sp-chip" data-value="dining_room" data-i18n="scene_dining_room">🍽️ Dining</button>
+            <button class="sp-chip" data-value="front_door" data-i18n="scene_front_door">🚪 Front Door</button>
+            <button class="sp-chip" data-value="car" data-i18n="scene_car">🚗 Car</button>
+            <button class="sp-chip" data-value="christmas_tree" data-i18n="scene_christmas_tree">🎄 Christmas</button>
+            <button class="sp-chip" data-value="pool" data-i18n="scene_pool">🏊 Pool</button>
+            <button class="sp-chip" data-value="playground" data-i18n="scene_playground">🎡 Playground</button>
+            <button class="sp-chip" data-value="balcony" data-i18n="scene_balcony">🌅 Balcony</button>
+          </div>
+        </div>
+
+        <!-- Display Mode -->
+        <div id="field-display" class="sp-field" data-field="display">
+          <label class="sp-label" data-i18n="label_display">👕 How product is shown</label>
+          <select id="select-display-mode" class="sp-select">
+            <option value="wearing" data-i18n="disp_wearing">👤 Wearing</option>
+            <option value="holding" data-i18n="disp_holding">🤲 Holding</option>
+            <option value="placed_on" data-i18n="disp_placed_on">📦 Placed on surface</option>
+            <option value="hanging" data-i18n="disp_hanging">🖼️ Hanging on wall</option>
+            <option value="spread" data-i18n="disp_spread">🛋️ Spread / Draped</option>
+            <option value="wrapped" data-i18n="disp_wrapped">🧣 Wrapped around</option>
+            <option value="worn_on_head" data-i18n="disp_worn_on_head">🧢 Worn on head</option>
+            <option value="worn_on_feet" data-i18n="disp_worn_on_feet">👟 Worn on feet</option>
+            <option value="flat_lay" data-i18n="disp_flat_lay">📐 Flat lay</option>
+            <option value="next_to" data-i18n="disp_next_to">↔️ Next to</option>
+          </select>
+        </div>
+
+        <!-- Photography Style -->
+        <div id="field-style" class="sp-field" data-field="style">
+          <label class="sp-label" data-i18n="label_style">🎨 Photography Style</label>
+          <select id="select-style" class="sp-select">
+            <option value="lifestyle" data-i18n="style_lifestyle">🌿 Lifestyle</option>
+            <option value="editorial" data-i18n="style_editorial">📰 Editorial / Magazine</option>
+            <option value="minimal" data-i18n="style_minimal">✨ Minimal / Clean</option>
+            <option value="cozy" data-i18n="style_cozy">🔥 Cozy / Warm</option>
+            <option value="street" data-i18n="style_street">🛹 Street Fashion</option>
+            <option value="tropical" data-i18n="style_tropical">🌴 Tropical / Vacation</option>
+            <option value="sport" data-i18n="style_sport">⚡ Sport / Active</option>
+            <option value="festive" data-i18n="style_festive">🎉 Festive / Holiday</option>
+            <option value="interior_design" data-i18n="style_interior_design">🏛️ Interior Design</option>
+            <option value="product_hero" data-i18n="style_product_hero">🎯 Product Hero Shot</option>
+            <option value="flat_lay" data-i18n="style_flat_lay">📐 Flat Lay Art</option>
+          </select>
+        </div>
+
+        <!-- Camera Angle + Lighting inline -->
+        <div id="field-camera-light" class="sp-field sp-field--row" data-field="camera">
+          <div class="sp-field--col">
+            <label class="sp-label" data-i18n="label_camera">📷 Camera Angle</label>
+            <select id="select-camera" class="sp-select sp-select--sm">
+              <option value="full_body" data-i18n="cam_full_body">Full Body</option>
+              <option value="medium_shot" data-i18n="cam_medium_shot">Medium Shot</option>
+              <option value="close_up" data-i18n="cam_close_up">Close-up</option>
+              <option value="three_quarter" data-i18n="cam_three_quarter">3/4 Angle</option>
+              <option value="eye_level" data-i18n="cam_eye_level">Eye Level</option>
+              <option value="top_down" data-i18n="cam_top_down">Top Down</option>
+              <option value="wide_shot" data-i18n="cam_wide_shot">Wide Shot</option>
+            </select>
+          </div>
+          <div class="sp-field--col">
+            <label class="sp-label" data-i18n="label_lighting">💡 Lighting</label>
+            <select id="select-lighting" class="sp-select sp-select--sm">
+              <option value="natural" data-i18n="light_natural">☀️ Natural</option>
+              <option value="golden_hour" data-i18n="light_golden_hour">🌅 Golden Hour</option>
+              <option value="morning_soft" data-i18n="light_morning_soft">🌤️ Morning Soft</option>
+              <option value="studio" data-i18n="light_studio">💡 Studio</option>
+              <option value="warm_ambient" data-i18n="light_warm_ambient">🕯️ Warm Ambient</option>
+              <option value="neon" data-i18n="light_neon">🌈 Neon</option>
+              <option value="christmas" data-i18n="light_christmas">🎄 Christmas</option>
+              <option value="bright_daylight" data-i18n="light_bright_daylight">☀️ Bright Daylight</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Season / Occasion -->
+        <div id="field-season" class="sp-field" data-field="season">
+          <label class="sp-label"><span data-i18n="label_season">🎄 Season / Occasion</span> <span class="sp-label__optional" data-i18n="label_optional">(optional)</span></label>
+          <select id="select-season" class="sp-select">
+            <option value="auto" data-i18n="season_auto">🔄 Auto-detect</option>
+            <option value="spring" data-i18n="season_spring">🌸 Spring</option>
+            <option value="summer" data-i18n="season_summer">☀️ Summer</option>
+            <option value="autumn" data-i18n="season_autumn">🍂 Autumn</option>
+            <option value="winter" data-i18n="season_winter">❄️ Winter</option>
+            <option value="christmas" data-i18n="season_christmas">🎄 Christmas</option>
+            <option value="valentine" data-i18n="season_valentine">💝 Valentine's Day</option>
+            <option value="halloween" data-i18n="season_halloween">🎃 Halloween</option>
+            <option value="graduation" data-i18n="season_graduation">🎓 Graduation</option>
+          </select>
+        </div>
+
+        <!-- Image Count -->
+        <div class="sp-field">
+          <label class="sp-label"><span data-i18n="label_num_images">📸 Number of images: </span><strong id="count-display">3</strong></label>
+          <input type="range" id="slider-count" class="sp-slider" min="1" max="10" value="3" step="1">
+          <div class="sp-slider__labels">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+          </div>
+        </div>
+
+        <!-- Additional Prompt -->
+        <div class="sp-field">
+          <label class="sp-label"><span data-i18n="label_additional_desc">📝 Additional description</span> <span class="sp-label__optional" data-i18n="label_optional">(optional)</span></label>
+          <textarea id="input-additional" class="sp-textarea" rows="2" placeholder="E.g., couple wearing matching shirts..." data-i18n-placeholder="placeholder_additional"></textarea>
+        </div>
+
+        <!-- Generate Button -->
+        <button id="btn-generate" class="sp-btn sp-btn--generate" disabled>
+          <span class="sp-btn__icon">🚀</span>
+          <span class="sp-btn__text" data-i18n="btn_generate">Generate AI Mockups</span>
+        </button>
+      </section>
+
+      <!-- Progress -->
+      <section id="progress-section" class="sp-section" hidden>
+        <h2 class="sp-section__title" data-i18n="sec_generating">⏳ Generating...</h2>
+        <div class="sp-progress">
+          <div class="sp-progress__bar">
+            <div id="progress-bar-fill" class="sp-progress__fill"></div>
+          </div>
+          <p id="progress-text" class="sp-progress__text" data-i18n="progress_preparing">Preparing...</p>
+        </div>
+      </section>
+
+      <!-- Results Grid -->
+      <section id="results-section" class="sp-section" hidden>
+        <div class="sp-section__header">
+          <h2 class="sp-section__title" data-i18n="sec_results">📸 Results</h2>
+          <span id="results-count" class="sp-badge">0</span>
+        </div>
+        <div class="sp-auto-add">
+          <label class="sp-switch">
+            <input type="checkbox" id="toggle-auto-add-mockups">
+            <span class="sp-switch__track">
+              <span class="sp-switch__thumb"></span>
+            </span>
+            <span class="sp-switch__label" data-i18n="label_auto_add">Auto add to Mockup</span>
+          </label>
+          <span id="auto-add-status" class="sp-auto-add__status" data-i18n="status_manual_mode">Manual mode</span>
+        </div>
+        <div id="results-grid" class="sp-results-grid"></div>
+        <div class="sp-results-actions">
+          <button id="btn-add-selected-mockups" class="sp-btn sp-btn--primary" disabled>
+            <span>➕</span> <span class="sp-btn__text" data-i18n="btn_add_selected">Add Selected</span>
+          </button>
+          <button id="btn-download-selected" class="sp-btn sp-btn--primary" disabled>
+            <span>📥</span> <span class="sp-btn__text" data-i18n="btn_download_selected">Download Selected</span>
+          </button>
+          <button id="btn-download-all" class="sp-btn sp-btn--secondary" disabled>
+            <span>📦</span> <span class="sp-btn__text" data-i18n="btn_download_all">Download All</span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 2: HISTORY -->
+    <div id="tab-history" class="sp-tab-content">
+      <section id="history-section" class="sp-section">
+        <div class="sp-section__header">
+          <h2 class="sp-section__title" data-i18n="sec_history_title">📜 History Sessions</h2>
+        </div>
+        <div id="history-list" class="sp-history"></div>
+      </section>
+    </div>
+
+    <!-- TAB 3: SETTINGS -->
+    <div id="tab-settings" class="sp-tab-content">
+      <section id="settings-section" class="sp-section">
+        <div class="sp-section__header">
+          <h2 class="sp-section__title" data-i18n="sec_settings_title_system">⚙️ Cài đặt hệ thống</h2>
+        </div>
+
+        <!-- Seller Product Style Profile -->
+        <div id="customer-profile-settings-card" class="sp-settings__card sp-customer-profile-card">
+          <div class="sp-customer-profile-card__header">
+            <div>
+              <p class="sp-settings__title" data-i18n="profile_settings_title">✍️ Seller product writing profile</p>
+              <p class="sp-customer-profile-card__description" data-i18n="profile_settings_description">Learn from products this seller already created so AI product content matches their writing style.</p>
+            </div>
+            <span id="customer-profile-status" class="sp-profile-status sp-profile-status--active" data-i18n="profile_status_active">Active</span>
+          </div>
+          <div id="customer-profile-summary" class="sp-customer-profile-summary">
+            <div class="sp-customer-profile-summary__avatar" aria-hidden="true">BP</div>
+            <div class="sp-customer-profile-summary__body">
+              <strong id="customer-profile-name" class="sp-customer-profile-summary__name" data-i18n="profile_default_name">BurgerStudio Default</strong>
+              <span class="sp-customer-profile-summary__meta" data-i18n="profile_summary_meta">Title patterns · Description structure · SEO wording</span>
+            </div>
+          </div>
+          <label class="sp-switch sp-customer-profile-card__toggle">
+            <input type="checkbox" id="toggle-use-learned-style-content" checked>
+            <span class="sp-switch__track"><span class="sp-switch__thumb"></span></span>
+            <span class="sp-switch__label" data-i18n="profile_toggle_use_for_content">Use learned seller style when AI creates product content</span>
+          </label>
+          <div class="sp-customer-profile-card__actions">
+            <button id="btn-customer-profile-setup" class="sp-btn sp-btn--sm sp-btn--primary" type="button" data-i18n="profile_btn_setup">Set up profile</button>
+            <button id="btn-customer-profile-edit" class="sp-btn sp-btn--sm sp-btn--secondary" type="button" data-i18n="profile_btn_edit">Edit</button>
+            <button id="btn-customer-profile-disable" class="sp-btn sp-btn--sm sp-btn--ghost-danger" type="button" data-i18n="profile_btn_disable">Disable</button>
+          </div>
+        </div>
+
+        <!-- UI Language Selector -->
+        <div class="sp-settings__card">
+          <h3 class="sp-settings__title" data-i18n="settings_language_title">🌐 Ngôn ngữ giao diện</h3>
+          <div class="sp-settings__input-group" style="margin-top: 8px;">
+            <select id="select-language" class="sp-select" style="width: 100%;">
+              <option value="en" data-i18n="lang_en">English</option>
+              <option value="de" data-i18n="lang_de">Deutsch (Tiếng Đức)</option>
+              <option value="fr" data-i18n="lang_fr">Français (Tiếng Pháp)</option>
+              <option value="es" data-i18n="lang_es">Español (Tiếng Tây Ban Nha)</option>
+              <option value="it" data-i18n="lang_it">Italiano (Tiếng Ý)</option>
+              <option value="zh" data-i18n="lang_zh">简体中文 (Tiếng Trung)</option>
+              <option value="vi" data-i18n="lang_vi">Tiếng Việt</option>
+            </select>
+          </div>
+        </div>
+
+
+        <!-- AI Content Language Selector -->
+        <div class="sp-settings__card">
+          <h3 class="sp-settings__title" data-i18n="settings_ai_content_language_title">✍️ Ngôn ngữ nội dung AI</h3>
+          <p class="sp-settings__hint" data-i18n="settings_ai_content_language_desc">AI sẽ dùng ngôn ngữ này khi đề xuất, trả lời và tạo nội dung sản phẩm.</p>
+          <div class="sp-settings__input-group" style="margin-top: 8px;">
+            <select id="select-ai-content-language" class="sp-select" style="width: 100%;">
+              <option value="en" data-i18n="lang_en">English</option>
+              <option value="de" data-i18n="lang_de">Deutsch (Tiếng Đức)</option>
+              <option value="fr" data-i18n="lang_fr">Français (Tiếng Pháp)</option>
+              <option value="es" data-i18n="lang_es">Español (Tiếng Tây Ban Nha)</option>
+              <option value="it" data-i18n="lang_it">Italiano (Tiếng Ý)</option>
+              <option value="zh" data-i18n="lang_zh">简体中文 (Tiếng Trung)</option>
+              <option value="vi" data-i18n="lang_vi">Tiếng Việt</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- AI Auto Suggest Settings -->
+        <div class="sp-settings__card">
+          <h3 class="sp-settings__title" data-i18n="settings_ai_suggest_title">✨ Tự động đề xuất AI</h3>
+          <div class="sp-settings__input-group" style="margin-top: 8px;">
+            <label class="sp-switch">
+              <input type="checkbox" id="toggle-auto-suggest-ai" checked>
+              <span class="sp-switch__track">
+                <span class="sp-switch__thumb"></span>
+              </span>
+              <span class="sp-switch__label" data-i18n="label_auto_suggest_ai">Tự động đề xuất cài đặt khi mở tiện ích</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- API Key -->
+        <div class="sp-settings__card">
+          <h3 class="sp-settings__title" data-i18n="settings_provider_title">🤖 AI Provider</h3>
+          <div class="sp-provider-list">
+            <button class="sp-provider-item active" data-provider="gemini" type="button">
+              <span class="sp-provider-item__logo">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <title>Gemini</title>
+                  <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"></path>
+                </svg>
+              </span>
+              <div class="sp-provider-item__info">
+                <span class="sp-provider-item__name">Gemini</span>
+                <span class="sp-provider-item__desc">Google</span>
+              </div>
+              <span class="sp-provider-item__badge" data-i18n="provider_active">Active</span>
+            </button>
+            <button class="sp-provider-item" data-provider="seedance" type="button">
+              <span class="sp-provider-item__logo">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <title>Seedance</title>
+                  <path d="M2 4h4v8L10 4h4v8l4-8h4v16h-4v-8l-4 8h-4v-8l-4 8H2Z"></path>
+                </svg>
+              </span>
+              <div class="sp-provider-item__info">
+                <span class="sp-provider-item__name">Seedance</span>
+                <span class="sp-provider-item__desc">Bytedance</span>
+              </div>
+              <span class="sp-provider-item__badge sp-provider-item__badge--updating" data-i18n="provider_updating">Updating</span>
+            </button>
+            <button class="sp-provider-item" data-provider="fal" type="button">
+              <span class="sp-provider-item__logo">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <title>Fal</title>
+                  <path clip-rule="evenodd" d="M15.477 0c.415 0 .749.338.788.752a7.775 7.775 0 006.985 6.984c.413.04.752.373.752.788v6.952c0 .415-.338.748-.752.788a7.775 7.775 0 00-6.985 6.984c-.04.414-.373.752-.788.752H8.525c-.416 0-.749-.338-.789-.752a7.775 7.775 0 00-6.984-6.984c-.414-.04-.752-.373-.752-.788V8.524c0-.415.338-.748.752-.788A7.775 7.775 0 007.736.752C7.776.338 8.11 0 8.526 0h6.95zM4.819 11.98a7.226 7.226 0 007.223 7.23 7.226 7.226 0 007.223-7.23c0-3.994-3.234-7.23-7.223-7.23a7.227 7.227 0 00-7.223 7.23z"></path>
+                </svg>
+              </span>
+              <div class="sp-provider-item__info">
+                <span class="sp-provider-item__name">Fal.ai</span>
+                <span class="sp-provider-item__desc">Fal</span>
+              </div>
+              <span class="sp-provider-item__badge sp-provider-item__badge--updating" data-i18n="provider_updating">Updating</span>
+            </button>
+            <button class="sp-provider-item" data-provider="openai" type="button">
+              <span class="sp-provider-item__logo">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <title>OpenAI</title>
+                  <path d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"></path>
+                </svg>
+              </span>
+              <div class="sp-provider-item__info">
+                <span class="sp-provider-item__name">OpenAI</span>
+                <span class="sp-provider-item__desc">OpenAI</span>
+              </div>
+              <span class="sp-provider-item__badge sp-provider-item__badge--updating" data-i18n="provider_updating">Updating</span>
+            </button>
+          </div>
+
+          <div id="provider-config-gemini" class="sp-provider-config active">
+            <h4 class="sp-provider-config__title" style="margin-top: 14px; margin-bottom: 6px; font-size: 11px; font-weight: 600; color: var(--sp-text-secondary);" data-i18n="settings_api_title">🔑 Gemini API Key</h4>
+            <div class="sp-settings__input-group">
+              <input type="password" id="input-api-key" class="sp-input" placeholder="Paste your API key here..." autocomplete="off" data-i18n-placeholder="placeholder_api_key">
+              <button id="btn-save-key" class="sp-btn sp-btn--sm sp-btn--primary" data-i18n="btn_save_key">Save</button>
+            </div>
+            <div id="api-key-status" class="sp-settings__status"></div>
+            <a href="https://aistudio.google.com/apikey" target="_blank" class="sp-settings__link" data-i18n="settings_api_link">Get API key from AI Studio →</a>
+          </div>
+        </div>
+
+        <!-- Storage -->
+        <div class="sp-settings__card">
+          <h3 class="sp-settings__title" data-i18n="settings_storage_title">📊 Storage</h3>
+          <div class="sp-storage-bar">
+            <div id="storage-bar-fill" class="sp-storage-bar__fill" style="width: 0%"></div>
+          </div>
+          <p id="storage-info" class="sp-settings__info" data-i18n="settings_storage_calculating">Calculating...</p>
+          <button id="btn-clear-history" class="sp-btn sp-btn--sm sp-btn--danger" data-i18n="btn_clear_history">Clear All History</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- First-run Seller Product Style Onboarding -->
+  <div id="customer-style-onboarding" class="sp-onboarding" role="dialog" aria-modal="true" aria-labelledby="customer-style-onboarding-title" hidden>
+    <div class="sp-onboarding__backdrop"></div>
+    <div class="sp-onboarding__dialog">
+      <div class="sp-onboarding__topbar">
+        <div class="sp-onboarding__brand">
+          <span class="sp-onboarding__brand-icon" aria-hidden="true">✦</span>
+          <span data-i18n="onboarding_brand">Seller Style</span>
+        </div>
+        <button id="btn-onboarding-skip" class="sp-onboarding__skip" type="button" data-i18n="onboarding_skip">Skip for now</button>
+      </div>
+
+      <div class="sp-onboarding__progress" aria-label="Onboarding progress">
+        <span class="sp-onboarding__progress-step sp-onboarding__progress-step--active"></span>
+        <span class="sp-onboarding__progress-step"></span>
+        <span class="sp-onboarding__progress-step"></span>
+        <span class="sp-onboarding__progress-step"></span>
+      </div>
+
+      <section id="onboarding-screen-welcome" class="sp-onboarding-screen" aria-labelledby="customer-style-onboarding-title">
+        <div class="sp-onboarding-screen__visual sp-onboarding-screen__visual--welcome" aria-hidden="true">
+          <span>✍️</span>
+        </div>
+        <p class="sp-onboarding-screen__eyebrow" data-i18n="onboarding_welcome_eyebrow">Consistent product copy</p>
+        <h2 id="customer-style-onboarding-title" class="sp-onboarding-screen__title" data-i18n="onboarding_welcome_title">Teach AI the seller's product writing style</h2>
+        <p class="sp-onboarding-screen__description" data-i18n="onboarding_welcome_description">Create a reusable profile from products the seller already published, then use it when AI writes product titles, descriptions, and SEO fields.</p>
+        <ul class="sp-onboarding-benefits">
+          <li data-i18n="onboarding_benefit_visuals">Learn title formulas and keyword habits</li>
+          <li data-i18n="onboarding_benefit_scenes">Match description structure and tone</li>
+          <li data-i18n="onboarding_benefit_reuse">Reuse the profile when generating product content</li>
+        </ul>
+        <button id="btn-onboarding-start" class="sp-btn sp-btn--generate sp-onboarding__primary" type="button" data-i18n="onboarding_get_started">Create writing profile</button>
+      </section>
+
+      <section id="onboarding-screen-source" class="sp-onboarding-screen" aria-labelledby="onboarding-source-title" hidden>
+        <p class="sp-onboarding-screen__eyebrow" data-i18n="onboarding_step_source">Step 1 of 3</p>
+        <h2 id="onboarding-source-title" class="sp-onboarding-screen__title" data-i18n="onboarding_source_title">Which seller products should AI learn from?</h2>
+        <p class="sp-onboarding-screen__description" data-i18n="onboarding_source_description">Paste public product links previously created by this seller. You can refine the learned style before saving.</p>
+        <label class="sp-onboarding-field" for="onboarding-profile-name">
+          <span data-i18n="onboarding_profile_name_label">Profile name</span>
+          <input id="onboarding-profile-name" class="sp-input" type="text" value="BurgerStudio Default" data-i18n-placeholder="onboarding_profile_name_placeholder">
+        </label>
+        <div class="sp-onboarding-field">
+          <span data-i18n="onboarding_urls_label">Seller's existing product links</span>
+          <div id="customer-urls-container" class="sp-url-inputs-container">
+            <!-- Dynamic input URL rows will be injected here -->
+          </div>
+          <small data-i18n="onboarding_urls_hint">Use products with strong titles, descriptions, and SEO content.</small>
+        </div>
+        <label class="sp-onboarding-field" for="input-customer-brief">
+          <span data-i18n="onboarding_brief_label">Optional seller writing rules</span>
+          <textarea id="input-customer-brief" class="sp-input sp-onboarding-textarea" rows="3" data-i18n-placeholder="onboarding_brief_placeholder" placeholder="Required terms, words to avoid, title rules, tone, and SEO notes"></textarea>
+        </label>
+        <div class="sp-onboarding__actions">
+          <button id="btn-onboarding-source-back" class="sp-btn sp-btn--secondary" type="button" data-i18n="onboarding_back">Back</button>
+          <button id="btn-onboarding-analyze" class="sp-btn sp-btn--primary" type="button" data-i18n="onboarding_analyze">Analyze writing style</button>
+        </div>
+      </section>
+
+      <section id="onboarding-screen-analyzing" class="sp-onboarding-screen sp-onboarding-screen--centered" aria-labelledby="onboarding-analyzing-title" aria-live="polite" hidden>
+        <div class="sp-onboarding-analyzing" aria-hidden="true">
+          <span class="sp-onboarding-analyzing__orbit"></span>
+          <span class="sp-onboarding-analyzing__icon">✦</span>
+        </div>
+        <p class="sp-onboarding-screen__eyebrow" data-i18n="onboarding_step_analyzing">Step 2 of 3</p>
+        <h2 id="onboarding-analyzing-title" class="sp-onboarding-screen__title" data-i18n="onboarding_analyzing_title">Learning the seller's writing patterns</h2>
+        <p class="sp-onboarding-screen__description" data-i18n="onboarding_analyzing_description">AI is reading prior products to extract title formulas, description structure, SEO style, and terms to avoid.</p>
+        <div class="sp-onboarding-analysis-list">
+          <span class="sp-onboarding-analysis-list__item sp-onboarding-analysis-list__item--done" data-i18n="onboarding_analysis_color">Title patterns</span>
+          <span class="sp-onboarding-analysis-list__item sp-onboarding-analysis-list__item--active" data-i18n="onboarding_analysis_composition">Description structure</span>
+          <span class="sp-onboarding-analysis-list__item" data-i18n="onboarding_analysis_mood">SEO and wording rules</span>
+        </div>
+        <p id="profile-analysis-status" class="sp-onboarding-screen__description"></p>
+        <button id="btn-onboarding-cancel-analysis" class="sp-btn sp-btn--ghost" type="button" data-i18n="onboarding_cancel">Cancel</button>
+      </section>
+
+      <section id="onboarding-screen-review" class="sp-onboarding-screen" aria-labelledby="onboarding-review-title" hidden>
+        <p class="sp-onboarding-screen__eyebrow" data-i18n="onboarding_step_review">Step 3 of 3</p>
+        <h2 id="onboarding-review-title" class="sp-onboarding-screen__title" data-i18n="onboarding_review_title">Review the seller writing style</h2>
+        <p class="sp-onboarding-screen__description" data-i18n="onboarding_review_description">Confirm the style before using it for AI-generated product content.</p>
+        <div id="onboarding-review-summary" class="sp-onboarding-review sp-onboarding-review--editable">
+          <label class="sp-onboarding-field" for="profile-review-name">
+            <span data-i18n="onboarding_profile_name_label">Profile name</span>
+            <input id="profile-review-name" class="sp-input" type="text">
+          </label>
+          <label class="sp-onboarding-field" for="profile-review-audience">
+            <span data-i18n="onboarding_review_audience">Likely buyer context</span>
+            <textarea id="profile-review-audience" class="sp-input sp-onboarding-textarea" rows="2"></textarea>
+          </label>
+          <label class="sp-onboarding-field" for="profile-review-copy">
+            <span data-i18n="onboarding_review_copy">Writing style</span>
+            <textarea id="profile-review-copy" class="sp-input sp-onboarding-textarea" rows="3"></textarea>
+          </label>
+          <label class="sp-onboarding-field" for="profile-review-visual">
+            <span data-i18n="onboarding_review_visual">SEO and wording guidance</span>
+            <textarea id="profile-review-visual" class="sp-input sp-onboarding-textarea" rows="3"></textarea>
+          </label>
+          <label class="sp-onboarding-field" for="profile-review-rules">
+            <span data-i18n="onboarding_review_rules">Things to avoid, separated by commas</span>
+            <textarea id="profile-review-rules" class="sp-input sp-onboarding-textarea" rows="2"></textarea>
+          </label>
+        </div>
+        <div class="sp-onboarding__actions">
+          <button id="btn-onboarding-review-back" class="sp-btn sp-btn--secondary" type="button" data-i18n="onboarding_back">Back</button>
+          <button id="btn-onboarding-save-profile" class="sp-btn sp-btn--primary" type="button" data-i18n="onboarding_save_profile">Save writing profile</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="i18n-service.js"></script>
+  <script src="storage-service.js"></script>
+  <script src="gemini-service.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

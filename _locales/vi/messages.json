@@ -1,0 +1,1177 @@
+{
+  "ext_name": {
+    "message": "BurgerStudio AI",
+    "description": "Tên của tiện ích mở rộng"
+  },
+  "ext_desc": {
+    "message": "Tạo bộ ảnh lifestyle mockup bằng AI cho sản phẩm BurgerStudio. Sử dụng Gemini AI để phân tích sản phẩm và tạo ảnh mockup chuyên nghiệp.",
+    "description": "Mô tả của tiện ích mở rộng"
+  },
+  "ext_title": {
+    "message": "AI Mockup",
+    "description": "Tiêu đề trên thanh Header"
+  },
+  "theme_toggle_title": {
+    "message": "Chuyển chế độ Sáng/Tối",
+    "description": "Tooltip nút đổi theme"
+  },
+  "settings_toggle_title": {
+    "message": "Cài đặt",
+    "description": "Tooltip nút Cài đặt"
+  },
+  "tab_generate": {
+    "message": "Tạo Ảnh",
+    "description": "Tab Tạo ảnh"
+  },
+  "tab_history": {
+    "message": "Lịch Sử",
+    "description": "Tab Lịch sử"
+  },
+  "sec_product_title": {
+    "message": "📷 Sản phẩm",
+    "description": "Tiêu đề phần sản phẩm"
+  },
+  "btn_refresh_product_title": {
+    "message": "Cập nhật dữ liệu sản phẩm",
+    "description": "Tooltip nút cập nhật sản phẩm"
+  },
+  "product_placeholder_text": {
+    "message": "Mở trang sản phẩm BurgerStudio để bắt đầu",
+    "description": "Placeholder khi chưa có sản phẩm"
+  },
+  "sec_settings_title": {
+    "message": "⚙️ Cài đặt Mockup",
+    "description": "Tiêu đề cài đặt mockup"
+  },
+  "btn_ai_suggest": {
+    "message": "AI đề xuất thiết lập",
+    "description": "Nút AI gợi ý thiết lập"
+  },
+  "btn_ai_suggest_loading": {
+    "message": "Đang phân tích...",
+    "description": "Trạng thái nút AI gợi ý khi đang chạy"
+  },
+  "ai_status_auto": {
+    "message": "AI đang phân tích $1",
+    "description": "Trạng thái tự động phân tích sản phẩm"
+  },
+  "ai_status_refreshing": {
+    "message": "AI đang làm mới đề xuất cho $1",
+    "description": "Trạng thái làm mới đề xuất"
+  },
+  "ai_status_analyzing": {
+    "message": "AI đang phân tích $1",
+    "description": "Trạng thái phân tích mặc định"
+  },
+  "ai_status_done": {
+    "message": "Đã áp dụng đề xuất phù hợp nhất",
+    "description": "Trạng thái hoàn tất đề xuất"
+  },
+  "ai_status_cached": {
+    "message": "Đã áp dụng đề xuất đã lưu",
+    "description": "Trạng thái dùng cache đề xuất"
+  },
+  "ai_status_wait": {
+    "message": "Đang chọn thiết lập phù hợp cho sản phẩm hiện tại...",
+    "description": "Mô tả loading AI"
+  },
+  "ai_status_preparing_images": {
+    "message": "Đang chuẩn bị ảnh tham chiếu ($1/$2)...",
+    "description": "Tiến trình chuẩn bị ảnh cho AI"
+  },
+  "ai_status_calling_gemini": {
+    "message": "Đã đọc ảnh, đang hỏi Gemini để chọn thiết lập phù hợp...",
+    "description": "Tiến trình gọi Gemini"
+  },
+  "ai_status_parsing": {
+    "message": "Đang đọc đề xuất có cấu trúc từ Gemini...",
+    "description": "Tiến trình đọc phản hồi AI"
+  },
+  "ai_status_applying": {
+    "message": "Đang áp dụng preset và danh sách tuỳ chọn...",
+    "description": "Tiến trình áp dụng đề xuất AI"
+  },
+  "ai_status_elapsed": {
+    "message": "đã chạy $1 giây",
+    "description": "Thời gian đã chạy của tác vụ AI"
+  },
+  "ai_status_failed": {
+    "message": "AI chưa hoàn tất đề xuất",
+    "description": "Trạng thái lỗi đề xuất AI"
+  },
+  "ai_status_ready": {
+    "message": "Preset đầu tiên đã được chọn tự động.",
+    "description": "Mô tả hoàn tất AI"
+  },
+  "ai_status_step_product": {
+    "message": "Sản phẩm",
+    "description": "Bước phân tích sản phẩm"
+  },
+  "ai_status_step_scene": {
+    "message": "Bối cảnh",
+    "description": "Bước chọn bối cảnh"
+  },
+  "ai_status_step_camera": {
+    "message": "Góc máy",
+    "description": "Bước chọn góc máy"
+  },
+  "ai_status_step_light": {
+    "message": "Ánh sáng",
+    "description": "Bước chọn ánh sáng"
+  },
+  "label_model": {
+    "message": "🧑 Người mẫu",
+    "description": "Nhãn chọn người mẫu"
+  },
+  "label_nationality": {
+    "message": "🌍 Quốc tịch",
+    "description": "Nhãn chọn quốc tịch"
+  },
+  "label_gender": {
+    "message": "Giới tính",
+    "description": "Nhãn chọn giới tính"
+  },
+  "label_age": {
+    "message": "Độ tuổi",
+    "description": "Nhãn chọn độ tuổi"
+  },
+  "label_group": {
+    "message": "Nhóm",
+    "description": "Nhãn chọn số người"
+  },
+  "label_no_person": {
+    "message": "Không người mẫu (chỉ sản phẩm)",
+    "description": "Nhãn tắt người mẫu"
+  },
+  "label_scene": {
+    "message": "📍 Bối cảnh / Nền",
+    "description": "Nhãn chọn bối cảnh"
+  },
+  "label_display": {
+    "message": "👕 Cách hiển thị sản phẩm",
+    "description": "Nhãn chọn cách hiển thị"
+  },
+  "label_style": {
+    "message": "🎨 Phong cách nhiếp ảnh",
+    "description": "Nhãn chọn phong cách ảnh"
+  },
+  "label_camera": {
+    "message": "📷 Góc máy",
+    "description": "Nhãn chọn góc máy"
+  },
+  "label_lighting": {
+    "message": "💡 Ánh sáng",
+    "description": "Nhãn chọn ánh sáng"
+  },
+  "label_season": {
+    "message": "🎄 Mùa / Dịp",
+    "description": "Nhãn chọn mùa"
+  },
+  "label_optional": {
+    "message": "(tùy chọn)",
+    "description": "Chữ không bắt buộc"
+  },
+  "label_num_images": {
+    "message": "📸 Số lượng ảnh: ",
+    "description": "Nhãn chọn số ảnh"
+  },
+  "label_additional_desc": {
+    "message": "📝 Mô tả bổ sung",
+    "description": "Nhãn nhập mô tả thêm"
+  },
+  "placeholder_additional": {
+    "message": "Ví dụ: cặp đôi mặc áo thun đôi, cốc cà phê đang bốc khói, không khí sáng Giáng sinh...",
+    "description": "Gợi ý nhập mô tả"
+  },
+  "btn_generate": {
+    "message": "Tạo Ảnh Mockup AI",
+    "description": "Nút bấm tạo ảnh"
+  },
+  "btn_generate_no_key": {
+    "message": "🔑 Cần cấu hình API Key trước",
+    "description": "Nút bấm khi thiếu API Key"
+  },
+  "btn_generate_no_product": {
+    "message": "📷 Chưa phát hiện sản phẩm",
+    "description": "Nút bấm khi chưa phát hiện sản phẩm"
+  },
+  "btn_generate_no_reference": {
+    "message": "📷 Chọn ít nhất 1 ảnh tham chiếu",
+    "description": "Nút bấm khi chưa chọn ảnh tham chiếu"
+  },
+  "sec_generating": {
+    "message": "⏳ Đang tạo...",
+    "description": "Tiêu đề phần đang tạo"
+  },
+  "progress_preparing": {
+    "message": "Đang chuẩn bị...",
+    "description": "Chuẩn bị tạo"
+  },
+  "progress_analyzing": {
+    "message": "Đang phân tích mockup sản phẩm...",
+    "description": "Đang phân tích mockup bằng AI"
+  },
+  "progress_generating_img": {
+    "message": "Đang tạo ảnh $1/$2...",
+    "description": "Đang tạo ảnh tiến độ"
+  },
+  "progress_auditing_img": {
+    "message": "Đang kiểm định chất lượng ảnh $1/$2...",
+    "description": "Đang kiểm định tiến độ"
+  },
+  "progress_done": {
+    "message": "Hoàn tất! Đã tạo xong $1 ảnh.",
+    "description": "Hoàn tất tạo ảnh"
+  },
+  "sec_results": {
+    "message": "📸 Kết quả",
+    "description": "Tiêu đề phần kết quả"
+  },
+  "label_auto_add": {
+    "message": "Tự động thêm vào danh sách Mockup",
+    "description": "Nhãn tự động thêm mockup"
+  },
+  "status_auto_mode": {
+    "message": "Chế độ tự động",
+    "description": "Trạng thái tự động thêm"
+  },
+  "status_manual_mode": {
+    "message": "Chế độ thủ công",
+    "description": "Trạng thái thêm thủ công"
+  },
+  "status_adding": {
+    "message": "Đang thêm...",
+    "description": "Trạng thái đang thêm"
+  },
+  "status_adding_count": {
+    "message": "Đang thêm $1...",
+    "description": "Trạng thái đang thêm với số lượng"
+  },
+  "status_add_success": {
+    "message": "Đã thêm $1 ảnh",
+    "description": "Đã thêm thành công"
+  },
+  "status_add_submitted": {
+    "message": "Đã gửi $1 ảnh",
+    "description": "Đã gửi lên upload thành công"
+  },
+  "status_add_failed": {
+    "message": "Thêm thất bại",
+    "description": "Thêm thất bại"
+  },
+  "btn_add_selected": {
+    "message": "➕ Thêm ảnh đã chọn",
+    "description": "Nút thêm ảnh được chọn"
+  },
+  "btn_download_selected": {
+    "message": "📥 Tải ảnh đã chọn",
+    "description": "Nút tải ảnh được chọn"
+  },
+  "btn_download_all": {
+    "message": "📦 Tải tất cả ảnh",
+    "description": "Nút tải toàn bộ ảnh"
+  },
+  "sec_history_title": {
+    "message": "📜 Lịch sử các phiên tạo",
+    "description": "Tiêu đề lịch sử"
+  },
+  "history_empty": {
+    "message": "Chưa có lịch sử tạo ảnh",
+    "description": "Lịch sử trống"
+  },
+  "history_imgs_suffix": {
+    "message": "ảnh",
+    "description": "Hậu tố số ảnh"
+  },
+  "sec_settings_title_system": {
+    "message": "⚙️ Cài đặt hệ thống",
+    "description": "Tiêu đề cài đặt hệ thống"
+  },
+  "settings_api_title": {
+    "message": "🔑 Gemini API Key",
+    "description": "Tiêu đề cài đặt API Key"
+  },
+  "placeholder_api_key": {
+    "message": "Dán API key của bạn vào đây...",
+    "description": "Placeholder trường nhập API Key"
+  },
+  "btn_save_key": {
+    "message": "Lưu",
+    "description": "Nút lưu API Key"
+  },
+  "btn_save_key_testing": {
+    "message": "Đang thử...",
+    "description": "Nút lưu API Key đang chạy thử"
+  },
+  "settings_api_link": {
+    "message": "Lấy API key tại Google AI Studio →",
+    "description": "Liên kết lấy API Key"
+  },
+  "settings_storage_title": {
+    "message": "📊 Lưu trữ",
+    "description": "Tiêu đề quản lý lưu trữ"
+  },
+  "settings_storage_calculating": {
+    "message": "Đang tính toán...",
+    "description": "Đang tính toán dung lượng"
+  },
+  "settings_storage_error": {
+    "message": "Không thể tính dung lượng",
+    "description": "Lỗi tính dung lượng"
+  },
+  "btn_clear_history": {
+    "message": "Xóa toàn bộ lịch sử",
+    "description": "Nút xóa toàn bộ lịch sử"
+  },
+  "settings_language_title": {
+    "message": "🌐 Ngôn ngữ giao diện",
+    "description": "Tiêu đề cài đặt ngôn ngữ giao diện"
+  },
+  "lang_vi": {
+    "message": "Tiếng Việt",
+    "description": "Tên ngôn ngữ tiếng Việt"
+  },
+  "lang_en": {
+    "message": "English",
+    "description": "Tên ngôn ngữ tiếng Anh"
+  },
+  "lang_zh": {
+    "message": "Tiếng Trung",
+    "description": "Tên ngôn ngữ tiếng Trung"
+  },
+  "lang_de": {
+    "message": "Tiếng Đức",
+    "description": "Tên ngôn ngữ tiếng Đức"
+  },
+  "lang_fr": {
+    "message": "Tiếng Pháp",
+    "description": "Tên ngôn ngữ tiếng Pháp"
+  },
+  "lang_es": {
+    "message": "Tiếng Tây Ban Nha",
+    "description": "Tên ngôn ngữ tiếng Tây Ban Nha"
+  },
+  "lang_it": {
+    "message": "Tiếng Ý",
+    "description": "Tên ngôn ngữ tiếng Ý"
+  },
+  "settings_ai_content_language_title": {
+    "message": "✍️ Ngôn ngữ nội dung AI",
+    "description": "Tiêu đề cài đặt ngôn ngữ cho nội dung AI"
+  },
+  "settings_ai_content_language_desc": {
+    "message": "AI sẽ dùng ngôn ngữ này khi đề xuất, trả lời và tạo nội dung sản phẩm.",
+    "description": "Mô tả cài đặt ngôn ngữ nội dung AI"
+  },
+  "preset_default_name": {
+    "message": "Thiết lập Đề xuất",
+    "description": "Tên mặc định cho Preset AI"
+  },
+  "preset_fallback_name_1": {
+    "message": "Không gian ấm cúng",
+    "description": "Tên preset fallback 1"
+  },
+  "preset_fallback_desc_1": {
+    "message": "Bối cảnh trong nhà ấm áp, ánh sáng dịu nhẹ tự nhiên, tạo cảm giác gần gũi.",
+    "description": "Mô tả preset fallback 1"
+  },
+  "preset_fallback_name_2": {
+    "message": "Năng động hiện đại",
+    "description": "Tên preset fallback 2"
+  },
+  "preset_fallback_desc_2": {
+    "message": "Bối cảnh đường phố hoặc ngoài trời năng động, góc chụp hiện đại và sắc nét.",
+    "description": "Mô tả preset fallback 2"
+  },
+  "preset_fallback_name_3": {
+    "message": "Nổi bật sản phẩm",
+    "description": "Tên preset fallback 3"
+  },
+  "preset_fallback_desc_3": {
+    "message": "Góc chụp cận cảnh sản phẩm với bối cảnh studio tối giản hoặc phông nền mờ mịn.",
+    "description": "Mô tả preset fallback 3"
+  },
+  "toast_applied_preset": {
+    "message": "Đã áp dụng: $1",
+    "description": "Toast áp dụng preset thành công"
+  },
+  "toast_enter_valid_key": {
+    "message": "Vui lòng nhập API key hợp lệ",
+    "description": "Toast yêu cầu nhập API key"
+  },
+  "toast_key_saved": {
+    "message": "Lưu và xác thực API key thành công!",
+    "description": "Toast lưu API key thành công"
+  },
+  "toast_key_failed": {
+    "message": "Xác thực API key thất bại",
+    "description": "Toast lưu API key thất bại"
+  },
+  "toast_history_cleared": {
+    "message": "Đã xóa sạch lịch sử",
+    "description": "Toast đã xóa lịch sử"
+  },
+  "toast_downloading_count": {
+    "message": "Đang tải xuống $1 ảnh...",
+    "description": "Toast đang tải ảnh"
+  },
+  "toast_no_images_found": {
+    "message": "Không tìm thấy ảnh nào cho phiên này",
+    "description": "Toast không tìm thấy ảnh trong phiên"
+  },
+  "toast_loaded_history": {
+    "message": "Đã tải $1 ảnh từ lịch sử",
+    "description": "Toast tải ảnh lịch sử thành công"
+  },
+  "toast_select_first": {
+    "message": "Vui lòng chọn ít nhất một ảnh trước",
+    "description": "Toast yêu cầu chọn ảnh trước"
+  },
+  "toast_no_pass_images": {
+    "message": "Không có ảnh nào đạt kiểm định để thêm",
+    "description": "Toast không có ảnh đạt chuẩn để thêm"
+  },
+  "toast_added_mockup": {
+    "message": "Đã thêm $1 ảnh vào danh sách Mockup",
+    "description": "Toast thêm mockup thành công"
+  },
+  "toast_submitted_mockup": {
+    "message": "Đã gửi $1 ảnh lên Mockup upload",
+    "description": "Toast gửi mockup thành công"
+  },
+  "toast_add_failed": {
+    "message": "Thêm vào Mockup thất bại: $1",
+    "description": "Toast thêm mockup thất bại"
+  },
+  "toast_ai_suggest_success": {
+    "message": "AI nhận diện: $1",
+    "description": "Toast AI nhận diện loại sản phẩm thành công"
+  },
+  "toast_ai_suggest_failed": {
+    "message": "AI đề xuất thất bại: $1",
+    "description": "Toast AI gợi ý thất bại"
+  },
+  "toast_generation_success": {
+    "message": "Đã tạo thành công $1 ảnh mockup!",
+    "description": "Toast tạo ảnh thành công"
+  },
+  "toast_generation_failed": {
+    "message": "Tạo ảnh thất bại: $1",
+    "description": "Toast tạo ảnh thất bại"
+  },
+  "confirm_clear_history": {
+    "message": "Bạn có chắc chắn muốn xóa toàn bộ lịch sử không?",
+    "description": "Xác nhận xóa lịch sử"
+  },
+  "sg_wearable": {
+    "message": "👕 Trang phục",
+    "description": "Danh mục Trang phục"
+  },
+  "sg_kids": {
+    "message": "👶 Trẻ em",
+    "description": "Danh mục Trẻ em"
+  },
+  "sg_drinkware": {
+    "message": "☕ Cốc & Ly",
+    "description": "Danh mục Cốc & Ly"
+  },
+  "sg_home_living": {
+    "message": "🏠 Đồ gia dụng",
+    "description": "Danh mục Đồ gia dụng & Đời sống"
+  },
+  "sg_accessories": {
+    "message": "🎁 Phụ kiện",
+    "description": "Danh mục Phụ kiện"
+  },
+  "sg_general": {
+    "message": "📦 Sản phẩm",
+    "description": "Danh mục Sản phẩm chung"
+  },
+  "gender_any": {
+    "message": "Bất kỳ",
+    "description": "Giới tính: Bất kỳ"
+  },
+  "gender_male": {
+    "message": "Nam",
+    "description": "Giới tính: Nam"
+  },
+  "gender_female": {
+    "message": "Nữ",
+    "description": "Giới tính: Nữ"
+  },
+  "age_young_adult": {
+    "message": "Thanh niên",
+    "description": "Độ tuổi: Thanh niên"
+  },
+  "age_baby": {
+    "message": "Sơ sinh (0-2)",
+    "description": "Độ tuổi: Sơ sinh"
+  },
+  "age_toddler": {
+    "message": "Trẻ tập đi (2-5)",
+    "description": "Độ tuổi: Trẻ tập đi"
+  },
+  "age_child": {
+    "message": "Trẻ em (5-12)",
+    "description": "Độ tuổi: Trẻ em"
+  },
+  "age_teen": {
+    "message": "Thiếu niên",
+    "description": "Độ tuổi: Thiếu niên"
+  },
+  "age_adult": {
+    "message": "Người lớn (30-50)",
+    "description": "Độ tuổi: Người lớn"
+  },
+  "age_senior": {
+    "message": "Cao tuổi (50+)",
+    "description": "Độ tuổi: Cao tuổi"
+  },
+  "group_solo": {
+    "message": "Một mình",
+    "description": "Nhóm: Một mình"
+  },
+  "group_couple": {
+    "message": "Cặp đôi",
+    "description": "Nhóm: Cặp đôi"
+  },
+  "group_family": {
+    "message": "Gia đình",
+    "description": "Nhóm: Gia đình"
+  },
+  "group_friends": {
+    "message": "Nhóm bạn",
+    "description": "Nhóm: Bạn bè"
+  },
+  "nat_us": {
+    "message": "🇺🇸 Mỹ",
+    "description": "Quốc tịch Mỹ"
+  },
+  "nat_jp": {
+    "message": "🇯🇵 Nhật Bản",
+    "description": "Quốc tịch Nhật Bản"
+  },
+  "nat_kr": {
+    "message": "🇰🇷 Hàn Quốc",
+    "description": "Quốc tịch Hàn Quốc"
+  },
+  "nat_cn": {
+    "message": "🇨🇳 Trung Quốc",
+    "description": "Quốc tịch Trung Quốc"
+  },
+  "nat_vn": {
+    "message": "🇻🇳 Việt Nam",
+    "description": "Quốc tịch Việt Nam"
+  },
+  "nat_eu": {
+    "message": "🇪🇺 Châu Âu",
+    "description": "Quốc tịch Châu Âu"
+  },
+  "nat_br": {
+    "message": "🇧🇷 Brazil",
+    "description": "Quốc tịch Brazil"
+  },
+  "nat_in": {
+    "message": "🇮🇳 Ấn Độ",
+    "description": "Quốc tịch Ấn Độ"
+  },
+  "scene_outdoor": {
+    "message": "🌳 Ngoài trời",
+    "description": "Bối cảnh ngoài trời"
+  },
+  "scene_indoor": {
+    "message": "🏠 Trong nhà",
+    "description": "Bối cảnh trong nhà"
+  },
+  "scene_studio": {
+    "message": "📸 Studio",
+    "description": "Bối cảnh studio"
+  },
+  "scene_street": {
+    "message": "🏙️ Đường phố",
+    "description": "Bối cảnh đường phố"
+  },
+  "scene_cafe": {
+    "message": "☕ Quán cà phê",
+    "description": "Bối cảnh quán cà phê"
+  },
+  "scene_beach": {
+    "message": "🏖️ Bãi biển",
+    "description": "Bối cảnh bãi biển"
+  },
+  "scene_park": {
+    "message": "🌿 Công viên",
+    "description": "Bối cảnh công viên"
+  },
+  "scene_gym": {
+    "message": "🏋️ Phòng tập",
+    "description": "Bối cảnh phòng tập"
+  },
+  "scene_kitchen": {
+    "message": "🍳 Nhà bếp",
+    "description": "Bối cảnh nhà bếp"
+  },
+  "scene_office": {
+    "message": "💻 Văn phòng",
+    "description": "Bối cảnh văn phòng"
+  },
+  "scene_living_room": {
+    "message": "🛋️ Phòng khách",
+    "description": "Bối cảnh phòng khách"
+  },
+  "scene_bedroom": {
+    "message": "🛏️ Phòng ngủ",
+    "description": "Bối cảnh phòng ngủ"
+  },
+  "scene_bathroom": {
+    "message": "🛁 Phòng tắm",
+    "description": "Bối cảnh phòng tắm"
+  },
+  "scene_dining_room": {
+    "message": "🍽️ Phòng ăn",
+    "description": "Bối cảnh phòng ăn"
+  },
+  "scene_front_door": {
+    "message": "🚪 Trước cửa",
+    "description": "Bối cảnh trước cửa"
+  },
+  "scene_car": {
+    "message": "🚗 Ô tô",
+    "description": "Bối cảnh ô tô"
+  },
+  "scene_christmas_tree": {
+    "message": "🎄 Giáng sinh",
+    "description": "Bối cảnh Giáng sinh"
+  },
+  "scene_pool": {
+    "message": "🏊 Hồ bơi",
+    "description": "Bối cảnh hồ bơi"
+  },
+  "scene_playground": {
+    "message": "🎡 Sân chơi",
+    "description": "Bối cảnh sân chơi"
+  },
+  "scene_balcony": {
+    "message": "🌅 Ban công",
+    "description": "Bối cảnh ban công"
+  },
+  "disp_wearing": {
+    "message": "👤 Đang mặc (wear)",
+    "description": "Cách hiển thị: Mặc"
+  },
+  "disp_holding": {
+    "message": "🤲 Đang cầm (hold)",
+    "description": "Cách hiển thị: Cầm"
+  },
+  "disp_placed_on": {
+    "message": "📦 Đặt trên bề mặt",
+    "description": "Cách hiển thị: Đặt trên bề mặt"
+  },
+  "disp_hanging": {
+    "message": "🖼️ Treo trên tường",
+    "description": "Cách hiển thị: Treo"
+  },
+  "disp_spread": {
+    "message": "🛋️ Trải / Phủ",
+    "description": "Cách hiển thị: Trải phẳng"
+  },
+  "disp_wrapped": {
+    "message": "🧣 Quấn xung quanh",
+    "description": "Cách hiển thị: Quấn quanh"
+  },
+  "disp_worn_on_head": {
+    "message": "🧢 Đội trên đầu",
+    "description": "Cách hiển thị: Đội đầu"
+  },
+  "disp_worn_on_feet": {
+    "message": "👟 Mang dưới chân",
+    "description": "Cách hiển thị: Mang chân"
+  },
+  "disp_flat_lay": {
+    "message": "📐 Xếp phẳng (flat lay)",
+    "description": "Cách hiển thị: Flat lay"
+  },
+  "disp_next_to": {
+    "message": "↔️ Đặt bên cạnh",
+    "description": "Cách hiển thị: Đặt bên cạnh"
+  },
+  "style_lifestyle": {
+    "message": "🌿 Đời thường (Lifestyle)",
+    "description": "Phong cách: Đời thường"
+  },
+  "style_editorial": {
+    "message": "📰 Tạp chí (Editorial)",
+    "description": "Phong cách: Tạp chí"
+  },
+  "style_minimal": {
+    "message": "✨ Tối giản (Minimal)",
+    "description": "Phong cách: Tối giản"
+  },
+  "style_cozy": {
+    "message": "🔥 Ấm áp (Cozy)",
+    "description": "Phong cách: Ấm áp"
+  },
+  "style_street": {
+    "message": "🛹 Đường phố (Street)",
+    "description": "Phong cách: Đường phố"
+  },
+  "style_tropical": {
+    "message": "🌴 Nhiệt đới (Tropical)",
+    "description": "Phong cách: Nhiệt đới"
+  },
+  "style_sport": {
+    "message": "⚡ Thể thao (Active)",
+    "description": "Phong cách: Thể thao"
+  },
+  "style_festive": {
+    "message": "🎉 Lễ hội (Festive)",
+    "description": "Phong cách: Lễ hội"
+  },
+  "style_interior_design": {
+    "message": "🏛️ Trang trí nội thất",
+    "description": "Phong cách: Nội thất"
+  },
+  "style_product_hero": {
+    "message": "🎯 Sản phẩm nổi bật",
+    "description": "Phong cách: Nổi bật sản phẩm"
+  },
+  "style_flat_lay": {
+    "message": "📐 Xếp phẳng nghệ thuật",
+    "description": "Phong cách: Flat Lay nghệ thuật"
+  },
+  "cam_full_body": {
+    "message": "Toàn thân",
+    "description": "Góc máy: Toàn thân"
+  },
+  "cam_medium_shot": {
+    "message": "Bán thân",
+    "description": "Góc máy: Bán thân"
+  },
+  "cam_close_up": {
+    "message": "Cận cảnh",
+    "description": "Góc máy: Cận cảnh"
+  },
+  "cam_three_quarter": {
+    "message": "Góc 3/4",
+    "description": "Góc máy: Góc 3/4"
+  },
+  "cam_eye_level": {
+    "message": "Ngang tầm mắt",
+    "description": "Góc máy: Ngang mắt"
+  },
+  "cam_top_down": {
+    "message": "Từ trên xuống",
+    "description": "Góc máy: Từ trên xuống"
+  },
+  "cam_wide_shot": {
+    "message": "Góc rộng",
+    "description": "Góc máy: Góc rộng"
+  },
+  "light_natural": {
+    "message": "☀️ Tự nhiên",
+    "description": "Ánh sáng: Tự nhiên"
+  },
+  "light_golden_hour": {
+    "message": "🌅 Giờ vàng",
+    "description": "Ánh sáng: Giờ vàng"
+  },
+  "light_morning_soft": {
+    "message": "🌤️ Nắng sớm dịu",
+    "description": "Ánh sáng: Nắng sớm"
+  },
+  "light_studio": {
+    "message": "💡 Studio",
+    "description": "Ánh sáng: Studio"
+  },
+  "light_warm_ambient": {
+    "message": "🕯️ Môi trường ấm",
+    "description": "Ánh sáng: Ấm áp"
+  },
+  "light_neon": {
+    "message": "🌈 Đèn Neon",
+    "description": "Ánh sáng: Neon"
+  },
+  "light_christmas": {
+    "message": "🎄 Giáng sinh",
+    "description": "Ánh sáng: Giáng sinh"
+  },
+  "light_bright_daylight": {
+    "message": "☀️ Nắng rực rỡ",
+    "description": "Ánh sáng: Nắng gắt"
+  },
+  "season_spring": {
+    "message": "🌸 Mùa xuân",
+    "description": "Mùa xuân"
+  },
+  "season_summer": {
+    "message": "☀️ Mùa hè",
+    "description": "Mùa hè"
+  },
+  "season_autumn": {
+    "message": "🍂 Mùa thu",
+    "description": "Mùa thu"
+  },
+  "season_winter": {
+    "message": "❄️ Mùa đông",
+    "description": "Mùa đông"
+  },
+  "season_christmas": {
+    "message": "🎄 Giáng sinh",
+    "description": "Dịp Giáng sinh"
+  },
+  "season_valentine": {
+    "message": "💝 Valentine",
+    "description": "Dịp Valentine"
+  },
+  "season_halloween": {
+    "message": "🎃 Halloween",
+    "description": "Dịp Halloween"
+  },
+  "season_graduation": {
+    "message": "🎓 Tốt nghiệp",
+    "description": "Dịp Tốt nghiệp"
+  },
+  "content_ai_btn": {
+    "message": "Tạo Mockup Tùy Chỉnh",
+    "description": "Nút bấm AI chèn trong content script"
+  },
+  "content_opening": {
+    "message": "Đang mở...",
+    "description": "Trạng thái nút khi đang mở side panel"
+  },
+  "content_badge_new": {
+    "message": "MỚI",
+    "description": "Badge Mới bên cạnh nút"
+  },
+  "time_just_now": {
+    "message": "Vừa xong",
+    "description": "Lịch sử: Vừa xong"
+  },
+  "time_mins_ago": {
+    "message": "$1 phút trước",
+    "description": "Lịch sử: Số phút trước"
+  },
+  "time_hours_ago": {
+    "message": "$1 giờ trước",
+    "description": "Lịch sử: Số giờ trước"
+  },
+  "time_days_ago": {
+    "message": "$1 ngày trước",
+    "description": "Lịch sử: Số ngày trước"
+  },
+  "settings_ai_suggest_title": {
+    "message": "✨ Tự động đề xuất AI",
+    "description": "Tiêu đề cài đặt tự động đề xuất AI"
+  },
+  "label_auto_suggest_ai": {
+    "message": "Tự động đề xuất cài đặt khi mở tiện ích",
+    "description": "Nhãn công tắc tự động đề xuất AI"
+  },
+  "profile_active_label": {
+    "message": "Phong cách viết của seller",
+    "description": "Nhãn phong cách viết seller đang dùng"
+  },
+  "profile_active_hint": {
+    "message": "Dùng khi AI tạo thông tin sản phẩm",
+    "description": "Mô tả phong cách viết seller đang dùng"
+  },
+  "profile_default_name": {
+    "message": "BurgerStudio Mặc định",
+    "description": "Tên hồ sơ phong cách khách hàng mặc định"
+  },
+  "profile_settings_title": {
+    "message": "✍️ Hồ sơ phong cách viết sản phẩm của seller",
+    "description": "Tiêu đề cài đặt hồ sơ phong cách viết sản phẩm của seller"
+  },
+  "profile_settings_description": {
+    "message": "Học từ các sản phẩm seller đã tạo trước đó để AI tạo thông tin sản phẩm giống phong cách viết của seller hơn.",
+    "description": "Mô tả cài đặt hồ sơ phong cách viết sản phẩm của seller"
+  },
+  "profile_toggle_use_for_content": {
+    "message": "Sử dụng phong cách đã học khi AI tạo thông tin sản phẩm",
+    "description": "Công tắc dùng hồ sơ phong cách viết seller cho tạo thông tin sản phẩm"
+  },
+  "profile_status_active": {
+    "message": "Đang dùng",
+    "description": "Trạng thái hồ sơ phong cách đang dùng"
+  },
+  "profile_summary_meta": {
+    "message": "Công thức title · Cấu trúc mô tả · Cách viết SEO",
+    "description": "Tóm tắt hồ sơ phong cách viết seller"
+  },
+  "profile_btn_setup": {
+    "message": "Thiết lập hồ sơ",
+    "description": "Nút thiết lập hồ sơ phong cách khách hàng"
+  },
+  "profile_btn_edit": {
+    "message": "Chỉnh sửa",
+    "description": "Nút chỉnh sửa hồ sơ phong cách khách hàng"
+  },
+  "profile_btn_disable": {
+    "message": "Tắt",
+    "description": "Nút tắt hồ sơ phong cách khách hàng"
+  },
+  "onboarding_brand": {
+    "message": "Phong cách seller",
+    "description": "Nhãn onboarding phong cách viết seller"
+  },
+  "onboarding_skip": {
+    "message": "Bỏ qua lúc này",
+    "description": "Nút bỏ qua onboarding phong cách khách hàng"
+  },
+  "onboarding_welcome_eyebrow": {
+    "message": "Nội dung sản phẩm đồng nhất",
+    "description": "Nhãn màn hình chào onboarding phong cách viết"
+  },
+  "onboarding_welcome_title": {
+    "message": "Giúp AI học phong cách viết sản phẩm của seller",
+    "description": "Tiêu đề màn hình chào onboarding phong cách viết"
+  },
+  "onboarding_welcome_description": {
+    "message": "Tạo hồ sơ dùng lại từ các sản phẩm seller đã đăng trước đó, rồi dùng khi AI viết title, mô tả và SEO cho sản phẩm mới.",
+    "description": "Mô tả màn hình chào onboarding phong cách viết"
+  },
+  "onboarding_benefit_visuals": {
+    "message": "Học công thức title và cách dùng keyword",
+    "description": "Lợi ích onboarding phong cách viết seller"
+  },
+  "onboarding_benefit_scenes": {
+    "message": "Khớp cấu trúc mô tả và tone viết",
+    "description": "Lợi ích onboarding phong cách viết seller"
+  },
+  "onboarding_benefit_reuse": {
+    "message": "Dùng lại hồ sơ khi tạo thông tin sản phẩm",
+    "description": "Lợi ích onboarding phong cách viết seller"
+  },
+  "onboarding_get_started": {
+    "message": "Tạo hồ sơ phong cách viết",
+    "description": "Nút bắt đầu onboarding phong cách viết seller"
+  },
+  "onboarding_step_source": {
+    "message": "Bước 1/3",
+    "description": "Nhãn bước chọn nguồn phong cách"
+  },
+  "onboarding_source_title": {
+    "message": "AI nên học từ sản phẩm seller nào?",
+    "description": "Tiêu đề màn hình chọn nguồn phong cách viết"
+  },
+  "onboarding_source_description": {
+    "message": "Dán link sản phẩm public mà seller đã tạo trước đó. Bạn có thể tinh chỉnh phong cách học được trước khi lưu.",
+    "description": "Mô tả màn hình chọn nguồn phong cách viết"
+  },
+  "onboarding_source_store_title": {
+    "message": "Cửa hàng của khách hàng",
+    "description": "Tiêu đề lựa chọn nguồn cửa hàng"
+  },
+  "onboarding_source_store_description": {
+    "message": "Phân tích ngôn ngữ hình ảnh của cửa hàng hiện tại",
+    "description": "Mô tả lựa chọn nguồn cửa hàng"
+  },
+  "onboarding_source_reference_title": {
+    "message": "Ảnh tham chiếu",
+    "description": "Tiêu đề lựa chọn nguồn ảnh tham chiếu"
+  },
+  "onboarding_source_reference_description": {
+    "message": "Dùng ảnh chiến dịch hoặc sản phẩm đã được duyệt",
+    "description": "Mô tả lựa chọn nguồn ảnh tham chiếu"
+  },
+  "onboarding_profile_name_label": {
+    "message": "Tên hồ sơ",
+    "description": "Nhãn trường tên hồ sơ phong cách"
+  },
+  "onboarding_profile_name_placeholder": {
+    "message": "Đặt tên phong cách viết của seller",
+    "description": "Placeholder tên hồ sơ phong cách viết"
+  },
+  "onboarding_back": {
+    "message": "Quay lại",
+    "description": "Nút quay lại onboarding phong cách"
+  },
+  "onboarding_analyze": {
+    "message": "Phân tích phong cách viết",
+    "description": "Nút phân tích phong cách viết seller"
+  },
+  "onboarding_step_analyzing": {
+    "message": "Bước 2/3",
+    "description": "Nhãn bước phân tích phong cách"
+  },
+  "onboarding_analyzing_title": {
+    "message": "Đang học cách seller viết sản phẩm",
+    "description": "Tiêu đề màn hình phân tích phong cách viết"
+  },
+  "onboarding_analyzing_description": {
+    "message": "AI đang đọc sản phẩm cũ để rút ra công thức title, cấu trúc mô tả, phong cách SEO và từ cần tránh.",
+    "description": "Mô tả màn hình phân tích phong cách viết"
+  },
+  "onboarding_analysis_color": {
+    "message": "Công thức title",
+    "description": "Trạng thái phân tích công thức title"
+  },
+  "onboarding_analysis_composition": {
+    "message": "Cấu trúc mô tả",
+    "description": "Trạng thái phân tích cấu trúc mô tả"
+  },
+  "onboarding_analysis_mood": {
+    "message": "Quy tắc SEO và wording",
+    "description": "Trạng thái phân tích SEO và wording"
+  },
+  "onboarding_cancel": {
+    "message": "Hủy",
+    "description": "Nút hủy phân tích phong cách"
+  },
+  "onboarding_step_review": {
+    "message": "Bước 3/3",
+    "description": "Nhãn bước xem lại phong cách"
+  },
+  "onboarding_review_title": {
+    "message": "Xem lại phong cách viết của seller",
+    "description": "Tiêu đề màn hình xem lại phong cách viết"
+  },
+  "onboarding_review_description": {
+    "message": "Xác nhận phong cách trước khi dùng cho nội dung sản phẩm do AI tạo.",
+    "description": "Mô tả màn hình xem lại phong cách viết"
+  },
+  "onboarding_review_colors": {
+    "message": "Màu chủ đạo",
+    "description": "Nhãn màu sắc khi xem lại phong cách"
+  },
+  "onboarding_review_traits": {
+    "message": "Đặc điểm phong cách",
+    "description": "Nhãn đặc điểm khi xem lại phong cách"
+  },
+  "profile_trait_clean": {
+    "message": "Sạch sẽ",
+    "description": "Đặc điểm phong cách khách hàng"
+  },
+  "profile_trait_warm": {
+    "message": "Lifestyle ấm áp",
+    "description": "Đặc điểm phong cách khách hàng"
+  },
+  "profile_trait_bold": {
+    "message": "Màu sắc nổi bật",
+    "description": "Đặc điểm phong cách khách hàng"
+  },
+  "onboarding_review_focus": {
+    "message": "Trọng tâm sản phẩm",
+    "description": "Nhãn trọng tâm sản phẩm khi xem lại"
+  },
+  "onboarding_review_focus_value": {
+    "message": "Rõ ràng, cân giữa và dễ mua sắm",
+    "description": "Giá trị trọng tâm sản phẩm khi xem lại"
+  },
+  "onboarding_save_profile": {
+    "message": "Lưu hồ sơ phong cách viết",
+    "description": "Nút lưu hồ sơ phong cách viết seller"
+  },
+  "mode_selector_title": {
+    "message": "Chế độ giao diện",
+    "description": "Tiêu đề phần chuyển đổi chế độ"
+  },
+  "mode_agent": {
+    "message": "🤖 Chế độ AI",
+    "description": "Chế độ hội thoại AI"
+  },
+  "mode_form": {
+    "message": "⚙️ Chế độ Chuyên gia",
+    "description": "Chế độ cấu hình chuyên gia"
+  },
+  "chat_agent_thinking": {
+    "message": "AI đang gõ...",
+    "description": "Trạng thái AI đang suy nghĩ"
+  },
+  "chat_btn_send_title": {
+    "message": "Gửi tin nhắn",
+    "description": "Tooltip nút gửi tin nhắn"
+  },
+  "chat_input_placeholder": {
+    "message": "Nhập yêu cầu thiết kế mockup...",
+    "description": "Placeholder ô nhập liệu chat"
+  },
+  "chat_agent_welcome": {
+    "message": "Xin chào! Tôi là Worki - Trợ lý AI sáng tạo từ BurgerStudio AI. Tôi sẽ đồng hành cùng bạn để hô biến thiết kế này thành những bức ảnh mockup sống động, chân thực và thu hút khách hàng nhất. Hãy cùng bắt đầu với vài câu hỏi nhanh nhé!",
+    "description": "Tin nhắn chào mừng của Agent khi có sản phẩm"
+  },
+  "chat_agent_welcome_no_product": {
+    "message": "Chào bạn! Vui lòng mở một trang tạo sản phẩm trên BurgerStudio để tôi có thể hỗ trợ bạn tạo mockup.",
+    "description": "Tin nhắn chào mừng của Agent khi không có sản phẩm"
+  },
+  "chat_btn_regenerate": {
+    "message": "Tạo lại ảnh mockup",
+    "description": "Nút tạo lại ảnh trong chat"
+  },
+  "chat_btn_start_over": {
+    "message": "Bắt đầu lại hội thoại",
+    "description": "Nút bắt đầu lại hội thoại"
+  },
+  "onboarding_urls_label": {
+    "message": "Link sản phẩm seller đã tạo"
+  },
+  "onboarding_urls_placeholder": {
+    "message": "Dán URL sản phẩm public seller đã tạo trước đó"
+  },
+  "onboarding_urls_hint": {
+    "message": "Nên dùng sản phẩm có title, mô tả và SEO rõ phong cách nhất."
+  },
+  "onboarding_brief_label": {
+    "message": "Quy tắc viết của seller, không bắt buộc"
+  },
+  "onboarding_brief_placeholder": {
+    "message": "Từ bắt buộc, từ cần tránh, quy tắc title, tone viết và ghi chú SEO"
+  },
+  "onboarding_review_audience": {
+    "message": "Ngữ cảnh người mua dự kiến"
+  },
+  "onboarding_review_copy": {
+    "message": "Phong cách viết"
+  },
+  "onboarding_review_visual": {
+    "message": "Hướng dẫn SEO và wording"
+  },
+  "onboarding_review_rules": {
+    "message": "Các điều cần tránh, phân cách bằng dấu phẩy"
+  },
+  "customer_profile_default_name": {
+    "message": "Phong cách viết seller"
+  },
+  "customer_profile_source_required": {
+    "message": "Hãy thêm ít nhất một link sản phẩm seller đã tạo trước đó."
+  },
+  "customer_profile_analyzing": {
+    "message": "Đang đọc sản phẩm của seller và xây dựng hồ sơ phong cách viết..."
+  },
+  "customer_profile_analysis_failed": {
+    "message": "Không thể phân tích hồ sơ phong cách viết của seller."
+  },
+  "customer_profile_saved": {
+    "message": "Đã lưu hồ sơ phong cách viết của seller."
+  },
+  "customer_profile_disabled": {
+    "message": "Đã tắt hồ sơ phong cách viết của seller."
+  },
+  "customer_profile_ai_busy": {
+    "message": "Hãy hoàn thành tác vụ AI hiện tại trước khi phân tích hồ sơ khách hàng."
+  },
+  "season_auto": {
+    "message": "🔄 Tự động nhận diện"
+  },
+  "settings_provider_title": {
+    "message": "🤖 AI Provider"
+  },
+  "provider_active": {
+    "message": "Đang dùng"
+  },
+  "provider_updating": {
+    "message": "Đang cập nhật"
+  },
+  "provider_updating_alert": {
+    "message": "Provider này đang được cập nhật. Chỉ có gemini hoạt động"
+  },
+  "history_sales_label": {
+    "message": "đã bán",
+    "description": "Lịch sử: Nhãn sản phẩm bán được"
+  },
+  "history_ratio_label": {
+    "message": "so với TB",
+    "description": "Lịch sử: Nhãn tỷ lệ so với trung bình"
+  }
+}

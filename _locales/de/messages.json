@@ -1,0 +1,1177 @@
+{
+  "ext_name": {
+    "message": "BurgerStudio AI",
+    "description": "The name of the extension"
+  },
+  "ext_desc": {
+    "message": "Generate professional AI lifestyle mockups for BurgerStudio products using Gemini AI.",
+    "description": "The description of the extension"
+  },
+  "ext_title": {
+    "message": "KI-Mockup",
+    "description": "Title on Header"
+  },
+  "theme_toggle_title": {
+    "message": "Helligkeitsmodus umschalten",
+    "description": "Tooltip for theme toggle button"
+  },
+  "settings_toggle_title": {
+    "message": "Einstellungen",
+    "description": "Tooltip for Settings button"
+  },
+  "tab_generate": {
+    "message": "Bilder generieren",
+    "description": "Generate tab button text"
+  },
+  "tab_history": {
+    "message": "Verlauf",
+    "description": "History tab button text"
+  },
+  "sec_product_title": {
+    "message": "📷 Produkt",
+    "description": "Product section title"
+  },
+  "btn_refresh_product_title": {
+    "message": "Refresh product data",
+    "description": "Tooltip for refresh product button"
+  },
+  "product_placeholder_text": {
+    "message": "Open a BurgerStudio product page to get started",
+    "description": "Placeholder when no product is detected"
+  },
+  "sec_settings_title": {
+    "message": "⚙️ Mockup Settings",
+    "description": "Title of mockup settings section"
+  },
+  "btn_ai_suggest": {
+    "message": "AI Suggest Settings",
+    "description": "Button text for AI setting suggestions"
+  },
+  "btn_ai_suggest_loading": {
+    "message": "Analyzing...",
+    "description": "Button state when analyzing"
+  },
+  "ai_status_auto": {
+    "message": "AI is analyzing $1",
+    "description": "Automatic product analysis status"
+  },
+  "ai_status_refreshing": {
+    "message": "AI is refreshing suggestions for $1",
+    "description": "Suggestion refresh status"
+  },
+  "ai_status_analyzing": {
+    "message": "AI is analyzing $1",
+    "description": "Default analysis status"
+  },
+  "ai_status_done": {
+    "message": "Best-fit suggestions applied",
+    "description": "Suggestion completion status"
+  },
+  "ai_status_cached": {
+    "message": "Saved suggestions applied",
+    "description": "Cached suggestion status"
+  },
+  "ai_status_wait": {
+    "message": "Choosing the best settings for the current product...",
+    "description": "AI loading subtitle"
+  },
+  "ai_status_preparing_images": {
+    "message": "Preparing reference images ($1/$2)...",
+    "description": "AI image preparation progress"
+  },
+  "ai_status_calling_gemini": {
+    "message": "Images ready. Asking Gemini for product-fit settings...",
+    "description": "Gemini request progress"
+  },
+  "ai_status_parsing": {
+    "message": "Reading Gemini's structured recommendations...",
+    "description": "AI response parsing progress"
+  },
+  "ai_status_applying": {
+    "message": "Applying presets and option lists...",
+    "description": "AI suggestion application progress"
+  },
+  "ai_status_elapsed": {
+    "message": "$1s elapsed",
+    "description": "Elapsed time for AI suggestion"
+  },
+  "ai_status_failed": {
+    "message": "AI suggestion could not finish",
+    "description": "AI suggestion failure status"
+  },
+  "ai_status_ready": {
+    "message": "The first preset was selected automatically.",
+    "description": "AI completion subtitle"
+  },
+  "ai_status_step_product": {
+    "message": "Product",
+    "description": "Product analysis step"
+  },
+  "ai_status_step_scene": {
+    "message": "Scene",
+    "description": "Scene selection step"
+  },
+  "ai_status_step_camera": {
+    "message": "Camera",
+    "description": "Camera selection step"
+  },
+  "ai_status_step_light": {
+    "message": "Lighting",
+    "description": "Lighting selection step"
+  },
+  "label_model": {
+    "message": "🧑 Model",
+    "description": "Model label"
+  },
+  "label_nationality": {
+    "message": "🌍 Nationality",
+    "description": "Nationality sub-label"
+  },
+  "label_gender": {
+    "message": "Gender",
+    "description": "Gender label"
+  },
+  "label_age": {
+    "message": "Age",
+    "description": "Age label"
+  },
+  "label_group": {
+    "message": "Group",
+    "description": "Group label"
+  },
+  "label_no_person": {
+    "message": "No Person (product only)",
+    "description": "No person toggle label"
+  },
+  "label_scene": {
+    "message": "📍 Scene / Background",
+    "description": "Scene label"
+  },
+  "label_display": {
+    "message": "👕 How product is shown",
+    "description": "Display mode label"
+  },
+  "label_style": {
+    "message": "🎨 Photography Style",
+    "description": "Photography style label"
+  },
+  "label_camera": {
+    "message": "📷 Camera Angle",
+    "description": "Camera angle label"
+  },
+  "label_lighting": {
+    "message": "💡 Lighting",
+    "description": "Lighting label"
+  },
+  "label_season": {
+    "message": "🎄 Season / Occasion",
+    "description": "Season/occasion label"
+  },
+  "label_optional": {
+    "message": "(optional)",
+    "description": "Optional indicator"
+  },
+  "label_num_images": {
+    "message": "📸 Number of images: ",
+    "description": "Number of images slider label"
+  },
+  "label_additional_desc": {
+    "message": "📝 Additional description",
+    "description": "Additional description label"
+  },
+  "placeholder_additional": {
+    "message": "E.g., couple wearing matching shirts, steaming coffee, Christmas morning vibe...",
+    "description": "Placeholder for additional prompt text"
+  },
+  "btn_generate": {
+    "message": "Generate AI Mockups",
+    "description": "Generate button text"
+  },
+  "btn_generate_no_key": {
+    "message": "🔑 Set API Key First",
+    "description": "Generate button text when no key is set"
+  },
+  "btn_generate_no_product": {
+    "message": "📷 No Product Detected",
+    "description": "Generate button text when no product is detected"
+  },
+  "btn_generate_no_reference": {
+    "message": "📷 Select at least 1 reference image",
+    "description": "Generate button text when no reference image is selected"
+  },
+  "sec_generating": {
+    "message": "⏳ Generating...",
+    "description": "Generating progress title"
+  },
+  "progress_preparing": {
+    "message": "Preparing...",
+    "description": "Preparing progress text"
+  },
+  "progress_analyzing": {
+    "message": "Analyzing product mockup...",
+    "description": "Analyzing product mockup progress text"
+  },
+  "progress_generating_img": {
+    "message": "Generating image $1/$2...",
+    "description": "Generating image progress text"
+  },
+  "progress_auditing_img": {
+    "message": "Auditing image $1/$2...",
+    "description": "Auditing image progress text"
+  },
+  "progress_done": {
+    "message": "Done! $1 image(s) generated.",
+    "description": "Generation complete text"
+  },
+  "sec_results": {
+    "message": "📸 Results",
+    "description": "Results section title"
+  },
+  "label_auto_add": {
+    "message": "Auto add to Mockup",
+    "description": "Auto add switch label"
+  },
+  "status_auto_mode": {
+    "message": "Auto mode",
+    "description": "Status text for auto mode"
+  },
+  "status_manual_mode": {
+    "message": "Manual mode",
+    "description": "Status text for manual mode"
+  },
+  "status_adding": {
+    "message": "Adding...",
+    "description": "Status text when adding images"
+  },
+  "status_adding_count": {
+    "message": "Adding $1...",
+    "description": "Status text when adding count"
+  },
+  "status_add_success": {
+    "message": "Added $1",
+    "description": "Status text when added successfully"
+  },
+  "status_add_submitted": {
+    "message": "Submitted $1",
+    "description": "Status text when submitted successfully"
+  },
+  "status_add_failed": {
+    "message": "Add failed",
+    "description": "Status text when addition failed"
+  },
+  "btn_add_selected": {
+    "message": "➕ Add Selected",
+    "description": "Add selected mockups button text"
+  },
+  "btn_download_selected": {
+    "message": "📥 Download Selected",
+    "description": "Download selected button text"
+  },
+  "btn_download_all": {
+    "message": "📦 Download All",
+    "description": "Download all button text"
+  },
+  "sec_history_title": {
+    "message": "📜 History Sessions",
+    "description": "History section title"
+  },
+  "history_empty": {
+    "message": "No generation history yet",
+    "description": "Empty history list message"
+  },
+  "history_imgs_suffix": {
+    "message": "imgs",
+    "description": "Suffix for image count in history"
+  },
+  "sec_settings_title_system": {
+    "message": "⚙️ System Settings",
+    "description": "System settings section title"
+  },
+  "settings_api_title": {
+    "message": "🔑 Gemini API Key",
+    "description": "Gemini API key section title"
+  },
+  "placeholder_api_key": {
+    "message": "Paste your API key here...",
+    "description": "API Key input placeholder"
+  },
+  "btn_save_key": {
+    "message": "Save",
+    "description": "Save API key button text"
+  },
+  "btn_save_key_testing": {
+    "message": "Testing...",
+    "description": "Save API key button state when testing"
+  },
+  "settings_api_link": {
+    "message": "Get API key from AI Studio →",
+    "description": "Get API key link text"
+  },
+  "settings_storage_title": {
+    "message": "📊 Storage",
+    "description": "Storage section title"
+  },
+  "settings_storage_calculating": {
+    "message": "Calculating...",
+    "description": "Storage calculations progress text"
+  },
+  "settings_storage_error": {
+    "message": "Could not calculate storage",
+    "description": "Storage calculation error text"
+  },
+  "btn_clear_history": {
+    "message": "Clear All History",
+    "description": "Clear history button text"
+  },
+  "settings_language_title": {
+    "message": "UI-Sprache",
+    "description": "UI language section title"
+  },
+  "lang_vi": {
+    "message": "Vietnamesisch (Tiếng Việt)",
+    "description": "Language name for Vietnamese"
+  },
+  "lang_en": {
+    "message": "Englisch (English)",
+    "description": "Language name for English"
+  },
+  "lang_zh": {
+    "message": "Chinesisch (简体中文)",
+    "description": "Language name for Chinese"
+  },
+  "lang_de": {
+    "message": "Deutsch",
+    "description": "Language name for German"
+  },
+  "lang_fr": {
+    "message": "Französisch (Français)",
+    "description": "Language name for French"
+  },
+  "lang_es": {
+    "message": "Spanisch (Español)",
+    "description": "Language name for Spanish"
+  },
+  "lang_it": {
+    "message": "Italienisch (Italiano)",
+    "description": "Language name for Italian"
+  },
+  "settings_ai_content_language_title": {
+    "message": "KI-Inhaltssprache",
+    "description": "AI content language section title"
+  },
+  "settings_ai_content_language_desc": {
+    "message": "Die KI verwendet diese Sprache zum Vorschlagen, Antworten und Erstellen von Produktinhalten.",
+    "description": "AI content language setting description"
+  },
+  "preset_default_name": {
+    "message": "Suggested Setup",
+    "description": "Default name for Preset AI"
+  },
+  "preset_fallback_name_1": {
+    "message": "Cozy Space",
+    "description": "Name for fallback preset 1"
+  },
+  "preset_fallback_desc_1": {
+    "message": "Warm indoor setting with soft natural light for a close, comfortable feel.",
+    "description": "Description for fallback preset 1"
+  },
+  "preset_fallback_name_2": {
+    "message": "Modern Active",
+    "description": "Name for fallback preset 2"
+  },
+  "preset_fallback_desc_2": {
+    "message": "Dynamic outdoor or street setting with crisp, modern photography angles.",
+    "description": "Description for fallback preset 2"
+  },
+  "preset_fallback_name_3": {
+    "message": "Product Spotlight",
+    "description": "Name for fallback preset 3"
+  },
+  "preset_fallback_desc_3": {
+    "message": "Close-up product focus in a minimalist studio environment with smooth bokeh.",
+    "description": "Description for fallback preset 3"
+  },
+  "toast_applied_preset": {
+    "message": "Applied: $1",
+    "description": "Toast message for applied preset"
+  },
+  "toast_enter_valid_key": {
+    "message": "Please enter a valid API key",
+    "description": "Toast message for empty key"
+  },
+  "toast_key_saved": {
+    "message": "API key saved and verified!",
+    "description": "Toast message for saved key"
+  },
+  "toast_key_failed": {
+    "message": "API key validation failed",
+    "description": "Toast message for invalid key"
+  },
+  "toast_history_cleared": {
+    "message": "History cleared",
+    "description": "Toast message for cleared history"
+  },
+  "toast_downloading_count": {
+    "message": "Downloading $1 image(s)...",
+    "description": "Toast message for downloading images"
+  },
+  "toast_no_images_found": {
+    "message": "No images found for this session",
+    "description": "Toast message for empty session images"
+  },
+  "toast_loaded_history": {
+    "message": "Loaded $1 image(s) from history",
+    "description": "Toast message for loaded history session"
+  },
+  "toast_select_first": {
+    "message": "Select at least one generated image first",
+    "description": "Toast message when downloading without selection"
+  },
+  "toast_no_pass_images": {
+    "message": "No audit-passed images to add",
+    "description": "Toast message when no audit passed images found"
+  },
+  "toast_added_mockup": {
+    "message": "Added $1 image(s) to Mockup list",
+    "description": "Toast message for successfully added mockups"
+  },
+  "toast_submitted_mockup": {
+    "message": "Submitted $1 image(s) to Mockup upload",
+    "description": "Toast message for successfully submitted mockups"
+  },
+  "toast_add_failed": {
+    "message": "Add to Mockup failed: $1",
+    "description": "Toast message when mockup addition fails"
+  },
+  "toast_ai_suggest_success": {
+    "message": "AI detected: $1",
+    "description": "Toast message when AI detects product successfully"
+  },
+  "toast_ai_suggest_failed": {
+    "message": "AI Suggest failed: $1",
+    "description": "Toast message when AI suggestions fail"
+  },
+  "toast_generation_success": {
+    "message": "Generated $1 mockup(s) successfully!",
+    "description": "Toast message when mockups generate successfully"
+  },
+  "toast_generation_failed": {
+    "message": "Generation failed: $1",
+    "description": "Toast message when mockups generation fails"
+  },
+  "confirm_clear_history": {
+    "message": "Are you sure you want to clear all history?",
+    "description": "Confirmation dialog for clearing history"
+  },
+  "sg_wearable": {
+    "message": "👕 Apparel",
+    "description": "Apparel category name"
+  },
+  "sg_kids": {
+    "message": "👶 Kids",
+    "description": "Kids category name"
+  },
+  "sg_drinkware": {
+    "message": "☕ Drinkware",
+    "description": "Drinkware category name"
+  },
+  "sg_home_living": {
+    "message": "🏠 Home & Living",
+    "description": "Home & Living category name"
+  },
+  "sg_accessories": {
+    "message": "🎁 Accessories",
+    "description": "Accessories category name"
+  },
+  "sg_general": {
+    "message": "📦 Product",
+    "description": "General product category name"
+  },
+  "gender_any": {
+    "message": "Any",
+    "description": "Gender: Any option"
+  },
+  "gender_male": {
+    "message": "Male",
+    "description": "Gender: Male option"
+  },
+  "gender_female": {
+    "message": "Female",
+    "description": "Gender: Female option"
+  },
+  "age_young_adult": {
+    "message": "Young Adult",
+    "description": "Age: Young Adult option"
+  },
+  "age_baby": {
+    "message": "Baby (0-2)",
+    "description": "Age: Baby option"
+  },
+  "age_toddler": {
+    "message": "Toddler (2-5)",
+    "description": "Age: Toddler option"
+  },
+  "age_child": {
+    "message": "Child (5-12)",
+    "description": "Age: Child option"
+  },
+  "age_teen": {
+    "message": "Teen",
+    "description": "Age: Teen option"
+  },
+  "age_adult": {
+    "message": "Adult (30-50)",
+    "description": "Age: Adult option"
+  },
+  "age_senior": {
+    "message": "Senior (50+)",
+    "description": "Age: Senior option"
+  },
+  "group_solo": {
+    "message": "Solo",
+    "description": "Group: Solo option"
+  },
+  "group_couple": {
+    "message": "Couple",
+    "description": "Group: Couple option"
+  },
+  "group_family": {
+    "message": "Family",
+    "description": "Group: Family option"
+  },
+  "group_friends": {
+    "message": "Friends",
+    "description": "Group: Friends option"
+  },
+  "nat_us": {
+    "message": "🇺🇸 US",
+    "description": "US nationality option"
+  },
+  "nat_jp": {
+    "message": "🇯🇵 Japan",
+    "description": "Japanese nationality option"
+  },
+  "nat_kr": {
+    "message": "🇰🇷 Korea",
+    "description": "Korean nationality option"
+  },
+  "nat_cn": {
+    "message": "🇨🇳 China",
+    "description": "Chinese nationality option"
+  },
+  "nat_vn": {
+    "message": "🇻🇳 Vietnam",
+    "description": "Vietnamese nationality option"
+  },
+  "nat_eu": {
+    "message": "🇪🇺 Europe",
+    "description": "European nationality option"
+  },
+  "nat_br": {
+    "message": "🇧🇷 Brazil",
+    "description": "Brazilian nationality option"
+  },
+  "nat_in": {
+    "message": "🇮🇳 India",
+    "description": "Indian nationality option"
+  },
+  "scene_outdoor": {
+    "message": "🌳 Outdoor",
+    "description": "Outdoor scene"
+  },
+  "scene_indoor": {
+    "message": "🏠 Indoor",
+    "description": "Indoor scene"
+  },
+  "scene_studio": {
+    "message": "📸 Studio",
+    "description": "Studio scene"
+  },
+  "scene_street": {
+    "message": "🏙️ Street",
+    "description": "Street scene"
+  },
+  "scene_cafe": {
+    "message": "☕ Café",
+    "description": "Café scene"
+  },
+  "scene_beach": {
+    "message": "🏖️ Beach",
+    "description": "Beach scene"
+  },
+  "scene_park": {
+    "message": "🌿 Park",
+    "description": "Park scene"
+  },
+  "scene_gym": {
+    "message": "🏋️ Gym",
+    "description": "Gym scene"
+  },
+  "scene_kitchen": {
+    "message": "🍳 Kitchen",
+    "description": "Kitchen scene"
+  },
+  "scene_office": {
+    "message": "💻 Office",
+    "description": "Office scene"
+  },
+  "scene_living_room": {
+    "message": "🛋️ Living Room",
+    "description": "Living Room scene"
+  },
+  "scene_bedroom": {
+    "message": "🛏️ Bedroom",
+    "description": "Bedroom scene"
+  },
+  "scene_bathroom": {
+    "message": "🛁 Bathroom",
+    "description": "Bathroom scene"
+  },
+  "scene_dining_room": {
+    "message": "🍽️ Dining Room",
+    "description": "Dining Room scene"
+  },
+  "scene_front_door": {
+    "message": "🚪 Front Door",
+    "description": "Front Door scene"
+  },
+  "scene_car": {
+    "message": "🚗 Car",
+    "description": "Car scene"
+  },
+  "scene_christmas_tree": {
+    "message": "🎄 Christmas Tree",
+    "description": "Christmas scene"
+  },
+  "scene_pool": {
+    "message": "🏊 Pool",
+    "description": "Pool scene"
+  },
+  "scene_playground": {
+    "message": "🎡 Playground",
+    "description": "Playground scene"
+  },
+  "scene_balcony": {
+    "message": "🌅 Balcony",
+    "description": "Balcony scene"
+  },
+  "disp_wearing": {
+    "message": "👤 Wearing",
+    "description": "Display: Wearing"
+  },
+  "disp_holding": {
+    "message": "🤲 Holding",
+    "description": "Display: Holding"
+  },
+  "disp_placed_on": {
+    "message": "📦 Placed on surface",
+    "description": "Display: Placed on surface"
+  },
+  "disp_hanging": {
+    "message": "🖼️ Hanging on wall",
+    "description": "Display: Hanging"
+  },
+  "disp_spread": {
+    "message": "🛋️ Spread / Draped",
+    "description": "Display: Spread"
+  },
+  "disp_wrapped": {
+    "message": "🧣 Wrapped around",
+    "description": "Display: Wrapped"
+  },
+  "disp_worn_on_head": {
+    "message": "🧢 Worn on head",
+    "description": "Display: Headwear"
+  },
+  "disp_worn_on_feet": {
+    "message": "👟 Worn on feet",
+    "description": "Display: Footwear"
+  },
+  "disp_flat_lay": {
+    "message": "📐 Flat lay",
+    "description": "Display: Flat lay"
+  },
+  "disp_next_to": {
+    "message": "↔️ Next to",
+    "description": "Display: Next to"
+  },
+  "style_lifestyle": {
+    "message": "🌿 Lifestyle",
+    "description": "Style: Lifestyle"
+  },
+  "style_editorial": {
+    "message": "📰 Editorial",
+    "description": "Style: Editorial"
+  },
+  "style_minimal": {
+    "message": "✨ Minimal",
+    "description": "Style: Minimal"
+  },
+  "style_cozy": {
+    "message": "🔥 Cozy",
+    "description": "Style: Cozy"
+  },
+  "style_street": {
+    "message": "🛹 Street Fashion",
+    "description": "Style: Street"
+  },
+  "style_tropical": {
+    "message": "🌴 Tropical",
+    "description": "Style: Tropical"
+  },
+  "style_sport": {
+    "message": "⚡ Sport",
+    "description": "Style: Sport"
+  },
+  "style_festive": {
+    "message": "🎉 Festive",
+    "description": "Style: Festive"
+  },
+  "style_interior_design": {
+    "message": "🏛️ Interior Design",
+    "description": "Style: Interior"
+  },
+  "style_product_hero": {
+    "message": "🎯 Product Hero",
+    "description": "Style: Hero"
+  },
+  "style_flat_lay": {
+    "message": "📐 Flat Lay Art",
+    "description": "Style: Flat lay"
+  },
+  "cam_full_body": {
+    "message": "Full Body",
+    "description": "Camera: Full body"
+  },
+  "cam_medium_shot": {
+    "message": "Medium Shot",
+    "description": "Camera: Medium shot"
+  },
+  "cam_close_up": {
+    "message": "Close-up",
+    "description": "Camera: Close-up"
+  },
+  "cam_three_quarter": {
+    "message": "3/4 Angle",
+    "description": "Camera: 3/4 angle"
+  },
+  "cam_eye_level": {
+    "message": "Eye Level",
+    "description": "Camera: Eye level"
+  },
+  "cam_top_down": {
+    "message": "Top Down",
+    "description": "Camera: Top down"
+  },
+  "cam_wide_shot": {
+    "message": "Wide Shot",
+    "description": "Camera: Wide shot"
+  },
+  "light_natural": {
+    "message": "☀️ Natural",
+    "description": "Lighting: Natural"
+  },
+  "light_golden_hour": {
+    "message": "🌅 Golden Hour",
+    "description": "Lighting: Golden hour"
+  },
+  "light_morning_soft": {
+    "message": "🌤️ Morning Soft",
+    "description": "Lighting: Soft morning"
+  },
+  "light_studio": {
+    "message": "💡 Studio",
+    "description": "Lighting: Studio"
+  },
+  "light_warm_ambient": {
+    "message": "🕯️ Warm Ambient",
+    "description": "Lighting: Warm ambient"
+  },
+  "light_neon": {
+    "message": "🌈 Neon",
+    "description": "Lighting: Neon"
+  },
+  "light_christmas": {
+    "message": "🎄 Christmas",
+    "description": "Lighting: Christmas"
+  },
+  "light_bright_daylight": {
+    "message": "☀️ Bright Daylight",
+    "description": "Lighting: Bright daylight"
+  },
+  "season_spring": {
+    "message": "🌸 Spring",
+    "description": "Spring season"
+  },
+  "season_summer": {
+    "message": "☀️ Summer",
+    "description": "Summer season"
+  },
+  "season_autumn": {
+    "message": "🍂 Autumn",
+    "description": "Autumn season"
+  },
+  "season_winter": {
+    "message": "❄️ Winter",
+    "description": "Winter season"
+  },
+  "season_christmas": {
+    "message": "🎄 Christmas",
+    "description": "Christmas occasion"
+  },
+  "season_valentine": {
+    "message": "💝 Valentine's Day",
+    "description": "Valentine occasion"
+  },
+  "season_halloween": {
+    "message": "🎃 Halloween",
+    "description": "Halloween occasion"
+  },
+  "season_graduation": {
+    "message": "🎓 Graduation",
+    "description": "Graduation occasion"
+  },
+  "content_ai_btn": {
+    "message": "Custom Mockup",
+    "description": "AI Mockup button text in content script"
+  },
+  "content_opening": {
+    "message": "Opening...",
+    "description": "Button state in content script when opening panel"
+  },
+  "content_badge_new": {
+    "message": "NEW",
+    "description": "New badge in content script"
+  },
+  "time_just_now": {
+    "message": "Just now",
+    "description": "History: Just now"
+  },
+  "time_mins_ago": {
+    "message": "$1m ago",
+    "description": "History: Minutes ago"
+  },
+  "time_hours_ago": {
+    "message": "$1h ago",
+    "description": "History: Hours ago"
+  },
+  "time_days_ago": {
+    "message": "$1d ago",
+    "description": "History: Days ago"
+  },
+  "settings_ai_suggest_title": {
+    "message": "✨ AI Auto-Suggest",
+    "description": "AI auto-suggest settings title"
+  },
+  "label_auto_suggest_ai": {
+    "message": "Automatically suggest mockup settings when opening extension",
+    "description": "AI auto-suggest toggle switch label"
+  },
+  "profile_active_label": {
+    "message": "Seller writing style",
+    "description": "Active seller writing style label"
+  },
+  "profile_active_hint": {
+    "message": "Used for AI product content",
+    "description": "Active seller writing style hint"
+  },
+  "profile_default_name": {
+    "message": "BurgerStudio Default",
+    "description": "Default seller writing style profile name"
+  },
+  "profile_settings_title": {
+    "message": "✍️ Seller product writing profile",
+    "description": "Seller product writing profile settings title"
+  },
+  "profile_settings_description": {
+    "message": "Learn from products this seller already created so AI product content matches their writing style.",
+    "description": "Seller product writing profile settings description"
+  },
+  "profile_toggle_use_for_content": {
+    "message": "Use learned seller style when AI creates product content",
+    "description": "Toggle use learned seller writing profile for product content generation"
+  },
+  "profile_status_active": {
+    "message": "Active",
+    "description": "Active seller writing profile status"
+  },
+  "profile_summary_meta": {
+    "message": "Title patterns · Description structure · SEO wording",
+    "description": "Seller writing profile summary"
+  },
+  "profile_btn_setup": {
+    "message": "Set up profile",
+    "description": "Set up seller writing profile button"
+  },
+  "profile_btn_edit": {
+    "message": "Edit",
+    "description": "Edit seller writing profile button"
+  },
+  "profile_btn_disable": {
+    "message": "Disable",
+    "description": "Disable seller writing profile button"
+  },
+  "onboarding_brand": {
+    "message": "Seller Style",
+    "description": "Seller writing style onboarding brand label"
+  },
+  "onboarding_skip": {
+    "message": "Skip for now",
+    "description": "Skip seller writing onboarding button"
+  },
+  "onboarding_welcome_eyebrow": {
+    "message": "Consistent product copy",
+    "description": "Seller writing style onboarding welcome eyebrow"
+  },
+  "onboarding_welcome_title": {
+    "message": "Teach AI the seller's product writing style",
+    "description": "Seller writing style onboarding welcome title"
+  },
+  "onboarding_welcome_description": {
+    "message": "Create a reusable profile from products the seller already published, then use it when AI writes product titles, descriptions, and SEO fields.",
+    "description": "Seller writing style onboarding welcome description"
+  },
+  "onboarding_benefit_visuals": {
+    "message": "Learn title formulas and keyword habits",
+    "description": "Seller writing style onboarding benefit"
+  },
+  "onboarding_benefit_scenes": {
+    "message": "Match description structure and tone",
+    "description": "Seller writing style onboarding benefit"
+  },
+  "onboarding_benefit_reuse": {
+    "message": "Reuse the profile when generating product content",
+    "description": "Seller writing style onboarding benefit"
+  },
+  "onboarding_get_started": {
+    "message": "Create writing profile",
+    "description": "Start seller writing style onboarding button"
+  },
+  "onboarding_step_source": {
+    "message": "Step 1 of 3",
+    "description": "Seller writing style source step label"
+  },
+  "onboarding_source_title": {
+    "message": "Which seller products should AI learn from?",
+    "description": "Seller writing style source screen title"
+  },
+  "onboarding_source_description": {
+    "message": "Paste public product links previously created by this seller. You can refine the learned style before saving.",
+    "description": "Seller writing style source screen description"
+  },
+  "onboarding_source_store_title": {
+    "message": "Customer storefront",
+    "description": "Storefront source option title"
+  },
+  "onboarding_source_store_description": {
+    "message": "Analyze the current store's product writing style",
+    "description": "Storefront source option description"
+  },
+  "onboarding_source_reference_title": {
+    "message": "Reference images",
+    "description": "Reference images source option title"
+  },
+  "onboarding_source_reference_description": {
+    "message": "Use approved campaign or product imagery",
+    "description": "Reference images source option description"
+  },
+  "onboarding_profile_name_label": {
+    "message": "Profile name",
+    "description": "Seller writing style profile name field label"
+  },
+  "onboarding_profile_name_placeholder": {
+    "message": "Name this seller writing style",
+    "description": "Seller writing style profile name placeholder"
+  },
+  "onboarding_back": {
+    "message": "Back",
+    "description": "Seller writing style onboarding back button"
+  },
+  "onboarding_analyze": {
+    "message": "Analyze writing style",
+    "description": "Analyze seller writing style button"
+  },
+  "onboarding_step_analyzing": {
+    "message": "Step 2 of 3",
+    "description": "Seller writing style analyzing step label"
+  },
+  "onboarding_analyzing_title": {
+    "message": "Learning the seller's writing patterns",
+    "description": "Seller writing style analyzing screen title"
+  },
+  "onboarding_analyzing_description": {
+    "message": "AI is reading prior products to extract title formulas, description structure, SEO style, and terms to avoid.",
+    "description": "Seller writing style analyzing screen description"
+  },
+  "onboarding_analysis_color": {
+    "message": "Title patterns",
+    "description": "Seller writing title pattern analysis status"
+  },
+  "onboarding_analysis_composition": {
+    "message": "Description structure",
+    "description": "Seller writing description analysis status"
+  },
+  "onboarding_analysis_mood": {
+    "message": "SEO and wording rules",
+    "description": "Seller writing SEO analysis status"
+  },
+  "onboarding_cancel": {
+    "message": "Cancel",
+    "description": "Cancel seller writing style analysis button"
+  },
+  "onboarding_step_review": {
+    "message": "Step 3 of 3",
+    "description": "Seller writing style review step label"
+  },
+  "onboarding_review_title": {
+    "message": "Review the seller writing style",
+    "description": "Seller writing style review screen title"
+  },
+  "onboarding_review_description": {
+    "message": "Confirm the style before using it for AI-generated product content.",
+    "description": "Seller writing style review screen description"
+  },
+  "onboarding_review_colors": {
+    "message": "Core colors",
+    "description": "Legacy seller writing review colors label"
+  },
+  "onboarding_review_traits": {
+    "message": "Style traits",
+    "description": "Legacy seller writing review traits label"
+  },
+  "profile_trait_clean": {
+    "message": "Clean",
+    "description": "Legacy seller writing trait"
+  },
+  "profile_trait_warm": {
+    "message": "Warm lifestyle",
+    "description": "Legacy seller writing trait"
+  },
+  "profile_trait_bold": {
+    "message": "Bold color",
+    "description": "Legacy seller writing trait"
+  },
+  "onboarding_review_focus": {
+    "message": "Product focus",
+    "description": "Legacy seller writing review product focus label"
+  },
+  "onboarding_review_focus_value": {
+    "message": "Clear, centered, and easy to shop",
+    "description": "Legacy seller writing review product focus value"
+  },
+  "onboarding_save_profile": {
+    "message": "Save writing profile",
+    "description": "Save seller writing style profile button"
+  },
+  "mode_selector_title": {
+    "message": "Interface Mode",
+    "description": "Mode selector section title"
+  },
+  "mode_agent": {
+    "message": "🤖 AI Mode",
+    "description": "AI conversational mode"
+  },
+  "mode_form": {
+    "message": "⚙️ Expert Mode",
+    "description": "Expert configuration mode"
+  },
+  "chat_agent_thinking": {
+    "message": "AI is typing...",
+    "description": "Status when AI is thinking"
+  },
+  "chat_btn_send_title": {
+    "message": "Send message",
+    "description": "Tooltip for send message button"
+  },
+  "chat_input_placeholder": {
+    "message": "Type your mockup design request...",
+    "description": "Placeholder for chat input field"
+  },
+  "chat_agent_welcome": {
+    "message": "Hi there! I'm Worki - your creative AI assistant from BurgerStudio AI. Let's turn your design into hyper-realistic, eye-catching mockup images that sell. Ready for a few quick questions?",
+    "description": "Welcome message from Agent when product is detected"
+  },
+  "chat_agent_welcome_no_product": {
+    "message": "Hello! Please open a product creation page on BurgerStudio so I can help you create mockups.",
+    "description": "Welcome message from Agent when no product is detected"
+  },
+  "chat_btn_regenerate": {
+    "message": "Regenerate mockup images",
+    "description": "Button to regenerate mockups in chat"
+  },
+  "chat_btn_start_over": {
+    "message": "Start over conversation",
+    "description": "Button to restart the chat conversation"
+  },
+  "onboarding_urls_label": {
+    "message": "Seller's existing product links"
+  },
+  "onboarding_urls_placeholder": {
+    "message": "Paste public product URL previously created by this seller"
+  },
+  "onboarding_urls_hint": {
+    "message": "Use products with strong titles, descriptions, and SEO content."
+  },
+  "onboarding_brief_label": {
+    "message": "Optional seller writing rules"
+  },
+  "onboarding_brief_placeholder": {
+    "message": "Required terms, words to avoid, title rules, tone, and SEO notes"
+  },
+  "onboarding_review_audience": {
+    "message": "Likely buyer context"
+  },
+  "onboarding_review_copy": {
+    "message": "Writing style"
+  },
+  "onboarding_review_visual": {
+    "message": "SEO and wording guidance"
+  },
+  "onboarding_review_rules": {
+    "message": "Things to avoid, separated by commas"
+  },
+  "customer_profile_default_name": {
+    "message": "Seller Writing Style"
+  },
+  "customer_profile_source_required": {
+    "message": "Add at least one existing product URL from this seller."
+  },
+  "customer_profile_analyzing": {
+    "message": "Reading seller products and building the writing profile..."
+  },
+  "customer_profile_analysis_failed": {
+    "message": "Could not analyze the seller writing style profile."
+  },
+  "customer_profile_saved": {
+    "message": "Seller writing profile saved."
+  },
+  "customer_profile_disabled": {
+    "message": "Seller writing profile disabled."
+  },
+  "customer_profile_ai_busy": {
+    "message": "Finish the current AI task before analyzing a customer profile."
+  },
+  "season_auto": {
+    "message": "🔄 Auto-detect"
+  },
+  "settings_provider_title": {
+    "message": "🤖 AI Provider"
+  },
+  "provider_active": {
+    "message": "Active"
+  },
+  "provider_updating": {
+    "message": "Updating"
+  },
+  "provider_updating_alert": {
+    "message": "This provider is currently being updated. Only Gemini is active."
+  },
+  "history_sales_label": {
+    "message": "sold",
+    "description": "History: Sold products label"
+  },
+  "history_ratio_label": {
+    "message": "vs avg",
+    "description": "History: Ratio vs average label"
+  }
+}
