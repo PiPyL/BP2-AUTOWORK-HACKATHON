@@ -7,6 +7,11 @@ const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models
 const MODEL_ANALYZE = 'gemini-3.5-flash';
 const MODEL_IMAGE_GEN = 'gemini-3.1-flash-image';
 const MODEL_AUDIT = 'gemini-3.5-flash';
+const IMAGE_GENERATION_CONCURRENCY = 5;
+const GEMINI_MAX_RETRIES = 3;
+const GEMINI_RETRY_BASE_DELAY_MS = 1000;
+const GEMINI_RETRY_MAX_DELAY_MS = 12000;
+const GEMINI_RETRYABLE_STATUS_CODES = new Set([429, 500, 502, 503, 504]);
 
 const AI_LANGUAGES = {
   vi: 'Vietnamese',
@@ -78,20 +83,81 @@ class GeminiService {
       body.tools = tools;
     }
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-      signal: this.abortSignal
-    });
+    const bodyJson = JSON.stringify(body);
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      const errorMsg = errorData?.error?.message || `HTTP ${response.status}: ${response.statusText}`;
-      throw new Error(`Gemini API Error: ${errorMsg}`);
+    for (let attempt = 0; attempt <= GEMINI_MAX_RETRIES; attempt++) {
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: bodyJson,
+          signal: this.abortSignal
+        });
+
+        if (response.ok) {
+          return response.json();
+        }
+
+        const errorData = await response.json().catch(() => ({}));
+        const errorMsg = errorData?.error?.message || `HTTP ${response.status}: ${response.statusText}`;
+        const error = new Error(`Gemini API Error: ${errorMsg}`);
+        error.status = response.status;
+
+        if (!GEMINI_RETRYABLE_STATUS_CODES.has(response.status) || attempt >= GEMINI_MAX_RETRIES) {
+          throw error;
+        }
+
+        await this.waitForRetry(this.getRetryDelayMs(response, attempt));
+      } catch (err) {
+        if (err?.name === 'AbortError') throw err;
+        if (err?.status && !GEMINI_RETRYABLE_STATUS_CODES.has(err.status)) throw err;
+        if (attempt >= GEMINI_MAX_RETRIES) throw err;
+        await this.waitForRetry(this.getRetryDelayMs(null, attempt));
+      }
     }
 
-    return response.json();
+    throw new Error('Gemini API Error: request failed after retries.');
+  }
+
+  getRetryDelayMs(response, attempt) {
+    const retryAfter = response?.headers?.get?.('retry-after');
+    if (retryAfter) {
+      const retryAfterSeconds = Number(retryAfter);
+      if (Number.isFinite(retryAfterSeconds) && retryAfterSeconds >= 0) {
+        return Math.min(retryAfterSeconds * 1000, GEMINI_RETRY_MAX_DELAY_MS);
+      }
+
+      const retryAfterDate = Date.parse(retryAfter);
+      if (Number.isFinite(retryAfterDate)) {
+        return Math.min(Math.max(retryAfterDate - Date.now(), 0), GEMINI_RETRY_MAX_DELAY_MS);
+      }
+    }
+
+    const exponentialDelay = GEMINI_RETRY_BASE_DELAY_MS * (2 ** attempt);
+    const jitter = Math.floor(Math.random() * 400);
+    return Math.min(exponentialDelay + jitter, GEMINI_RETRY_MAX_DELAY_MS);
+  }
+
+  waitForRetry(delayMs) {
+    if (!delayMs) return Promise.resolve();
+    const signal = this.abortSignal;
+    if (signal?.aborted) {
+      return Promise.reject(new DOMException('Operation aborted.', 'AbortError'));
+    }
+
+    return new Promise((resolve, reject) => {
+      const timeoutId = setTimeout(() => {
+        signal?.removeEventListener?.('abort', onAbort);
+        resolve();
+      }, delayMs);
+
+      function onAbort() {
+        clearTimeout(timeoutId);
+        reject(new DOMException('Operation aborted.', 'AbortError'));
+      }
+
+      signal?.addEventListener?.('abort', onAbort, { once: true });
+    });
   }
 
   /**
@@ -973,15 +1039,20 @@ Respond in this EXACT JSON format:
    */
   async generateMockups(productImageUrls, productDescription, settings, onProgress) {
     const count = Math.min(Math.max(settings.count || 3, 1), 10);
-    const results = [];
+    const concurrency = Math.min(IMAGE_GENERATION_CONCURRENCY, count);
+    const results = new Array(count);
+    let nextIndex = 0;
+    let completed = 0;
 
-    for (let i = 0; i < count; i++) {
+    const runMockupJob = async index => {
       try {
         onProgress?.({
           type: 'generating',
-          current: i + 1,
+          current: index + 1,
           total: count,
-          message: `Generating image ${i + 1}/${count}...`
+          completed,
+          active: true,
+          message: `Generating image ${index + 1}/${count}...`
         });
 
         const { imageData, description } = await this.generateMockup(
@@ -993,46 +1064,62 @@ Respond in this EXACT JSON format:
         // Run audit
         onProgress?.({
           type: 'auditing',
-          current: i + 1,
+          current: index + 1,
           total: count,
-          message: `Auditing image ${i + 1}/${count}...`
+          completed,
+          active: true,
+          message: `Auditing image ${index + 1}/${count}...`
         });
 
         const audit = await this.auditMockup(productImageUrls, imageData);
 
         const result = {
-          id: `mockup_${Date.now()}_${i}`,
+          id: `mockup_${Date.now()}_${index}`,
           imageData,
           description,
           audit,
           timestamp: Date.now()
         };
 
-        results.push(result);
+        results[index] = result;
+        completed += 1;
 
         onProgress?.({
           type: 'complete',
-          current: i + 1,
+          current: index + 1,
           total: count,
+          completed,
           result,
-          message: `Image ${i + 1}/${count} ready!`
+          message: `Image ${index + 1}/${count} ready!`
         });
 
       } catch (err) {
         if (err?.name === 'AbortError') throw err;
-        console.error(`Failed to generate mockup ${i + 1}:`, err);
+        completed += 1;
+        console.error(`Failed to generate mockup ${index + 1}:`, err);
 
         onProgress?.({
           type: 'error',
-          current: i + 1,
+          current: index + 1,
           total: count,
+          completed,
           error: err.message,
-          message: `Failed to generate image ${i + 1}: ${err.message}`
+          message: `Failed to generate image ${index + 1}: ${err.message}`
         });
       }
-    }
+    };
 
-    return results;
+    const worker = async () => {
+      while (nextIndex < count) {
+        const index = nextIndex;
+        nextIndex += 1;
+        await runMockupJob(index);
+      }
+    };
+
+    await Promise.all(Array.from({ length: concurrency }, () => worker()));
+
+    return results.filter(Boolean);
   }
 
   /**

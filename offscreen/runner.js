@@ -70,6 +70,16 @@
     };
   }
 
+  function getMockupProgressPercentage(progress, total) {
+    const completed = Math.max(0, Math.min(total, progress.completed || 0));
+    const inFlightCredit = progress.type === 'auditing'
+      ? 0.65
+      : progress.type === 'generating'
+        ? 0.15
+        : 0;
+    return Math.min(94, Math.round(30 + (Math.min(total, completed + inFlightCredit) / total) * 64));
+  }
+
   async function runJob(job) {
     const { jobId, apiKey, productData, settings, language } = job;
     activeJobId = jobId;
@@ -113,9 +123,7 @@
         quickSettings,
         progress => {
           const total = progress.total || quickSettings.count || 3;
-          const base = progress.type === 'auditing' ? 58 : progress.type === 'complete' ? 72 : 30;
-          const range = progress.type === 'complete' ? 22 : 28;
-          const percentage = Math.min(94, Math.round(base + (progress.current / total) * range));
+          const percentage = getMockupProgressPercentage(progress, total);
           const messages = {
             generating: `Đang tạo ảnh ${progress.current}/${total}...`,
             auditing: `Đang kiểm tra chất lượng ảnh ${progress.current}/${total}...`,

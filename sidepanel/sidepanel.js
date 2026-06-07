@@ -2116,7 +2116,7 @@
       if (!progressDiv) return;
       const textSpan = progressDiv.querySelector('.sp-chat-msg__text');
       const fillSpan = progressDiv.querySelector('.sp-chat-msg__progress-fill');
-      if (textSpan) textSpan.textContent = text;
+      if (textSpan && typeof text === 'string') textSpan.textContent = text;
       if (fillSpan) fillSpan.style.width = `${percentage}%`;
     }
 
@@ -2133,12 +2133,18 @@
           const current = progress.current;
 
           if (progress.type === 'generating') {
-            const pct = Math.round(((current - 1) / total) * 80 + 10);
+            const pct = getGenerationProgressPercent(progress, total);
             updateChatProgress(pct, i18n.t('progress_generating_img', [current, total]));
           }
           if (progress.type === 'auditing') {
-            const pct = Math.round(((current - 0.5) / total) * 80 + 10);
+            const pct = getGenerationProgressPercent(progress, total);
             updateChatProgress(pct, i18n.t('progress_auditing_img', [current, total]));
+          }
+          if (progress.type === 'complete') {
+            updateChatProgress(getGenerationProgressPercent(progress, total));
+          }
+          if (progress.type === 'error') {
+            updateChatProgress(getGenerationProgressPercent(progress, total), progress.message || '');
           }
         }
       );
@@ -2673,29 +2679,42 @@
     }
   }
 
+  function getGenerationProgressPercent(progress, total = progress.total || 1) {
+    const completed = Math.max(0, Math.min(total, progress.completed || 0));
+    const inFlightCredit = progress.type === 'auditing'
+      ? 0.5
+      : progress.type === 'generating'
+        ? 0.15
+        : 0;
+    return Math.min(99, Math.round(((Math.min(total, completed + inFlightCredit)) / total) * 80 + 10));
+  }
+
   function handleGenerationProgress(progress) {
     const total = progress.total;
     const current = progress.current;
 
     if (progress.type === 'generating') {
-      const pct = Math.round(((current - 1) / total) * 80 + 10);
+      const pct = getGenerationProgressPercent(progress, total);
       updateProgress(pct, i18n.t('progress_generating_img', [current, total]));
     }
 
     if (progress.type === 'auditing') {
-      const pct = Math.round(((current - 0.5) / total) * 80 + 10);
+      const pct = getGenerationProgressPercent(progress, total);
       updateProgress(pct, i18n.t('progress_auditing_img', [current, total]));
     }
 
     if (progress.type === 'complete') {
       // Replace skeleton with actual image
       replaceSkeletonWithResult(current - 1, progress.result);
-      dom.resultsCount.textContent = current.toString();
+      const resultCount = (parseInt(dom.resultsCount.textContent, 10) || 0) + 1;
+      dom.resultsCount.textContent = resultCount.toString();
+      updateProgress(getGenerationProgressPercent(progress, total), dom.progressText.textContent);
       updateDownloadButtons();
     }
 
     if (progress.type === 'error') {
       replaceSkeletonWithError(current - 1, progress.error);
+      updateProgress(getGenerationProgressPercent(progress, total), progress.message || '');
     }
   }
 
