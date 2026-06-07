@@ -803,7 +803,160 @@
             line-height: 1.4;
         }
 
-        /* SLIDE 5: Future & Vision Grid */
+        /* SLIDE 3: Competitor Comparison Matrix */
+        .comparison-matrix {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+            table-layout: fixed;
+        }
+
+        .comparison-matrix thead th {
+            padding: clamp(8px, 1.5vh, 14px) clamp(6px, 1vw, 12px);
+            font-family: var(--font-display);
+            font-size: clamp(0.65rem, 1vw, 0.85rem);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .comparison-matrix thead th:first-child {
+            text-align: left;
+            color: rgba(255, 255, 255, 0.5);
+            width: 22%;
+        }
+
+        /* BurgerStudio AI highlighted column header */
+        .comparison-matrix thead th.col-highlight {
+            color: var(--accent);
+            background: rgba(255, 69, 0, 0.06);
+            border-bottom-color: var(--accent);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+        }
+
+        .comparison-matrix tbody td {
+            padding: clamp(8px, 1.2vh, 12px) clamp(6px, 1vw, 12px);
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-secondary);
+            vertical-align: middle;
+            line-height: 1.3;
+        }
+
+        .comparison-matrix tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: clamp(0.65rem, 1vw, 0.88rem);
+        }
+
+        /* Highlighted column (BurgerStudio AI) */
+        .comparison-matrix tbody td.col-highlight {
+            background: rgba(255, 69, 0, 0.04);
+            border-left: 1px solid rgba(255, 69, 0, 0.1);
+            border-right: 1px solid rgba(255, 69, 0, 0.1);
+        }
+
+        .comparison-matrix tbody tr:last-child td.col-highlight {
+            border-radius: 0 0 10px 10px;
+            border-bottom: 2px solid rgba(255, 69, 0, 0.2);
+        }
+
+        /* Check / Cross icons */
+        .c-check {
+            color: #00FF66;
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+            font-weight: bold;
+        }
+
+        .c-cross {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+        }
+
+        .c-partial {
+            color: #FFD700;
+            font-size: clamp(0.85rem, 1.5vw, 1.2rem);
+            text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+        }
+
+        /* BurgerStudio AI checks glow stronger */
+        .col-highlight .c-check {
+            color: var(--accent);
+            text-shadow: 0 0 12px rgba(255, 69, 0, 0.6);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+        }
+
+        /* Bottom insight bar */
+        .comparison-insight {
+            margin-top: clamp(12px, 2.5vh, 24px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 69, 0, 0.05);
+            border: 1px solid rgba(255, 69, 0, 0.15);
+            padding: clamp(10px, 2vh, 18px) clamp(16px, 3vw, 32px);
+            border-radius: 12px;
+        }
+
+        .comparison-insight-icon {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+        }
+
+        .comparison-insight-text {
+            font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .comparison-insight-text span {
+            color: var(--accent);
+            font-family: var(--font-display);
+        }
+
+        /* Competitor label badges */
+        .comp-cost {
+            font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .comp-cost.highlight-cost {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comp-time {
+            font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .comp-time.highlight-time {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-matrix {
+                font-size: clamp(0.55rem, 2.5vw, 0.75rem);
+            }
+            .comparison-matrix thead th,
+            .comparison-matrix tbody td {
+                padding: 6px 4px;
+            }
+        }
+
+        /* SLIDE 6: Future & Vision Grid */
         .future-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -1043,7 +1196,7 @@
        SLIDE 1: COVER
        =========================================== -->
     <section class="slide" id="slide-1">
-        <span class="slide-number">01 / 06</span>
+        <span class="slide-number">01 / 07</span>
         <div class="slide-content">
             <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
                 <div class="brand-badge reveal">
@@ -1099,7 +1252,7 @@
        SLIDE 2: THE PROBLEM
        =========================================== -->
     <section class="slide" id="slide-2">
-        <span class="slide-number">02 / 06</span>
+        <span class="slide-number">02 / 07</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s2-title">BÀI TOÁN: <span>SELLER BURGERPRINTS MẤT QUÁ NHIỀU THỜI GIAN TẠO MOCKUP</span></h2>
@@ -1183,10 +1336,113 @@
     </section>
 
     <!-- ===========================================
-       SLIDE 3: THE SOLUTION & BREATHROUGH
+       SLIDE 3: COMPETITOR COMPARISON (WHY DIFFERENT)
        =========================================== -->
     <section class="slide" id="slide-3">
-        <span class="slide-number">03 / 06</span>
+        <span class="slide-number">03 / 07</span>
+        <div class="slide-content">
+            <div class="container">
+                <h2 class="reveal" contenteditable="false" data-key="s3c-title">TẠI SAO <span>KHÁC BIỆT?</span></h2>
+                <p class="subtitle reveal" style="margin-bottom: clamp(8px, 1.5vh, 16px); font-size: clamp(0.85rem, 1.3vw, 1.1rem); color: var(--text-secondary); max-width: 900px;" contenteditable="false" data-key="s3c-subtitle">
+                    Seller đang phải dùng 3-4 công cụ rời rạc. Chưa có giải pháp nào tích hợp <strong>Full AI Pipeline</strong> trong 1 Extension.
+                </p>
+
+                <div class="reveal" style="overflow-x: auto; max-width: 100%;">
+                    <table class="comparison-matrix">
+                        <thead>
+                            <tr>
+                                <th>Tính năng</th>
+                                <th>Placeit</th>
+                                <th>Canva</th>
+                                <th>ListifyAI</th>
+                                <th>Photoshop</th>
+                                <th class="col-highlight">BurgerStudio AI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🎨 AI Gen Mockup Lifestyle</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-partial">◐</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>✍️ AI Gen Content (Title / Desc / SEO)</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-check">✓</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🛡️ AI Quality Audit tự động</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🖱️ 1-Click Auto-Fill Listing</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-check">✓</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🌐 Tích hợp trực tiếp BurgerPrints</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🌍 Global Market (Đa ngôn ngữ, Demographics)</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-partial">◐</span></td>
+                                <td><span class="c-partial">◐</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🧠 AI Cá nhân hóa (Học từ sản phẩm đã tạo)</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>⏱️ Thời gian / sản phẩm</td>
+                                <td><span class="comp-time">10-15 phút</span></td>
+                                <td><span class="comp-time">10-15 phút</span></td>
+                                <td><span class="comp-time">3-5 phút</span></td>
+                                <td><span class="comp-time">30-45 phút</span></td>
+                                <td class="col-highlight"><span class="comp-time highlight-time">~2 phút</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="comparison-insight reveal">
+                    <span class="comparison-insight-icon">🏆</span>
+                    <span class="comparison-insight-text">
+                        <span>BurgerStudio AI</span> là giải pháp DUY NHẤT kết hợp Full AI Pipeline — từ Mockup đến Auto-Fill — trong 1 Browser Extension.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       SLIDE 4: THE SOLUTION & BREAKTHROUGH
+       =========================================== -->
+    <section class="slide" id="slide-4">
+        <span class="slide-number">04 / 07</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s3-title">ĐỘT PHÁ CÔNG NGHỆ: <span>BURGERSTUDIO AI EXTENSION</span></h2>
@@ -1253,7 +1509,7 @@
        SLIDE 4: WHAT WE BUILT (HIGHLIGHT ACCOMPLISHMENTS)
        =========================================== -->
     <section class="slide" id="slide-4-built">
-        <span class="slide-number">04 / 06</span>
+        <span class="slide-number">05 / 07</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s4b-title">NHỮNG GÌ <span>ĐÃ XÂY DỰNG</span></h2>
@@ -1311,7 +1567,7 @@
        SLIDE 5: FUTURE VISION
        =========================================== -->
     <section class="slide" id="slide-5">
-        <span class="slide-number">05 / 06</span>
+        <span class="slide-number">06 / 07</span>
         <div class="slide-content">
             <div class="container">
                 <h2 class="reveal" contenteditable="false" data-key="s5-title">LỘ TRÌNH RA MẮT & <span>KẾ HOẠCH PHÁT TRIỂN</span></h2>
@@ -1368,7 +1624,7 @@
         }
     </style>
     <section class="slide" id="slide-6">
-        <span class="slide-number">06 / 06</span>
+        <span class="slide-number">07 / 07</span>
         <div class="slide-content">
             <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
                 

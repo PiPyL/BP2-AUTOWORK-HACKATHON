@@ -63,17 +63,28 @@ There are two ways to install this extension. If you just want to use the extens
 
 ## 🔑 Setup & API Configuration
 
-This extension communicates directly with Google's Gemini API, which requires an API key. Getting a key is **free and quick**:
+This extension communicates directly with Google's Gemini API, which requires an API key. We provide two options to get your API key:
 
+> [!IMPORTANT]  
+> **Option 1: Use the Shared Gemini API Key (Fastest & Easiest)**  
+> To help you get started instantly without creating a Google AI Studio account, you can use our pre-configured shared key:  
+> 👉 **[Get Shared Gemini API Key here](https://zerobin.cc/?b96c1f5c3af7dd11#9CJPLzD6CdkmtaNTihH7zVDiAPbw5fmhLHYmqxkUdnQ)** *(Click to view and copy the key)*.
+
+---
+
+**Option 2: Create Your Own Free API Key (Recommended for stable usage)**  
 1.  **Get a Gemini API Key**:
     *   Go to [Google AI Studio](https://aistudio.google.com/).
     *   Sign in with your Google account.
     *   Click **Get API key** (Create API Key) and copy the generated key.
-2.  **Add the Key to the Extension**:
-    *   Open the BurgerPrints product creation page: [dash.burgerprints.com/admin/products/new](https://dash.burgerprints.com/admin/products/new).
-    *   You will see a banner injected by the extension. Click **Tạo Mockup Tùy Chỉnh** (Custom Mockup) or the extension icon to open the Side Panel.
-    *   In the Side Panel settings, navigate to the **API Settings** tab or section.
-    *   Paste your Gemini API key and click **Save**.
+
+---
+
+### How to Add the Key to the Extension:
+1.  Open the BurgerPrints product creation page: [dash.burgerprints.com/admin/products/new](https://dash.burgerprints.com/admin/products/new).
+2.  You will see a banner injected by the extension. Click **Tạo Mockup Tùy Chỉnh** (Custom Mockup) or the extension icon to open the Side Panel.
+3.  In the Side Panel settings, navigate to the **API Settings** tab or section.
+4.  Paste your Gemini API key (from Option 1 or Option 2) and click **Save**.
 
 ---
 

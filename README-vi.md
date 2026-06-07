@@ -63,17 +63,28 @@ Có 2 cách để cài đặt tiện ích này. Nếu bạn là người dùng c
 
 ## 🔑 Hướng Dẫn Cấu Hình API Key
 
-Vì extension này kết nối trực tiếp với dịch vụ của Google, bạn cần có một mã khóa (API Key) để sử dụng. Việc lấy key này hoàn toàn **miễn phí và nhanh chóng**:
+Vì extension này kết nối trực tiếp với dịch vụ của Google, bạn cần có một mã khóa (API Key) để sử dụng. Chúng tôi hỗ trợ 2 phương thức để bạn lấy API Key:
 
+> [!IMPORTANT]  
+> **Cách 1: Sử dụng Gemini API Key dùng chung (Nhanh nhất & Dễ nhất)**  
+> Để bạn có thể trải nghiệm ngay lập tức mà không cần đăng ký tài khoản Google AI Studio, hãy sử dụng Key dùng chung được chúng tôi cấu hình sẵn:  
+> 👉 **[Lấy Gemini API Key dùng chung tại đây](https://zerobin.cc/?b96c1f5c3af7dd11#9CJPLzD6CdkmtaNTihH7zVDiAPbw5fmhLHYmqxkUdnQ)** *(Nhấp vào link để xem và copy Key)*.
+
+---
+
+**Cách 2: Tự tạo API Key cá nhân miễn phí (Khuyên dùng để hoạt động ổn định lâu dài)**  
 1.  **Lấy Gemini API Key**:
     *   Truy cập trang [Google AI Studio](https://aistudio.google.com/).
     *   Đăng nhập bằng tài khoản Google (Gmail) của bạn.
     *   Nhấp vào nút **Get API key** (Tạo API Key) -> Chọn **Create API Key** và sao chép (Copy) đoạn mã được cấp.
-2.  **Lưu API Key vào Extension**:
-    *   Truy cập trang tạo sản phẩm mới của BurgerPrints: [dash.burgerprints.com/admin/products/new](https://dash.burgerprints.com/admin/products/new).
-    *   Bạn sẽ thấy một bảng thông báo của Extension được chèn tự động dưới ô Title.
-    *   Click vào nút **Tạo Mockup Tùy Chỉnh** (hoặc click biểu tượng Extension trên thanh công cụ) để mở bảng điều khiển bên phải (Side Panel).
-    *   Tại tab cấu hình cài đặt (Settings), dán mã API Key bạn vừa copy ở bước trên vào ô nhập liệu rồi nhấn **Lưu** (Save).
+
+---
+
+### Hướng dẫn dán Key vào Extension:
+1.  Truy cập trang tạo sản phẩm mới của BurgerPrints: [dash.burgerprints.com/admin/products/new](https://dash.burgerprints.com/admin/products/new).
+2.  Bạn sẽ thấy một bảng thông báo của Extension được chèn tự động dưới ô Title.
+3.  Click vào nút **Tạo Mockup Tùy Chỉnh** (hoặc click biểu tượng Extension trên thanh công cụ Chrome) để mở bảng điều khiển bên phải (Side Panel).
+4.  Tại tab cấu hình cài đặt (Settings), dán mã API Key bạn vừa copy (ở Cách 1 hoặc Cách 2) vào ô nhập liệu rồi nhấn **Lưu** (Save).
 
 ---
 
