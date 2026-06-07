@@ -26,9 +26,13 @@ DIST_DIR="$PROJECT_DIR/dist"
 # Đọc version từ manifest.json
 VERSION=$(grep '"version"' "$PROJECT_DIR/manifest.json" | sed 's/.*"version": *"\([^"]*\)".*/\1/')
 
-# Tên file ZIP output
+# Tên file ZIP output (có version — để lưu trữ lịch sử)
 ZIP_NAME="burgerstudio-ai-v${VERSION}.zip"
 ZIP_PATH="$DIST_DIR/$ZIP_NAME"
+
+# Tên file ZIP tĩnh (dùng cho GitHub Releases download link)
+ZIP_STATIC_NAME="burger-mockup-extension.zip"
+ZIP_STATIC_PATH="$DIST_DIR/$ZIP_STATIC_NAME"
 
 # ─────────────────── CÁC FILE & FOLDER CẦN BAO GỒM ─────────────────────────
 # Chỉ những thứ này mới được đưa vào ZIP.
@@ -193,6 +197,11 @@ build_zip() {
     print_error "Đóng gói thất bại!"
     exit 1
   fi
+
+  # Tạo bản alias tên tĩnh cho GitHub Releases
+  print_step "Tạo file alias cho GitHub Releases: $ZIP_STATIC_NAME"
+  cp "$ZIP_PATH" "$ZIP_STATIC_PATH"
+  print_success "Đã tạo: dist/$ZIP_STATIC_NAME"
 }
 
 # ─────────────────── IN THÔNG TIN KẾT QUẢ ──────────────────────────────────
@@ -207,10 +216,14 @@ print_result() {
   echo -e "${BOLD}${GREEN}╔══════════════════════════════════════════════════╗${NC}"
   echo -e "${BOLD}${GREEN}║   📦 Đóng gói hoàn tất!                         ║${NC}"
   echo -e "${BOLD}${GREEN}╠══════════════════════════════════════════════════╣${NC}"
-  echo -e "${BOLD}${GREEN}║${NC}  📄 File  : ${BOLD}$ZIP_NAME${NC}"
-  echo -e "${BOLD}${GREEN}║${NC}  📁 Vị trí: ${CYAN}dist/${ZIP_NAME}${NC}"
+  echo -e "${BOLD}${GREEN}║${NC}  📄 Versioned : ${BOLD}$ZIP_NAME${NC}"
+  echo -e "${BOLD}${GREEN}║${NC}  🔗 Release   : ${BOLD}$ZIP_STATIC_NAME${NC}"
+  echo -e "${BOLD}${GREEN}║${NC}  📁 Vị trí    : ${CYAN}dist/${NC}"
   echo -e "${BOLD}${GREEN}║${NC}  📊 Kích thước: ${YELLOW}${file_size}B${NC}"
-  echo -e "${BOLD}${GREEN}║${NC}  🗂️  Số file: ${YELLOW}${file_count} files${NC}"
+  echo -e "${BOLD}${GREEN}║${NC}  🗂️  Số file  : ${YELLOW}${file_count} files${NC}"
+  echo -e "${BOLD}${GREEN}╠══════════════════════════════════════════════════╣${NC}"
+  echo -e "${BOLD}${GREEN}║${NC}  🚀 Upload file sau lên GitHub Release:         ${BOLD}${GREEN}║${NC}"
+  echo -e "${BOLD}${GREEN}║${NC}  dist/$ZIP_STATIC_NAME          ${BOLD}${GREEN}║${NC}"
   echo -e "${BOLD}${GREEN}╠══════════════════════════════════════════════════╣${NC}"
   echo -e "${BOLD}${GREEN}║${NC}  💡 Cách cài đặt thủ công:                      ${BOLD}${GREEN}║${NC}"
   echo -e "${BOLD}${GREEN}║${NC}  1. Mở Chrome → chrome://extensions            ${BOLD}${GREEN}║${NC}"

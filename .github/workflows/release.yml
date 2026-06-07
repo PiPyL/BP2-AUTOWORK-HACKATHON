@@ -1,0 +1,83 @@
+name: 🚀 Build & Release Extension
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Cho phép chạy thủ công từ GitHub UI
+
+permissions:
+  contents: write # Cần quyền tạo release và upload assets
+
+jobs:
+  build-and-release:
+    name: Build ZIP & Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout mã nguồn
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Đọc version từ manifest.json
+      - name: Read version from manifest.json
+        id: version
+        run: |
+          VERSION=$(grep '"version"' manifest.json | sed 's/.*"version": *"\([^"]*\)".*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Version: $VERSION"
+
+      # 3. Cài đặt zip
+      - name: Install zip
+        run: sudo apt-get install -y zip
+
+      # 4. Chạy build script để tạo file ZIP
+      - name: Build extension ZIP
+        run: |
+          chmod +x build-zip.sh
+          ./build-zip.sh
+
+      # 5. Kiểm tra file ZIP đã tồn tại
+      - name: Verify ZIP files
+        run: |
+          echo "Files in dist/:"
+          ls -lh dist/
+          if [ ! -f "dist/burger-mockup-extension.zip" ]; then
+            echo "❌ burger-mockup-extension.zip not found!"
+            exit 1
+          fi
+          echo "✅ ZIP files ready!"
+
+      # 6. Xóa release "latest" cũ (nếu có) để tạo lại
+      - name: Delete existing 'latest' release (if exists)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete latest --yes 2>/dev/null || echo "No existing 'latest' release to delete"
+          git push --delete origin latest 2>/dev/null || echo "No 'latest' tag to delete"
+
+      # 7. Tạo release mới với tag "latest"
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          gh release create latest \
+            --title "BurgerStudio AI v${VERSION} — Latest Release" \
+            --notes "## 🍔 BurgerStudio AI Chrome Extension v${VERSION}
+
+          ### 📦 Cách cài đặt nhanh (Non-Tech Users)
+          1. **Tải file ZIP** → Click nút \`burger-mockup-extension.zip\` ở phần Assets bên dưới
+          2. **Giải nén** → Nhấp đúp vào file .zip (Mac) hoặc Extract All (Windows)
+          3. **Mở Chrome** → Truy cập \`chrome://extensions/\`
+          4. **Bật Developer mode** → Toggle ở góc trên bên phải
+          5. **Load unpacked** → Chọn thư mục vừa giải nén
+
+          ### 🔑 Sau khi cài đặt
+          Cần có Gemini API Key từ [Google AI Studio](https://aistudio.google.com/) để sử dụng.
+
+          ---
+          *Auto-released from commit \`${{ github.sha }}\` on branch \`${{ github.ref_name }}\`*" \
+            --latest \
+            dist/burger-mockup-extension.zip \
+            dist/burgerstudio-ai-v${VERSION}.zip
