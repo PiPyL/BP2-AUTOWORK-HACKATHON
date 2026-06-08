@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BurgerStudio AI - Trình Bày Hackathon 2026</title>
+    <meta name="description" content="Slide thuyết trình tương tác giới thiệu BurgerStudio AI - Tiện ích mở rộng hỗ trợ tạo mockup sản phẩm tự động và tối ưu cho nền tảng BurgerPrints tại Hackathon 2026.">
+    <meta property="og:title" content="BurgerStudio AI - Trình Bày Hackathon 2026">
+    <meta property="og:description" content="Slide thuyết trình tương tác giới thiệu BurgerStudio AI - Tiện ích mở rộng hỗ trợ tạo mockup sản phẩm tự động và tối ưu cho nền tảng BurgerPrints tại Hackathon 2026.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts: Archivo Black (Headline) & Space Grotesk (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES (THEME: BOLD SIGNAL)
+           =========================================== */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #161616 50%, #0a0a0a 100%);
+            --card-bg: #FF4500; /* Vibrant Orange đặc trưng của BurgerPrints */
+            --card-bg-rgb: 255, 69, 0;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-on-card: #0a0a0a;
+            --accent: #FF4500;
+            --accent-glow: rgba(255, 69, 0, 0.25);
+            --accent-blue: #00e5ff;
+            --accent-blue-glow: rgba(0, 229, 255, 0.25);
+
+            --font-display: 'Archivo Black', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+
+            /* Animations */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.8s;
+            
+            /* Viewport Fitting */
+            --title-size: clamp(2rem, 5.5vw, 4.5rem);
+            --h2-size: clamp(1.5rem, 3.8vw, 2.8rem);
+            --h3-size: clamp(1.1rem, 2.2vw, 1.8rem);
+            --body-size: clamp(0.8rem, 1.3vw, 1.1rem);
+            --small-size: clamp(0.65rem, 0.9vw, 0.85rem);
+            
+            --slide-padding: clamp(2rem, 6vw, 5rem);
+            --content-gap: clamp(1rem, 3vh, 2.5rem);
+            --element-gap: clamp(0.5rem, 1.5vh, 1.2rem);
+        }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--bg-gradient);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Layered radial gradients for depth */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+            z-index: 2;
+        }
+
+        /* Constrained boxes */
+        .card, .container, .content-box {
+            max-width: min(90vw, 1200px);
+            max-height: min(80vh, 750px);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: clamp(1rem, 2.5vw, 2rem);
+            align-items: center;
+        }
+
+        /* ===========================================
+           ANIMATIONS (STAGGERED REVEAL)
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo),
+                        filter var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .slide.visible .reveal-left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .slide.visible .reveal-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stagger delays */
+        .slide.visible .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .slide.visible .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .slide.visible .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .slide.visible .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .slide.visible .reveal:nth-child(5) { transition-delay: 0.5s; }
+
+        /* ===========================================
+           PROGRESS & NAVIGATION DOTS
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-blue) 100%);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: clamp(1rem, 3vw, 2.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            transform: scale(1.3);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* Slide Number Indicator */
+        .slide-number {
+            position: absolute;
+            top: clamp(1rem, 3vh, 2.5rem);
+            left: clamp(2rem, 6vw, 5rem);
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.1);
+            z-index: 5;
+        }
+
+        /* Keyboard Hint */
+        .keyboard-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: var(--small-size);
+            color: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 5;
+            letter-spacing: 0.05em;
+        }
+
+        .key-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: monospace;
+            font-size: 0.85em;
+        }
+
+        /* ===========================================
+           TYPOGRAPHY & CARD COMPONENTS
+           =========================================== */
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--element-gap);
+        }
+
+        h1 span {
+            color: var(--accent);
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--content-gap);
+        }
+
+        h2 span {
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: var(--h3-size);
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--content-gap);
+            line-height: 1.3;
+        }
+
+        .bold-card {
+            background: var(--accent);
+            color: var(--text-on-card);
+            padding: clamp(1.5rem, 3vh, 2.5rem);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .bold-card h3 {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: var(--element-gap);
+        }
+
+        .bold-card p {
+            font-size: var(--body-size);
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--element-gap);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: var(--body-size);
+            line-height: 1.5;
+        }
+
+        .feature-icon {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .feature-item strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* ===========================================
+           SLIDE-SPECIFIC CUSTOM DESIGNS (NO SLOP)
+           =========================================== */
+        
+        /* SLIDE 1: Title Cover & Neon Flow Chart */
+        .title-slide {
+            justify-content: center;
+        }
+        .brand-badge {
+            background: rgba(255, 69, 0, 0.1);
+            border: 1.5px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: var(--small-size);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-bottom: var(--content-gap);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        /* Neon Flow Chart styling */
+        .formula-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 25px);
+            width: 100%;
+            max-width: 1100px;
+            margin-top: clamp(20px, 4vh, 45px);
+        }
+
+        .flow-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: clamp(12px, 2.5vh, 22px);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .flow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .flow-card.accent-card {
+            background: rgba(255, 69, 0, 0.04);
+            border-color: rgba(255, 69, 0, 0.25);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.06);
+        }
+
+        .flow-card.blue-card {
+            background: rgba(0, 229, 255, 0.04);
+            border-color: rgba(0, 229, 255, 0.25);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.06);
+        }
+
+        .flow-card.green-card {
+            background: rgba(0, 255, 102, 0.04);
+            border-color: rgba(0, 255, 102, 0.25);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.06);
+        }
+
+        .flow-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .flow-card.accent-card:hover {
+            background: rgba(255, 69, 0, 0.08);
+            border-color: rgba(255, 69, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.15);
+        }
+
+        .flow-card.blue-card:hover {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: rgba(0, 229, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+
+        .flow-card.green-card:hover {
+            background: rgba(0, 255, 102, 0.08);
+            border-color: rgba(0, 255, 102, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 255, 102, 0.15);
+        }
+
+        .flow-card-label {
+            font-size: clamp(0.7rem, 1.2vh, 0.85rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: clamp(4px, 1vh, 8px);
+            color: var(--text-secondary);
+        }
+
+        .flow-card.accent-card .flow-card-label { color: var(--accent); }
+        .flow-card.blue-card .flow-card-label { color: var(--accent-blue); }
+        .flow-card.green-card .flow-card-label { color: #00FF66; }
+
+        .flow-card-val {
+            font-size: clamp(0.85rem, 1.6vh, 1.15rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .flow-operator {
+            font-family: var(--font-body);
+            font-size: clamp(1.4rem, 3vh, 2.2rem);
+            font-weight: 700;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .flow-operator.accent {
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+        }
+
+        .flow-operator.blue {
+            color: var(--accent-blue);
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+        }
+
+        /* Responsive Layout for Flow Chart */
+        @media (max-width: 768px) {
+            .formula-flow {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .flow-operator {
+                transform: rotate(90deg);
+                margin: 5px 0;
+            }
+        }
+
+        /* SLIDE 2: Problem Comparison */
+        .problem-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: center;
+        }
+
+        /* CSS Bar Chart for Data Visualisation */
+        .chart-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chart-title {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .chart-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--small-size);
+            font-weight: 500;
+        }
+
+        .chart-bar-bg {
+            background: rgba(255, 255, 255, 0.05);
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            width: 0%; /* Animated via slide load */
+            transition: width 1.5s var(--ease-out-expo);
+        }
+
+        .bar-red {
+            background: #ff3333;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+        }
+
+        .bar-orange {
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .bar-blue {
+            background: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue-glow);
+        }
+
+        /* SLIDE 3: CSS Extension GUI Mockup (Show, Don't Tell) */
+        .solution-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            align-items: center;
+        }
+
+        /* CSS Window Mockup */
+        .window-mockup {
+            background: #111;
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            height: clamp(280px, 45vh, 400px);
+            width: 100%;
+        }
+
+        .window-header {
+            background: #1a1a1a;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            justify-content: space-between;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .window-title {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: monospace;
+        }
+
+        .window-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: #0d0d0d;
+            overflow: hidden;
+        }
+
+        /* Left Pane: Original Product Design */
+        .pane-left {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            background: #080808;
+            position: relative;
+        }
+
+        /* CSS Shirt Design */
+        .css-shirt {
+            width: clamp(100px, 20vh, 160px);
+            height: clamp(100px, 20vh, 160px);
+            background: #222;
+            clip-path: polygon(25% 0%, 75% 0%, 80% 20%, 90% 15%, 100% 35%, 85% 50%, 85% 100%, 15% 100%, 15% 50%, 0% 35%, 10% 15%, 20% 20%);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .shirt-graphic {
+            width: 35%;
+            height: 35%;
+            background: linear-gradient(45deg, var(--accent) 0%, #ff8800 100%);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-family: var(--font-display);
+            font-size: 8px;
+            font-weight: bold;
+        }
+
+        /* Right Pane: AI Sidepanel GUI */
+        .pane-right {
+            background: #121212;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 10px;
+        }
+
+        .panel-header {
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .panel-chat {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-family: monospace;
+            color: rgba(255, 255, 255, 0.6);
+            overflow-y: auto;
+        }
+
+        .chat-bubble {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 8px;
+            border-radius: 6px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .chat-bubble.ai {
+            border-left-color: var(--accent-blue);
+            background: rgba(0, 229, 255, 0.03);
+        }
+
+        .panel-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            font-size: 9px;
+            letter-spacing: 0.05em;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 69, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+        }
+
+        /* SLIDE 4: Happy Path Timeline */
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .timeline-step {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 3px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .timeline-step.active {
+            border-top-color: var(--accent);
+            background: rgba(255, 69, 0, 0.02);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.05);
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 3.5vh, 2.5rem);
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+            margin-bottom: 10px;
+            transition: color 0.4s ease;
+        }
+
+        .timeline-step.active .step-num {
+            color: var(--accent);
+        }
+
+        .step-title {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* SLIDE 3: Competitor Comparison Matrix */
+        .comparison-matrix {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+            table-layout: fixed;
+        }
+
+        .comparison-matrix thead th {
+            padding: clamp(8px, 1.5vh, 14px) clamp(6px, 1vw, 12px);
+            font-family: var(--font-display);
+            font-size: clamp(0.65rem, 1vw, 0.85rem);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .comparison-matrix thead th:first-child {
+            text-align: left;
+            color: rgba(255, 255, 255, 0.5);
+            width: 22%;
+        }
+
+        /* BurgerStudio AI highlighted column header */
+        .comparison-matrix thead th.col-highlight {
+            color: var(--accent);
+            background: rgba(255, 69, 0, 0.06);
+            border-bottom-color: var(--accent);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+        }
+
+        .comparison-matrix tbody td {
+            padding: clamp(8px, 1.2vh, 12px) clamp(6px, 1vw, 12px);
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-secondary);
+            vertical-align: middle;
+            line-height: 1.3;
+        }
+
+        .comparison-matrix tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: clamp(0.65rem, 1vw, 0.88rem);
+        }
+
+        /* Highlighted column (BurgerStudio AI) */
+        .comparison-matrix tbody td.col-highlight {
+            background: rgba(255, 69, 0, 0.04);
+            border-left: 1px solid rgba(255, 69, 0, 0.1);
+            border-right: 1px solid rgba(255, 69, 0, 0.1);
+        }
+
+        .comparison-matrix tbody tr:last-child td.col-highlight {
+            border-radius: 0 0 10px 10px;
+            border-bottom: 2px solid rgba(255, 69, 0, 0.2);
+        }
+
+        /* Check / Cross icons */
+        .c-check {
+            color: #00FF66;
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+            font-weight: bold;
+        }
+
+        .c-cross {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+        }
+
+        .c-partial {
+            color: #FFD700;
+            font-size: clamp(0.85rem, 1.5vw, 1.2rem);
+            text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+        }
+
+        /* BurgerStudio AI checks glow stronger */
+        .col-highlight .c-check {
+            color: var(--accent);
+            text-shadow: 0 0 12px rgba(255, 69, 0, 0.6);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+        }
+
+        /* Bottom insight bar */
+        .comparison-insight {
+            margin-top: clamp(12px, 2.5vh, 24px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 69, 0, 0.05);
+            border: 1px solid rgba(255, 69, 0, 0.15);
+            padding: clamp(10px, 2vh, 18px) clamp(16px, 3vw, 32px);
+            border-radius: 12px;
+        }
+
+        .comparison-insight-icon {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+        }
+
+        .comparison-insight-text {
+            font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .comparison-insight-text span {
+            color: var(--accent);
+            font-family: var(--font-display);
+        }
+
+        /* Competitor label badges */
+        .comp-cost {
+            font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .comp-cost.highlight-cost {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comp-time {
+            font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .comp-time.highlight-time {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-matrix {
+                font-size: clamp(0.55rem, 2.5vw, 0.75rem);
+            }
+            .comparison-matrix thead th,
+            .comparison-matrix tbody td {
+                padding: 6px 4px;
+            }
+        }
+
+        /* SLIDE 6: Future & Vision Grid */
+        .future-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .future-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .future-card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 229, 255, 0.02);
+            transform: translateY(-5px);
+        }
+
+        .future-title {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .future-desc {
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===========================================
+           INLINE EDITING UI
+           =========================================== */
+        .edit-hotzone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            z-index: 10000;
+            cursor: pointer;
+        }
+
+        .edit-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .edit-toggle.show,
+        .edit-toggle.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .edit-toggle.active {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .edit-actions {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .edit-actions.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .action-btn.save-btn {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: #000;
+        }
+
+        /* Editing highlight */
+        [contenteditable="true"] {
+            outline: 2px dashed var(--accent-blue) !important;
+            padding: 4px;
+            border-radius: 4px;
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        /* ===========================================
+           RESPONSIVE HEIGHT AUDIT
+           =========================================== */
+        @media (max-height: 720px) {
+            .window-mockup {
+                height: 250px;
+            }
+            .timeline-step {
+                padding: 12px;
+            }
+        }
+
+        /* ===========================================
+           PRINT / PDF EXPORT CONFIGURATION
+           =========================================== */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+            
+            html, body {
+                height: auto;
+                overflow: visible !important;
+                scroll-snap-type: none !important;
+                background-color: #0a0a0a !important;
+                background: #0a0a0a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .slide {
+                height: 100vh !important;
+                width: 100vw !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                overflow: hidden !important;
+                display: flex !important;
+                position: relative !important;
+                opacity: 1 !important;
+                background: linear-gradient(135deg, #0a0a0a 0%, #161616 50%, #0a0a0a 100%) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .slide::before {
+                display: block !important;
+                content: '' !important;
+                background: 
+                    radial-gradient(circle at 10% 20%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 40%) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Force display all animated elements */
+            .reveal, .reveal-left, .reveal-right {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                transition: none !important;
+            }
+
+            /* Display charts instantly in print */
+            .chart-bar-fill {
+                transition: none !important;
+            }
+            .chart-bar-fill.bar-red { width: 100% !important; }
+            .chart-bar-fill.bar-blue { width: 8% !important; }
+            .chart-bar-fill.bar-orange { width: 1% !important; }
+
+            /* Hide interactive presentation overlays */
+            .progress-bar, 
+            .nav-dots, 
+            .edit-hotzone, 
+            .edit-toggle, 
+            .edit-actions, 
+            .keyboard-hint {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation Dots -->
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- Hotzone & Edit Mode -->
+    <div class="edit-hotzone" id="editHotzone"></div>
+    <button class="edit-toggle" id="editToggle" title="Bật/Tắt chế độ chỉnh sửa (Phím tắt: E)">
+        <span>✏️ Chỉnh sửa</span>
+    </button>
+    <div class="edit-actions" id="editActions">
+        <button class="action-btn save-btn" id="exportBtn">💾 Xuất File HTML</button>
+        <button class="action-btn" id="resetBtn">🔄 Khôi phục mặc định</button>
+    </div>
+
+    <!-- Keyboard Navigation Hints -->
+    <div class="keyboard-hint">
+        Sử dụng <span class="key-badge">⬆️/⬇️</span>, <span class="key-badge">Space</span> hoặc <span class="key-badge">Cuộn chuột</span> để chuyển slide. Nhấn <span class="key-badge">E</span> để chỉnh sửa.
+    </div>
+
+    <!-- ===========================================
+       SLIDE 1: COVER
+       =========================================== -->
+    <section class="slide" id="slide-1">
+        <span class="slide-number">01 / 07</span>
+        <div class="slide-content">
+            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                <div class="brand-badge reveal">
+                    <span class="brand-dot"></span>
+                    BurgerPrints Sponsor Track &bull; Browser Extension AI
+                </div>
+                <h1 class="reveal" style="margin-bottom: 12px;" contenteditable="false" data-key="s1-title">
+                    BurgerStudio <span>AI</span>
+                </h1>
+                <p class="subtitle reveal" style="max-width: 900px; margin-bottom: clamp(15px, 3vh, 30px); font-size: clamp(0.95rem, 1.6vw, 1.25rem);" contenteditable="false" data-key="s1-subtitle">
+                    Đơn giản hóa việc ứng dụng AI vào quy trình làm việc hàng ngày của Seller nhằm tối ưu hóa hiệu năng: Tăng năng suất tối đa &amp; Tiết kiệm thời gian tối ưu.
+                </p>
+                <!-- Neon Flow Chart (A + B => C + D) -->
+                <div class="formula-flow reveal">
+                    <!-- Node A -->
+                    <div class="flow-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-a-label">Công việc gốc</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-a-val">Design phẳng &amp; Sản phẩm thô</div>
+                    </div>
+                    
+                    <!-- Operator + -->
+                    <div class="flow-operator accent">&plus;</div>
+                    
+                    <!-- Node B -->
+                    <div class="flow-card accent-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-b-label">Giải pháp</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-b-val">Browser Extension AI</div>
+                    </div>
+                    
+                    <!-- Operator => -->
+                    <div class="flow-operator blue">&rArr;</div>
+                    
+                    <!-- Node C -->
+                    <div class="flow-card blue-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-c-label">Năng suất</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-c-val">Mockup Lifestyle đa dạng</div>
+                    </div>
+                    
+                    <!-- Operator + -->
+                    <div class="flow-operator blue">&plus;</div>
+                    
+                    <!-- Node D -->
+                    <div class="flow-card green-card">
+                        <div class="flow-card-label" contenteditable="false" data-key="s1-flow-d-label">Hiệu quả</div>
+                        <div class="flow-card-val" contenteditable="false" data-key="s1-flow-d-val">Tiết kiệm 90% thời gian đăng bán</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       SLIDE 2: THE PROBLEM
+       =========================================== -->
+    <section class="slide" id="slide-2">
+        <span class="slide-number">02 / 07</span>
+        <div class="slide-content">
+            <div class="container">
+                <h2 class="reveal" contenteditable="false" data-key="s2-title">BÀI TOÁN: <span>SELLER BURGERPRINTS MẤT QUÁ NHIỀU THỜI GIAN TẠO MOCKUP</span></h2>
+                
+                <div class="problem-wrapper">
+                    <div class="reveal-left">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-icon">📉</span>
+                                <span contenteditable="false" data-key="s2-p1"><strong>Mockup mặc định POD = Không bán được:</strong> Mockup nền trắng, treo móc mặc định <strong>không bán được trên Etsy / Amazon</strong>. Khách hàng có khả năng mua <strong>cao hơn 60%</strong> khi sản phẩm thể hiện trong bối cảnh đời thực (lifestyle).</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-icon">💸</span>
+                                <span contenteditable="false" data-key="s2-p2"><strong>Chi phí & Thời gian vượt giới hạn:</strong> Placeit (<strong>$14 - $29/tháng</strong>, template lặp lại), thuê designer (<strong>$50 - $200/sản phẩm</strong>), hoặc nhiều giờ tự làm trong Photoshop. Không có tính cá nhân hóa theo từng ngách (niche) sản phẩm.</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-icon">📊</span>
+                                <span contenteditable="false" data-key="s2-p3"><strong>Bài toán quy mô:</strong> Một seller với <strong>50-200 listings</strong> cần hàng nghìn mockup lifestyle khác nhau để chạy quảng cáo tối ưu trên Etsy, Amazon, Shopify.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="chart-container reveal-right" style="max-height: none;">
+                        <div class="chart-title">So sánh Hiệu quả Thực tế (1 Sản phẩm / 4 Mockups)</div>
+                        
+                        <!-- So sánh Thời gian -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+                            <div style="font-size: var(--small-size); font-weight: 700; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 8px; display: flex; justify-content: space-between;">
+                                <span contenteditable="false" data-key="s2-time-title">⏱️ THỜI GIAN HOÀN THÀNH</span>
+                                <span contenteditable="false" data-key="s2-time-saving" style="color: var(--accent-blue);">GIẢM 87% - 96%</span>
+                            </div>
+                            <div class="chart-row" style="margin-bottom: 6px;">
+                                <div class="chart-label">
+                                    <span contenteditable="false" data-key="s2-time-manual-label">Thủ công (Nghiên cứu + Photoshop)</span>
+                                    <span contenteditable="false" data-key="s2-time-manual-val" style="color: #ff3333; font-weight: 600;">15 - 45 phút</span>
+                                </div>
+                                <div class="chart-bar-bg" style="height: 6px;">
+                                    <div class="chart-bar-fill bar-red" data-width="100%"></div>
+                                </div>
+                            </div>
+                            <div class="chart-row">
+                                <div class="chart-label">
+                                    <span>Sử dụng BurgerStudio AI</span>
+                                    <span style="color: var(--accent-blue); font-weight: 700;">~ 2 phút</span>
+                                </div>
+                                <div class="chart-bar-bg" style="height: 6px;">
+                                    <div class="chart-bar-fill bar-blue" data-width="8%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- So sánh Chi phí -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px; border-radius: 8px;">
+                            <div style="font-size: var(--small-size); font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: flex; justify-content: space-between;">
+                                <span contenteditable="false" data-key="s2-cost-title">💸 CHI PHÍ TẠO MOCKUP</span>
+                                <span contenteditable="false" data-key="s2-cost-saving" style="color: var(--accent);">TIẾT KIỆM 99%+</span>
+                            </div>
+                            <div class="chart-row" style="margin-bottom: 6px;">
+                                <div class="chart-label">
+                                    <span contenteditable="false" data-key="s2-cost-manual-label">Thuê designer / sản phẩm</span>
+                                    <span contenteditable="false" data-key="s2-cost-manual-val" style="color: #ff3333; font-weight: 600;">$50.00 - $200.00</span>
+                                </div>
+                                <div class="chart-bar-bg" style="height: 6px;">
+                                    <div class="chart-bar-fill bar-red" data-width="100%"></div>
+                                </div>
+                            </div>
+                            <div class="chart-row">
+                                <div class="chart-label">
+                                    <span>Sử dụng BurgerStudio AI</span>
+                                    <span style="color: var(--accent); font-weight: 700;">$0.27 - $0.40 (hoặc $0.00)</span>
+                                </div>
+                                <div class="chart-bar-bg" style="height: 6px;">
+                                    <div class="chart-bar-fill bar-orange" data-width="3%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       SLIDE 3: COMPETITOR COMPARISON (WHY DIFFERENT)
+       =========================================== -->
+    <section class="slide" id="slide-3">
+        <span class="slide-number">03 / 07</span>
+        <div class="slide-content">
+            <div class="container">
+                <h2 class="reveal" contenteditable="false" data-key="s3c-title">TẠI SAO <span>KHÁC BIỆT?</span></h2>
+                <p class="subtitle reveal" style="margin-bottom: clamp(8px, 1.5vh, 16px); font-size: clamp(0.85rem, 1.3vw, 1.1rem); color: var(--text-secondary); max-width: 900px;" contenteditable="false" data-key="s3c-subtitle">
+                    Seller đang phải dùng 3-4 công cụ rời rạc. Chưa có giải pháp nào tích hợp <strong>Full AI Pipeline</strong> trong 1 Extension.
+                </p>
+
+                <div class="reveal" style="overflow-x: auto; max-width: 100%;">
+                    <table class="comparison-matrix">
+                        <thead>
+                            <tr>
+                                <th>Tính năng</th>
+                                <th>Placeit</th>
+                                <th>Canva</th>
+                                <th>ListifyAI</th>
+                                <th>Photoshop</th>
+                                <th class="col-highlight">BurgerStudio AI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🎨 AI Gen Mockup Lifestyle</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-partial">◐</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>✍️ AI Gen Content (Title / Desc / SEO)</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-check">✓</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🛡️ AI Quality Audit tự động</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🖱️ 1-Click Auto-Fill Listing</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-check">✓</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🌐 Tích hợp trực tiếp BurgerPrints</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🌍 Global Market (Đa ngôn ngữ, Demographics)</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-partial">◐</span></td>
+                                <td><span class="c-partial">◐</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>🧠 AI Cá nhân hóa (Học từ sản phẩm đã tạo)</td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td><span class="c-cross">✕</span></td>
+                                <td class="col-highlight"><span class="c-check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>⏱️ Thời gian / sản phẩm</td>
+                                <td><span class="comp-time">10-15 phút</span></td>
+                                <td><span class="comp-time">10-15 phút</span></td>
+                                <td><span class="comp-time">3-5 phút</span></td>
+                                <td><span class="comp-time">30-45 phút</span></td>
+                                <td class="col-highlight"><span class="comp-time highlight-time">~2 phút</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="comparison-insight reveal">
+                    <span class="comparison-insight-icon">🏆</span>
+                    <span class="comparison-insight-text">
+                        <span>BurgerStudio AI</span> là giải pháp DUY NHẤT kết hợp Full AI Pipeline — từ Mockup đến Auto-Fill — trong 1 Browser Extension.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       SLIDE 4: THE SOLUTION & BREAKTHROUGH
+       =========================================== -->
+    <section class="slide" id="slide-4">
+        <span class="slide-number">04 / 07</span>
+        <div class="slide-content">
+            <div class="container">
+                <h2 class="reveal" contenteditable="false" data-key="s3-title">ĐỘT PHÁ CÔNG NGHỆ: <span>BURGERSTUDIO AI EXTENSION</span></h2>
+                
+                <div class="solution-wrapper">
+                    <!-- CSS App Mockup -->
+                    <div class="window-mockup reveal-left">
+                        <div class="window-header">
+                            <div class="window-dots">
+                                <div class="window-dot"></div>
+                                <div class="window-dot"></div>
+                                <div class="window-dot"></div>
+                            </div>
+                            <div class="window-title">BurgerPrints Browser Extension</div>
+                            <div></div>
+                        </div>
+                        <div class="window-body">
+                            <div class="pane-left">
+                                <div class="css-shirt">
+                                    <div class="shirt-graphic">DESIGN</div>
+                                </div>
+                                <div style="position: absolute; bottom: 8px; background: rgba(0, 229, 255, 0.1); border: 1px solid var(--accent-blue); padding: 2px 6px; border-radius: 4px; font-size: 8px; color: var(--accent-blue); font-weight: bold; text-align: center;">
+                                    AI Audit ✓ (Strict)
+                                </div>
+                            </div>
+                            <div class="pane-right">
+                                <div class="panel-header">🍔 BurgerStudio AI</div>
+                                <div class="panel-chat" style="font-size: 8px;">
+                                    <div class="chat-bubble ai">🪄 1-Click AI Auto Fill:</div>
+                                    <div style="font-family: monospace; color: #a0a0a0; padding-left: 6px; border-left: 1px solid var(--accent-blue); line-height: 1.4;">
+                                        • Tiêu đề chuẩn SEO<br>
+                                        • Mô tả sản phẩm HTML<br>
+                                        • Bộ từ khóa SEO tag<br>
+                                        • 4x Mockup Lifestyle
+                                    </div>
+                                </div>
+                                <button class="panel-btn">🪄 AUTO FILL HẾT (1-CLICK)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-right">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-icon">🪄</span>
+                                <span contenteditable="false" data-key="s3-p1"><strong>1-Click AI Auto-Fill Toàn Diện:</strong> Tự động phân tích design phẳng để sinh ra và điền (fill) đầy đủ thông tin: Tiêu đề (Title), Mô tả (Description), thẻ SEO và tự động gán danh sách ảnh Mockup trực tiếp vào trang bán hàng.</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-icon">🛡️</span>
+                                <span contenteditable="false" data-key="s3-p2"><strong>4-Step AI Pipeline (Analyze → Gen Content & Mockup → Audit → Auto-Fill):</strong> Gemini 3.5 Flash phân tích design gốc, các Frontier Image Models (Nano Banana, Seedance, GPT Image 2...) sinh mockup & content chất lượng cao, sau đó Gemini AI Audit tự động kiểm duyệt các tiêu chí (design preservation, brand safety, face check, quality) và tự động điền toàn bộ thông tin.</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-icon">⚡</span>
+                                <span contenteditable="false" data-key="s3-p3"><strong>Giảm ~90%+ Thao Tác Thủ Công:</strong> Thay thế hoàn toàn Placeit đắt đỏ và các thao tác thủ công phức tạp trên Photoshop. Đăng bán sản phẩm hoàn chỉnh chỉ trong ~2 phút thay vì 30 phút làm tay.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       SLIDE 4: WHAT WE BUILT (HIGHLIGHT ACCOMPLISHMENTS)
+       =========================================== -->
+    <section class="slide" id="slide-4-built">
+        <span class="slide-number">05 / 07</span>
+        <div class="slide-content">
+            <div class="container">
+                <h2 class="reveal" contenteditable="false" data-key="s4b-title">NHỮNG GÌ <span>ĐÃ XÂY DỰNG</span></h2>
+                
+                <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px;">
+                    <div style="background: rgba(255, 69, 0, 0.04); border: 1px solid rgba(255, 69, 0, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">3+</div>
+                        <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">AI Models Tích Hợp</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Gemini 3.5 Flash (Phân tích &amp; Audit) • Hỗ trợ nhiều Frontier Image Models (Nano Banana, Seedance, GPT Image 2...)</div>
+                    </div>
+                    <div style="background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">4-Step</div>
+                        <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">AI Pipeline Hoàn Chỉnh</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Analyze Design → Gen Content &amp; Mockup → AI Audit → 1-Click Auto Fill (Mockup, Title, Description, SEO tags)</div>
+                    </div>
+                    <div style="background: rgba(255, 69, 0, 0.04); border: 1px solid rgba(255, 69, 0, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">20+</div>
+                        <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">Photography Presets</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">22 scenes • 11 styles • 8 camera angles • 8 lighting • 9 seasons • 8 demographics</div>
+                    </div>
+                    <div style="background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent-blue); line-height: 1;">6</div>
+                        <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">Ngôn Ngữ Nội Dung</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">VI • EN • DE • FR • ES • ZH — AI tự viết Title, Description, SEO Tags</div>
+                    </div>
+                    <div style="background: rgba(255, 69, 0, 0.04); border: 1px solid rgba(255, 69, 0, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); line-height: 1;">1-Click</div>
+                        <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">Customer Style Onboarding</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">AI phân tích URL cửa hàng để tự học phong cách seller, gợi ý preset tối ưu cho từng thương hiệu</div>
+                    </div>
+                    <div style="background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.15); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.0rem); color: var(--accent-blue); line-height: 1;">Strict</div>
+                        <div style="font-size: var(--body-size); font-weight: 700; color: #fff; margin: 8px 0 4px;">Tiêu Chí AI Audit</div>
+                        <div style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">Design Preservation • Brand Safety • Face Check • Quality — Tự động loại ảnh không đạt</div>
+                    </div>
+                </div>
+
+                <div class="reveal" style="margin-top: clamp(1rem, 3vh, 2rem); display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <span style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: var(--small-size); font-weight: 500; color: var(--text-secondary);">
+                        🏗️ Browser Extension MV3 (Manifest V3)
+                    </span>
+                    <span style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: var(--small-size); font-weight: 500; color: var(--text-secondary);">
+                        ⚡ Offscreen Runner — Không đơ trình duyệt
+                    </span>
+                    <span style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: var(--small-size); font-weight: 500; color: var(--text-secondary);">
+                        🔑 Gọi trực tiếp Gemini API — Không cần backend
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===========================================
+       SLIDE 5: FUTURE VISION
+       =========================================== -->
+    <section class="slide" id="slide-5">
+        <span class="slide-number">06 / 07</span>
+        <div class="slide-content">
+            <div class="container">
+                <h2 class="reveal" contenteditable="false" data-key="s5-title">LỘ TRÌNH RA MẮT & <span>KẾ HOẠCH PHÁT TRIỂN</span></h2>
+                
+                <p class="subtitle reveal" style="margin-bottom: var(--content-gap); font-size: clamp(0.95rem, 1.6vw, 1.35rem); color: var(--text-secondary); max-width: 900px;" data-key="s5-subtitle">
+                    Triết lý hành động: <strong>Giúp người dùng ứng dụng AI đơn giản – Tối ưu hiệu suất, tiết kiệm chi phí tối đa.</strong>
+                </p>
+                
+                <div class="future-grid reveal">
+                    <div class="future-card">
+                        <div class="future-title" contenteditable="false" data-key="s5-c1-title">GĐ 1: Hoàn Thiện & Ra Mắt (0-2 Tháng)</div>
+                        <p class="future-desc" contenteditable="false" data-key="s5-c1-desc">Tập trung hoàn thiện các chức năng cốt lõi đang có và phát hành rộng rãi. Cung cấp phiên bản <strong>miễn phí hoàn toàn trong 2 tháng</strong> đầu nhằm thu thập ý kiến phản hồi thực tế từ người dùng để cải tiến sản phẩm.</p>
+                    </div>
+
+                    <div class="future-card">
+                        <div class="future-title" contenteditable="false" data-key="s5-c2-title">GĐ 2: Tối Ưu & Thu Phí Dịch Vụ</div>
+                        <p class="future-desc" contenteditable="false" data-key="s5-c2-desc">Nâng cao chất lượng sản phẩm từ những phản hồi của người dùng. Triển khai phương án <strong>thu phí sử dụng theo tháng</strong>, đồng thời hỗ trợ người dùng tự điền mã API cá nhân để tiết kiệm tối đa chi phí vận hành.</p>
+                    </div>
+
+                    <div class="future-card">
+                        <div class="future-title" contenteditable="false" data-key="s5-c3-title">GĐ 3: Hợp Tác BurgerPrints</div>
+                        <p class="future-desc" contenteditable="false" data-key="s5-c3-desc">Hợp tác và làm việc chặt chẽ với đội ngũ <strong>BurgerPrints</strong> để xác định chính xác các nhu cầu thực tế của người bán, từ đó nghiên cứu và phát triển các chức năng mới thiết thực nhất.</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="margin-top: clamp(1.5rem, 4vh, 3rem); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.6rem); text-transform: uppercase;">
+                        BURGERSTUDIO <span style="color: var(--accent);">AI</span>
+                    </div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary); font-weight: 500;">
+                        Ứng dụng AI đơn giản và hiệu quả cho Người Bán • Hackathon 2026
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       SLIDE 6: THANK YOU / CLOSING
+       =========================================== -->
+    <style>
+        #slide-6::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 102, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.08) 0%, transparent 50%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+    </style>
+    <section class="slide" id="slide-6">
+        <span class="slide-number">07 / 07</span>
+        <div class="slide-content">
+            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+                
+                <!-- Event Header Badge -->
+                <div class="brand-badge reveal" style="background: rgba(0, 255, 102, 0.1); border-color: rgba(0, 255, 102, 0.25); color: #00FF66; margin-bottom: var(--element-gap);">
+                    <span class="brand-dot" style="background: #00FF66; box-shadow: 0 0 10px #00FF66;"></span>
+                    Cross Border AI Innovation Summit 2026
+                </div>
+                
+                <!-- Title & Slogan -->
+                <div style="margin-bottom: var(--element-gap);">
+                    <h2 class="reveal" style="margin-bottom: 10px; line-height: 1.1; font-size: var(--title-size);" contenteditable="false" data-key="s6-title">
+                        THANK <span>YOU!</span>
+                    </h2>
+                    <p class="subtitle reveal" style="font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.8rem); color: #00FF66; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;" contenteditable="false" data-key="s6-slogan">
+                        BUILD AI FOR THE GLOBAL MARKET
+                    </p>
+                    <p class="reveal" style="color: var(--text-secondary); font-size: var(--body-size); max-width: 700px; margin: 0 auto; line-height: 1.5;" contenteditable="false" data-key="s6-subtitle">
+                        Xin chân thành cảm ơn Ban Tổ Chức, Hội Đồng Giám Khảo và Nhà Tài Trợ <strong>BurgerPrints</strong> đã đồng hành cùng đội thi <strong>BurgerStudio AI</strong>.
+                    </p>
+                </div>
+
+                <!-- Call To Actions (CTA) -->
+                <div class="reveal" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 100%; margin-bottom: var(--element-gap);">
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 16px 24px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 280px; flex: 1; max-width: 380px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" onmouseover="this.style.borderColor='rgba(0, 229, 255, 0.3)'; this.style.background='rgba(0, 229, 255, 0.02)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.background='rgba(255,255,255,0.02)';">
+                        <span style="font-size: 1.8rem;">🚀</span>
+                        <strong style="color: #ffffff; font-size: var(--body-size);" contenteditable="false" data-key="s6-cta1-title">Trải Nghiệm Browser Extension</strong>
+                        <span style="color: var(--text-secondary); font-size: var(--small-size); text-align: center; line-height: 1.4;" contenteditable="false" data-key="s6-cta1-desc">Tải trực tiếp file ZIP đóng gói từ Github Releases, cài đặt thủ công vào Chrome chỉ trong 1 phút.</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 16px 24px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 280px; flex: 1; max-width: 380px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" onmouseover="this.style.borderColor='rgba(255, 69, 0, 0.3)'; this.style.background='rgba(255, 69, 0, 0.02)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.background='rgba(255,255,255,0.02)';">
+                        <span style="font-size: 1.8rem;">🍔</span>
+                        <strong style="color: #ffffff; font-size: var(--body-size);" contenteditable="false" data-key="s6-cta2-title">Tích Hợp Trên BurgerPrints</strong>
+                        <span style="color: var(--text-secondary); font-size: var(--small-size); text-align: center; line-height: 1.4;" contenteditable="false" data-key="s6-cta2-desc">Tối ưu hóa quy trình đăng bán, tự động điền thông tin và tạo mockup lifestyle chất lượng cao trực tiếp.</span>
+                    </div>
+                </div>
+
+                <!-- Event Partners & Sponsors Grid -->
+                <div class="reveal" style="width: 100%; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+                    <div style="font-family: var(--font-body); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 600;">
+                        Event Partners & Sponsors
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: clamp(15px, 4vw, 40px); flex-wrap: wrap; background: rgba(0,0,0,0.2); padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02);">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                            <span style="font-size: 9px; color: #a0a0a0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Organized By</span>
+                            <span style="font-weight: 700; font-size: 13px; color: #fff; letter-spacing: 0.5px;">DNES &bull; ECOMDY</span>
+                        </div>
+                        <div style="width: 1px; height: 25px; background: rgba(255,255,255,0.1);"></div>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                            <span style="font-size: 9px; color: #a0a0a0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Powered By</span>
+                            <span style="font-weight: 700; font-size: 13px; color: #fff; letter-spacing: 0.5px;">BytePlus &bull; TRAC</span>
+                        </div>
+                        <div style="width: 1px; height: 25px; background: rgba(255,255,255,0.1);"></div>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                            <span style="font-size: 9px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Sponsored By</span>
+                            <span style="font-weight: 700; font-size: 13px; color: var(--accent); letter-spacing: 0.5px;">BURGERPRINTS &bull; Kalodata</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+       PRESENTATION CONTROLLER & EDIT MODE JS
+       =========================================== -->
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.isTransitioning = false;
+                
+                this.init();
+            }
+
+            init() {
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupWheelNav();
+                this.setupTouchNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.loadEditedContent();
+                this.setupEditMode();
+
+                // Set first slide active
+                this.goToSlide(0);
+            }
+
+            setupIntersectionObserver() {
+                const observerOptions = {
+                    root: null,
+                    threshold: 0.5
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const index = Array.from(this.slides).indexOf(entry.target);
+                            this.currentSlide = index;
+                            this.updateNavDots();
+                            this.updateProgressBar();
+                            this.animateBars(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            animateBars(slide) {
+                // Animate bars in Slide 2
+                const bars = slide.querySelectorAll('.chart-bar-fill');
+                bars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                });
+            }
+
+            goToSlide(index) {
+                if (index < 0 || index >= this.slides.length || this.isTransitioning) return;
+                this.isTransitioning = true;
+                
+                this.currentSlide = index;
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                
+                setTimeout(() => {
+                    this.isTransitioning = false;
+                }, 800);
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    // Skip shortcuts when editing text
+                    if (e.target.getAttribute('contenteditable') === 'true') return;
+
+                    if (e.key === 'ArrowDown' || e.key === 'Space') {
+                        e.preventDefault();
+                        this.goToSlide(this.currentSlide + 1);
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        this.goToSlide(this.currentSlide - 1);
+                    } else if (e.key === 'e' || e.key === 'E') {
+                        e.preventDefault();
+                        this.toggleEditMode();
+                    }
+                });
+            }
+
+            setupWheelNav() {
+                let lastScrollTime = 0;
+                const scrollCooldown = 1200;
+
+                window.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const now = new Date().getTime();
+                    if (now - lastScrollTime < scrollCooldown) return;
+
+                    if (e.deltaY > 20) {
+                        this.goToSlide(this.currentSlide + 1);
+                        lastScrollTime = now;
+                    } else if (e.deltaY < -20) {
+                        this.goToSlide(this.currentSlide - 1);
+                        lastScrollTime = now;
+                    }
+                }, { passive: false });
+            }
+
+            setupTouchNav() {
+                let startY = 0;
+                window.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                window.addEventListener('touchend', (e) => {
+                    const endY = e.changedTouches[0].clientY;
+                    const diff = startY - endY;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.goToSlide(this.currentSlide + 1);
+                        } else {
+                            this.goToSlide(this.currentSlide - 1);
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            setupProgressBar() {
+                this.updateProgressBar();
+            }
+
+            updateProgressBar() {
+                const bar = document.getElementById('progressBar');
+                const percent = ((this.currentSlide) / (this.slides.length - 1)) * 100;
+                bar.style.width = `${percent}%`;
+            }
+
+            setupNavDots() {
+                const navDotsContainer = document.getElementById('navDots');
+                navDotsContainer.innerHTML = '';
+                this.slides.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = `nav-dot ${index === 0 ? 'active' : ''}`;
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    navDotsContainer.appendChild(dot);
+                });
+            }
+
+            updateNavDots() {
+                const dots = document.querySelectorAll('.nav-dot');
+                dots.forEach((dot, index) => {
+                    if (index === this.currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            /* ===========================================
+               EDIT MODE LOGIC
+               =========================================== */
+            setupEditMode() {
+                const hotzone = document.getElementById('editHotzone');
+                const toggle = document.getElementById('editToggle');
+                const actions = document.getElementById('editActions');
+                const exportBtn = document.getElementById('exportBtn');
+                const resetBtn = document.getElementById('resetBtn');
+                let hideTimeout = null;
+
+                // Toggle visibility on hover
+                const showToggle = () => {
+                    clearTimeout(hideTimeout);
+                    toggle.classList.add('show');
+                };
+
+                const hideToggle = () => {
+                    hideTimeout = setTimeout(() => {
+                        if (!toggle.classList.contains('active')) {
+                            toggle.classList.remove('show');
+                            actions.classList.remove('show');
+                        }
+                    }, 400);
+                };
+
+                hotzone.addEventListener('mouseenter', showToggle);
+                hotzone.addEventListener('mouseleave', hideToggle);
+                toggle.addEventListener('mouseenter', showToggle);
+                toggle.addEventListener('mouseleave', hideToggle);
+                actions.addEventListener('mouseenter', showToggle);
+                actions.addEventListener('mouseleave', hideToggle);
+
+                // Click to activate edit mode
+                const handleToggleClick = () => {
+                    this.toggleEditMode();
+                };
+
+                toggle.addEventListener('click', handleToggleClick);
+                hotzone.addEventListener('click', handleToggleClick);
+
+                // Export & Reset buttons
+                exportBtn.addEventListener('click', () => this.exportHTML());
+                resetBtn.addEventListener('click', () => this.resetDefault());
+            }
+
+            toggleEditMode() {
+                const toggle = document.getElementById('editToggle');
+                const actions = document.getElementById('editActions');
+                const editableElements = document.querySelectorAll('[data-key]');
+                const isActive = toggle.classList.toggle('active');
+
+                if (isActive) {
+                    toggle.querySelector('span').innerText = '✔️ Xong';
+                    actions.classList.add('show');
+                    editableElements.forEach(el => {
+                        el.setAttribute('contenteditable', 'true');
+                        // Save to localStorage on blur
+                        el.addEventListener('blur', () => this.saveElementContent(el));
+                    });
+                } else {
+                    toggle.querySelector('span').innerText = '✏️ Chỉnh sửa';
+                    actions.classList.remove('show');
+                    editableElements.forEach(el => {
+                        el.setAttribute('contenteditable', 'false');
+                    });
+                }
+            }
+
+            saveElementContent(el) {
+                const key = el.getAttribute('data-key');
+                localStorage.setItem(`slide-content-${key}`, el.innerHTML);
+            }
+
+            loadEditedContent() {
+                const editableElements = document.querySelectorAll('[data-key]');
+                editableElements.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    const saved = localStorage.getItem(`slide-content-${key}`);
+                    if (saved) {
+                        el.innerHTML = saved;
+                    }
+                });
+            }
+
+            exportHTML() {
+                // Prepare final HTML with current inline edits
+                const editableElements = document.querySelectorAll('[data-key]');
+                
+                // Clone the document to modify without affecting runtime DOM
+                const docClone = document.documentElement.cloneNode(true);
+                
+                // Replace clone's values with edited text
+                editableElements.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    const cloneEl = docClone.querySelector(`[data-key="${key}"]`);
+                    if (cloneEl) {
+                        cloneEl.innerHTML = el.innerHTML;
+                        cloneEl.removeAttribute('contenteditable');
+                    }
+                });
+
+                // Remove edit UI components from clean file
+                const cloneToggle = docClone.querySelector('#editToggle');
+                const cloneHotzone = docClone.querySelector('#editHotzone');
+                const cloneActions = docClone.querySelector('#editActions');
+                if (cloneToggle) cloneToggle.remove();
+                if (cloneHotzone) cloneHotzone.remove();
+                if (cloneActions) cloneActions.remove();
+
+                const finalHTML = '<!DOCTYPE html>\n' + docClone.outerHTML;
+
+                // Download trigger
+                const blob = new Blob([finalHTML], { type: 'text/html' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'BurgerStudio_AI_Pitch_Deck.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+
+            resetDefault() {
+                if (confirm('Bạn có chắc chắn muốn khôi phục toàn bộ nội dung mặc định?')) {
+                    const editableElements = document.querySelectorAll('[data-key]');
+                    editableElements.forEach(el => {
+                        const key = el.getAttribute('data-key');
+                        localStorage.removeItem(`slide-content-${key}`);
+                    });
+                    location.reload();
+                }
+            }
+        }
+
+        // Initialize presentation on window load
+        window.addEventListener('DOMContentLoaded', () => {
+            window.presentationInstance = new SlidePresentation();
+        });
+    </script>
+</body>
+</html>
